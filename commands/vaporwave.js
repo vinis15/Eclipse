@@ -5,7 +5,7 @@ String.prototype.toFullWidth = function() {
 module.exports.run = async (bot, message, args) => {
     
 		if (!args.length)
-			return msg.reply('insira um texto para transformar em vaporwave.')
+			return message.reply('insira um texto para transformar em vaporwave.')
         try {
         return message.channel.send(args.join(' ').toFullWidth());
 	} catch (err) {
