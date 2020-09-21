@@ -6,8 +6,7 @@ module.exports.run = async (bot, message, args) => {
 		if (resultado.toString().includes(bot.token)) return message.reply('não foi possível calcular.');
 		if (resultado === Infinity) return message.reply('o resultado foi **Infinito**.');
 		return message.reply('`' + resultado + '`');
-	} catch(e) {
-		console.log(e)
+	} catch {
 		return message.reply('não foi possível calcular.');
 	};
 }
