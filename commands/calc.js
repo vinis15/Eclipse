@@ -1,6 +1,6 @@
 var happycalculator = require('happycalculator');
 module.exports.run = async (bot, message, args) => {
-	if (!args.length) return msg.reply('insira uma equação.');
+	if (!args.length) return message.reply('insira uma equação.');
 	try {
 		var resultado = happycalculator.calculate(args.join(' '));
 		if (resultado.includes(client.token)) return message.reply('não foi possível calcular.');
