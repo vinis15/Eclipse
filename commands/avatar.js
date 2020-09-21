@@ -1,9 +1,9 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const config = require("../config.json")
-const embed = new Discord.MessageEmbed()
 
 module.exports.run = async (bot, message, args) => {
-  if(!message.mentions.users.first()&&!args[0]) {
+    const embed = new MessageEmbed()
+    if(!message.mentions.users.first()&&!args[0]) {
         embed.setTitle("Seu avatar 🖼️")
         embed.setColor(config.color)
         embed.setImage(`${message.author.avatarURL({ dynamic: true, size: 2048 })}`)
