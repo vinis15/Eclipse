@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["jify"]
+    aliase: ["ify", "emoteify", "emotefy"]
 }
 exports.help = {
     nome: "emojify",
