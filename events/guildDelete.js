@@ -1,9 +1,9 @@
 const { bot } = require("../index");
-const Discord = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const config = require("../config.json");
-const embed  = new Discord.MessageEmbed()
 
 bot.on("guildDelete", guild => {
+  const embed  = new MessageEmbed()
   embed.setColor(config.color)
   embed.setTitle(`Saida de um servidor ${guild.name}`)
   embed.setThumbnail(guild.iconURL({ dynamic: true, size: 2048 }) || 'https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg}')
