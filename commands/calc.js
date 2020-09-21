@@ -1,16 +1,14 @@
 var happycalculator = require('happycalculator');
 module.exports.run = async (bot, message, args) => {
-	if (!args.length) return msg.reply('insira uma equação.');
+	if (!args.length) return message.reply('insira uma equação.');
 	try {
 		var resultado = happycalculator.calculate(args.join(' '));
-		if (resultado.includes(bot.token)) return msg.reply('não foi possível calcular.');
-		if (resultado === Infinity) return msg.reply('o resultado foi **Infinito**.');
-		return msg.reply('`' + resultado + '`');
+		if (resultado.includes(bot.token)) return message.reply('não foi possível calcular.');
+		if (resultado === Infinity) return message.reply('o resultado foi **Infinito**.');
+		return message.reply('`' + resultado + '`');
 	} catch {
-		return msg.reply('não foi possível calcular.');
+		return message.reply('não foi possível calcular.');
 	};
-}
-
 }
 
 exports.conf = {
