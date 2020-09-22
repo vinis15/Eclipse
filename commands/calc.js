@@ -6,8 +6,8 @@ module.exports.run = async (bot, message, args) => {
 		if (resultado.toString().includes(bot.token)) return message.reply('TÁ TENTANDO PEGAR MEU TOKEN RAPA?');
 		if (resultado === Infinity) return message.reply('o resultado foi **Infinito**.');
 		return message.reply('`' + resultado + '`');
-	} catch {
-		return message.reply('não foi possível calcular.');
+	} catch (e) {
+		return message.reply('não foi possível calcular.' + e);
 	};
 }
 
