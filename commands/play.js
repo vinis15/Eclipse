@@ -5,10 +5,11 @@ var momentDurationFormatSetup = require("moment-duration-format");
 
 module.exports.run = async (bot, message, args) => {
   const { channel } = message.member.voice;
-
+  const eucanal = message.guild.me.voice.channel
   if(!channel) return message.reply('Por favor se conecte ao algum canal de voz e tente novamente');
   if(!args.length) return message.reply('Me de um LINK ou alguma PESQUISA');
-
+  if(eucanal&&eucanal.id !== channel.id && !channel.joinable) return message.reply("Não posso me conectar a este canal")
+  
   const player = message.client.manager.create({
     guild: message.guild.id,
     voiceChannel: channel.id,
