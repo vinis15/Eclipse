@@ -20,13 +20,13 @@ module.exports.run = async (bot, message, args) => {
     }
     if(isNaN(args[0])) return message.reply('insira um ID válido de um usuário ou mencione um.')
     try {
-        var member = client.users.cache.get(args[0]) || message.guild.members.cache.get(args[0]).user || await bot.users.fetch(args[0]);
+        var member = bot.users.cache.get(args[0]) || message.guild.members.cache.get(args[0]).user || await bot.users.fetch(args[0]);
         embed.setTitle(`Avatar de ${member.tag} 🖼️`)
         embed.setColor(config.color)
         embed.setImage(`${member.displayAvatarURL({ dynamic: true, size: 2048 })}`)
         embed.setTimestamp()
         return message.channel.send(embed)
-    } catch {
+    } catch (erro) {
         message.channel.send(":x: **Usuário não encontrado!**");
     }
     
