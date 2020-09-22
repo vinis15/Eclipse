@@ -7,6 +7,7 @@ module.exports.run = async (bot, message, args) => {
   const { channel } = message.member.voice;
 
   if(!channel) return message.reply('Por favor se conecte ao algum canal de voz e tente novamente');
+  if(!channel.joinable) return message.reply("Não posso me conectar a este canal")
   if(!args.length) return message.reply('Me de um LINK ou alguma PESQUISA');
 
   const player = message.client.manager.create({
@@ -16,9 +17,8 @@ module.exports.run = async (bot, message, args) => {
     selfDeafen: true,
     volume: 50
   });
-  
-  if(!channel.joinable) return message.channel.send("Eu não posso me conectar a este canal")
-  player.connect();
+
+    player.connect();
 
   const search = args.join(' ');
     let res;

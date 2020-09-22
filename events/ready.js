@@ -9,5 +9,5 @@ bot.on("ready", () => {
 
 
 async function setStatus(){
-    bot.user.setActivity(`Latencia de ${bot.ws.ping}ms`, {type: "PLAYING"})
+    bot.user.setActivity(`Players [${bot.manager.players.size}]`, {type: "LISTENING"})
 }

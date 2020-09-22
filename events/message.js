@@ -2,6 +2,8 @@ const config = require("../config.json");
 const { bot } = require("../index");
 
 bot.on("message", async message => {
+
+    if(message.content.startsWith('<@')&&message.content.endsWith(bot.user.id+'>')) return message.channel.send(`Olá **${message.author.tag}**, meu prefixo é \`${config.prefix}\`, use \`${config.prefix}ajuda\` ou \`${config.prefix}help\` para saber meus comandos ❤️`)
     if(message.author.bot) return;
     let prefix;
     if(!message.guild) prefix = "e."
