@@ -14,6 +14,7 @@ bot.on("message", async message => {
 
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if(!commandfile) commandfile = bot.aliases.get(cmd.slice(prefix.length))
+    if(!commandfile) commandfile = bot.aliases.get(cmd.slice(prefix.length))
+    if(!commandfile.conf.enabled) return message.channel.send(':x: Este comando esta desativado')
     if(commandfile) commandfile.run(bot,message,args);
-
 })

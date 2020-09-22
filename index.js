@@ -37,7 +37,7 @@ fs.readdir("./events/", (err, files) => {
         console.error(err);
     const eventsFiles = files.filter(file => file.split(".").pop() == "js");
     if(eventsFiles.length <= 0)
-        return console.warn("Não existem eventos para ser carregado");
+        return console.warn("[ERRO] - Não existem eventos para ser carregado");
     eventsFiles.forEach((file, i) => {
         require("./events/" + file);
     });
