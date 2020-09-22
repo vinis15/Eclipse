@@ -13,7 +13,7 @@ module.exports.run = async(bot,message,args)=> {
       try  {
           let code = eval(codein)
 
-          if(codein.length < 1 && !codein) return message.channel.send(`min. \n\`\`\`javascript\nundefined\n\`\`\``)
+          if(codein.length < 1 && !codein) return message.channel.send(`\n\`\`\`javascript\nundefined\n\`\`\``)
           if(typeof code!== "string")
           code = require("util").inspect(code, {depth:0});
 
@@ -28,7 +28,7 @@ module.exports.run = async(bot,message,args)=> {
 
 exports.conf = {
     enabled: true,
-    guildOnly: false,
+    guildOnly: true,
     aliase:["ev"]
 }
 
