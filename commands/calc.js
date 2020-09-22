@@ -14,11 +14,11 @@ module.exports.run = async (bot, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["math", "calc", "calculate"]
+    aliase: ["calc", "somar", "contas"]
 }
 exports.help = {
     nome: "calcular",
-    descrição: "Calcula uma equação informada pelo usuário.",
-    uso: "calcular <equação>",
+    descrição: "Faça uma conta com o bot",
+    uso: "calc <CONTA>",
     categoria: "Outros"
 }

@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliases: ["bot-info"]
+    aliase: ["bot-info"]
 }
 exports.help = {
     nome: "botinfo",

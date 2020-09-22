@@ -1,5 +1,5 @@
+const config = require("../config.json");
 const { bot } = require("../index");
-const config = require("../config.json")
 
 bot.on("message", async message => {
     if(message.author.bot) return;
@@ -15,6 +15,6 @@ bot.on("message", async message => {
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if(!commandfile) commandfile = bot.aliases.get(cmd.slice(prefix.length))
     if(!commandfile) commandfile = bot.aliases.get(cmd.slice(prefix.length))
-    if(!commandfile.conf.enabled) return message.channel.send(':x: Este comando esta desativado')
+    if(!commandfile.conf.enabled) return message.channel.send(':x: Comando desativado')
     if(commandfile) commandfile.run(bot,message,args);
 })

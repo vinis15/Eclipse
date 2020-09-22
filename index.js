@@ -1,4 +1,3 @@
-console.log("[LOGIN] - Iniciando bot")
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({ disableMentions: 'everyone' })
@@ -15,10 +14,10 @@ bot.aliases = new Discord.Collection(undefined,undefined);
 fs.readdir("./commands/", async (err, files) => {
 
     if(err) console.log(err)
-    if(!files) return console.log("[ERRO] - Não foi possivel achar comandos")
+    if(!files) return console.log("[COMANDOS] - Não foi possivel achar comandos")
     let jsfile = files.filter(f => f.split(".").pop() == "js")
     if (jsfile <= 0){
-        console.log("[ERRO] - Não foi possivel achar comandos")
+        console.log("[COMANDOS] - Não foi possivel achar comandos")
         return;
     }
 
@@ -29,7 +28,7 @@ fs.readdir("./commands/", async (err, files) => {
             bot.aliases.set(aliase,props)
         }
     };
-    console.log("[COMANDOS] - Carregados com sucesso")
+    console.log("[COMANDOS] - Comandos carregados com sucesso")
 })
 
 fs.readdir("./events/", (err, files) => {
@@ -37,11 +36,11 @@ fs.readdir("./events/", (err, files) => {
         console.error(err);
     const eventsFiles = files.filter(file => file.split(".").pop() == "js");
     if(eventsFiles.length <= 0)
-        return console.warn("[ERRO] - Não existem eventos para ser carregado");
+        return console.warn("[EVENTOS] - Não existem eventos para ser carregado");
     eventsFiles.forEach((file, i) => {
         require("./events/" + file);
     });
-    console.log("[EVENTOS] - Carregados com sucesso")
+    console.log("[EVENTOS] - Carregos com sucesso")
 });
 
 bot.on("raw", d => bot.manager.updateVoiceState(d));
@@ -55,8 +54,8 @@ bot.manager = new Manager({
       if (guild) guild.shard.send(payload);
     }
 })
-    .on("nodeConnect", node => console.log(`[NODE] - ${node.options.identifier} Conectado`))
-    .on("nodeError", (node, error) => console.log(`[NODE] - ${node.options.identifier} encontrou um erro: ${error.message}.`))
+    .on("nodeConnect", node => console.log(`Node "${node.options.identifier}" conectado`))
+    .on("nodeError", (node, error) => console.log(`Node "${node.options.identifier}" encontrou um erro: ${error.message}.`))
     .on("trackStart", (player, track) => {
       const channel = bot.channels.cache.get(player.textChannel);
       channel.send(`Tocando agora: \`${track.title}\`, pedido por \`${track.requester.tag}\`.`);
