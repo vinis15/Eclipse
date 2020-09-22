@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["calc", "somar", "contas"]
+    aliase: ["math", "calc", "calculate"]
 }
 exports.help = {
     nome: "calcular",
