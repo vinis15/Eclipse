@@ -1,3 +1,5 @@
+# EclipseBot
+
 ## Comandos diversos
 Eclipse contem comandos diversos como, `e.userinfo`, `e.avatar`, `e.emojify`.
 
