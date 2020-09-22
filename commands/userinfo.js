@@ -8,6 +8,7 @@ module.exports.run = async (bot, message, args) => {
         embed.setTitle(`🧐 **|** ${message.author.tag} - (${message.author.id})`)
         embed.setColor(config.color)
         embed.setDescription(`⇾ **Tag:** \`${message.author.tag}\`\n⇾ **Conta criada no dia:** \`${moment(message.author.createdAt).format("LLL")}\`\n⇾ **Entrou aqui no dia:** \`${moment(message.guild.members.cache.get(message.author.id).joinedAt).format("LLL")}\`\n⇾ **Emblemas:** ${bot.badge(message.author.flags.toArray())}`)
+        embed.setThumbnail(`${message.author.avatarURL({ dynamic: true, size: 2048 })}`)
         embed.setTimestamp()
         return message.channel.send(embed)
     } 
