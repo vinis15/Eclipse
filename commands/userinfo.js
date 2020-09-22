@@ -21,16 +21,16 @@ module.exports.run = async (bot, message, args) => {
         embed.setTimestamp()
         return message.channel.send(embed)  
     }
-    if(isNaN(args[0])) return message.channel.send('Insira um ID')
+    if(isNaN(args[0])) return message.reply('insira um ID válido de um usuário ou mencione um.')
     try {
-        var member = await bot.users.fetch(args[0]);
+        var member = bot.users.cache.get(args[0]) || message.guild.members.cache.get(args[0]).user || await bot.users.fetch(args[0]);
         embed.setTitle(`🧐 **|** ${member.tag} - (${member.id})`)
         embed.setColor(config.color)
         embed.setDescription(`⇾ **Tag:** \`${member.tag}\`\n⇾ **Conta criada no dia:** \`${moment(member.createdAt).format("LLL")}\`\n⇾ **Emblemas:** ${member.flags.toArray().join(' ').replace('HOUSE_BALANCE', '<:balance:746939323143946320>').replace('HOUSE_BRILLIANCE', '<:Brilliance:746939322904870973>').replace('HOUSE_BRAVERY', '<:Bravery:746939322996883516>').replace('BUGHUNTER_LEVEL_1', '<:Hunter:750415765424963634>').replace('BUGHUNTER_LEVEL_2', '<:hunterv2:750415765496135700>').replace('VERIFIED_DEVELOPER', '<:developer:746940343252942956>').replace('DISCORD_PARTNER', '<:parceiro:750415765366112457>').replace('VERIFIED_BOT', '<:bot:750415765311717476>').replace('EARLY_SUPPORTER', '<:early:750416436458946773>').replace('HYPESQUAD_EVENTS', '<:hypesquad:750415765026635929>').replace('TEAM_USER', '<:funcionario:750415765655519403>').replace('SYSTEM', '<:funcionario:750415765655519403>') || 'Não possui'}`)
         embed.setThumbnail(`${member.displayAvatarURL({ dynamic: true, size: 2048 })}`)
         embed.setTimestamp()
         return message.channel.send(embed)
-    } catch (err) {
+    } catch {
         message.channel.send(":x: **Usuário não encontrado!**");
     }
 }
