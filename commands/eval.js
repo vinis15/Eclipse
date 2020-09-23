@@ -1,35 +1,29 @@
+const Discord = require('discord.js')
 const config = require("../config.json")
-module.exports.run = async(bot,message,args)=> {
-  if(!message.guild) return;
-  if(config.eval.includes(message.author.id) == false) {
-    message.channel.send('Sai irmão')
-    return;
-  }
-  const Discord = require("discord.js")
-  let prefix = config.prefix
 
-  let codein = args.slice(0).join(" ")
-  if(!codein.toLowerCase().includes("token") && !codein.toLowerCase().includes("config")){
-      try  {
-          let code = eval(codein)
+module.exports.run = async (bot, message, args) => {
+var ids = ["672652538880720896"]
+if (ids.includes (message.author.id)) {
+  
+        try {
+            if(!args.join(' ')) return message.reply('Esvreve ai')
+            let code = await eval(args.join(" "));
 
-          if(codein.length < 1 && !codein) return message.channel.send(`\n\`\`\`javascript\nundefined\n\`\`\``)
-          if(typeof code!== "string")
-          code = require("util").inspect(code, {depth:0});
-
-          message.channel.send(`\n\`\`\`javascript\n${code.length > 1024 ? "Character Over!" : code}\n\`\`\``)
-      }catch(e){
-        message.channel.send(`\n\`\`\`javascript\n${e.length > 1024 ? "Character Over!" : e}\n\`\`\``)
-      }
-  }else {
-    message.channel.send(`\n\`\`\`javascript\nundefined token\n\`\`\``) // Prevent take token :)
-  }
+            if (typeof code !== 'string') code = await require('util').inspect(code, { depth: 0 });
+            let embed = new Discord.MessageEmbed()
+            .setColor(config.color)
+            .addField('📩Entrada', `\`\`\`js\n${args.join(" ")}\`\`\``)
+            .addField('🚩Saída', `\`\`\`js\n${code}\n\`\`\``)
+            message.reply(embed)
+        } catch(e) {
+            message.channel.send(`\`\`\`js\n${e}\n\`\`\``);
+        }
 }
-
+}
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase:["ev"]
+    aliase:["ev", "e"]
 }
 
 exports.help = {
