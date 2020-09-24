@@ -7,28 +7,20 @@ const { Manager } = require("erela.js");
 const Spotify  = require("erela.js-spotify");
 const clientID = config.clientID;
 const clientSecret = config.clientSecret;
-
+const glob = require('glob')
 const prefix = config.prefix
 bot.commands = new Discord.Collection(undefined,undefined);
 bot.aliases = new Discord.Collection(undefined,undefined);
 
-fs.readdir("./commands/", async (err, files) => {
-
-    if(err) console.log(err)
-    if(!files) return console.log("[COMANDOS] - Não foi possivel achar comandos")
-    let jsfile = files.filter(f => f.split(".").pop() == "js")
-    if (jsfile <= 0){
-        console.log("[COMANDOS] - Não foi possivel achar comandos")
-        return;
-    }
-
-    for (const f of jsfile){
-        let props = require(`./commands/${f}`)
+glob(__dirname+'/../commands/*/*.js', function (er, files) {
+    if(er) console.log(er)
+    files.forEach(f=>{
+        let props = require(`${f.replace('.js', '')}`)
         bot.commands.set(props.help.nome,props)
         for (const aliase of props.conf.aliase){
             bot.aliases.set(aliase,props)
-        }
-    };
+        };})
+    
     console.log("[COMANDOS] - Comandos carregados com sucesso")
 })
 
@@ -40,7 +32,7 @@ fs.readdir("./events/", (err, files) => {
         return console.warn("[EVENTOS] - Não existem eventos para ser carregado");
     eventsFiles.forEach((file, i) => {
         require("./events/" + file);
-    });
+    })
     console.log("[EVENTOS] - Carregos com sucesso")
 });
 
