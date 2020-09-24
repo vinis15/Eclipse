@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliase: [""]
+    aliase: []
 }
 exports.help = {
     nome: "reload",
