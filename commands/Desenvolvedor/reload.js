@@ -11,9 +11,10 @@ module.exports.run = async (bot, message, args) => {
     let commands = args[0].toLowerCase()
 
     try {
+        let categoria = bot.commands.get(commands).help.categoria
         delete require.cache[require.resolve(`./${commands}.js`)]
         bot.commands.delete(commands)
-        const pull = require(`./${commands}.js`)
+        const pull = require(__dirname+`/../${categoria}/${commands}.js`)
         bot.commands.set(commands, pull)
     } catch(e) {
         return message.channel.send(`Não foi possível recarregar: \`${args[0].toUpperCase()}\`` + e)
