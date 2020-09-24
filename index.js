@@ -12,7 +12,7 @@ const prefix = config.prefix
 bot.commands = new Discord.Collection(undefined,undefined);
 bot.aliases = new Discord.Collection(undefined,undefined);
 
-glob(__dirname+'/../commands/*/*.js', function (er, files) {
+glob(__dirname+'/commands/*/*.js', function (er, files) {
     if(er) console.log(er)
     files.forEach(f=>{
         let props = require(`${f.replace('.js', '')}`)
