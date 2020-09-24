@@ -79,4 +79,4 @@ bot.badge = function(badges){
 module.exports = {
     bot,
     Manager
-}
+} 
