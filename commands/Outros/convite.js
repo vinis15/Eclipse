@@ -1,5 +1,5 @@
 const { MessageEmbed, Message } = require("discord.js")
-const config = require("../config.json")
+const config = require("../../config.json")
 module.exports.run = async(bot, message, args) => {
     let embed = new MessageEmbed()
     embed.setColor(config.color)

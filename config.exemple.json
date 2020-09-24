@@ -7,5 +7,3 @@
     "clientID": "Spotify ID",
     "clientSecret": "Spotify Secret"
 }
-
-//Pegar o cleintID e clientSecret do spotify aqui https://developer.spotify.com/dashboard/applications

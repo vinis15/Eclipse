@@ -1,5 +1,5 @@
 const { MessageEmbed, Message } = require("discord.js")
-const config = require("../config.json")
+const config = require("../../config.json")
 const moment = require("moment")
 var momentDurationFormatSetup = require("moment-duration-format");
 module.exports.run = async(bot, message, args) => {

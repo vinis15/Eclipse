@@ -1,8 +1,8 @@
 const Discord = require('discord.js')
-const config = require("../config.json")
+const config = require("../../config.json")
 
 module.exports.run = async (bot, message, args) => {
-var ids = ["672652538880720896"]
+var ids = ["672652538880720896", "704468807229505637"]
 if (ids.includes (message.author.id)) {
   
         try {
