@@ -5,22 +5,20 @@ module.exports.run = async (bot, message, args) => {
     const { channel } = message.member.voice
 
     if(!channel) return message.reply("Você não esta em um canal de voz");
-    if(channel.id !== player.voiceChannel) return message.reply("Você não esta no mesmo canal de voz que eue estou :/");
+    if (channel.id !== player.voiceChannel) return message.reply("Você não esta no mesmo canal de voz que eue estou :/");
 
-    if(player.queue.size <= 1) return message.channel.send("Não ha músicas por favor use e.stop")
-    
-    player.stop();
-    return message.react('✅');
+    player.destroy();
+    return message.channel.send("Parei de tocar :/");
 }
 
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["pular"]
+    aliase: ["parar"]
 }
 exports.help = {
-    nome: "skip",
-    descrição: "Pula uma música",
-    uso: "skip",
+    nome: "stop",
+    descrição: "Para de tocar música",
+    uso: "stop",
     categoria: "Música"
 }

@@ -9,25 +9,20 @@ module.exports.run = async(bot, message, args) => {
 
     if(channel.id !== player.voiceChannel) return message.channel.send("Se conecte ao mesmo canal de voz que eu")
 
-    if(args.length && /queue/i.test(args[0])) {
-        player.setQueueRepeat(!player.queueRepeat);
-        const queueRepeat = player.queueRepeat ? "ativado" : "desativado";
-        return message.reply(`loop de queue foi ${queueRepeat}`);
-      }
-  
-      player.setTrackRepeat(!player.trackRepeat);
-      const trackRepeat = player.trackRepeat ? "ativado" : "desativado";
-      return message.reply(`loop de música foi ${trackRepeat}`);
+    const volume = Number(args[0]);
+    if (!volume || volume < 1 || volume > 100) return message.reply("Você tem que dar um volume entre 1 a 100");
+    player.setVolume(volume);
+    return message.reply(`Setado volume do player em \`${volume}\`.`);
 }
 
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["repeat"]
+    aliase: ["vol"]
 }
 exports.help = {
-    nome: "loop",
-    descrição: "Da loop na música ou na queue",
-    uso: "loop",
+    nome: "volume",
+    descrição: "",
+    uso: "Aumenta ou diminiu o volume",
     categoria: "Música"
 }

@@ -1,4 +1,4 @@
-module.exports.run = async(bot, message, args) => {
+module.exports.run = async(bot, message) => {
     const player = message.client.manager.players.get(message.guild.id);
 
     if(!player) return message.channel.send("Não tem nada tocando nesta guilda")
@@ -9,20 +9,20 @@ module.exports.run = async(bot, message, args) => {
 
     if(channel.id !== player.voiceChannel) return message.channel.send("Se conecte ao mesmo canal de voz que eu")
 
-    const volume = Number(args[0]);
-    if (!volume || volume < 1 || volume > 100) return message.reply("Você tem que dar um volume entre 1 a 100");
-    player.setVolume(volume);
-    return message.reply(`Setado volume do player em \`${volume}\`.`);
+    if(player.paused) return message.channel.send("A musica ja esta pausada")
+
+    player.pause(true)
+    return message.reply("Musica pausada")
 }
 
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["vol"]
+    aliase: ["pausar"]
 }
 exports.help = {
-    nome: "volume",
-    descrição: "",
-    uso: "Aumenta ou diminiu o volume",
+    nome: "pause",
+    descrição: "Pausa a música",
+    uso: "pause",
     categoria: "Música"
 }
