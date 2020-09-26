@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     voiceChannel: channel.id,
     textChannel: message.channel.id,
     selfDeafen: true,
-    volume: 50
+    volume: 50,
   });
 
     player.connect();
@@ -41,15 +41,24 @@ module.exports.run = async (bot, message, args) => {
       case 'TRACK_LOADED':
         player.queue.add(res.tracks[0]);
 
+        let embed1 = new MessageEmbed()
+        embed1.setTimestamp()
+        embed1.setColor(config.color)
+        embed1.setDescription(`**Adicionado a fila** \`${res.tracks[0].title}\`\n**Duração:** \`${moment.duration(res.tracks[0].duration).format("d:hh:mm:ss")}\``)
+        embed1.setFooter(`Solicitado por ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
         if(!player.playing && !player.paused && !player.queue.length) player.play();
-        return message.reply(`Adicionado a fila \`${res.tracks[0].title}\` \nDuração (${moment.duration(res.tracks[0].duration).format("d:hh:mm:ss")}).`);
+        return message.channel.send({embed1});
         case 'PLAYLIST_LOADED':
           player.queue.add(res.tracks);
           if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
 
 
+          let embed2 = new MessageEmbed()
+          embed2.setTimestamp()
+          embed2.setColor(config.color)
+          embed2.setDescription(`**Adicionado a playlist** \`${res.playlist.name}\` **com** \`${res.tracks.length}\` **músicas**\n**Duração de** \`${moment.duration(res.playlist.duration).format("d:hh:mm:ss")}\``)
           if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
-          return message.reply(`Adicionado a fila \`${res.playlist.name}\` com ${res.tracks.length} músicas. \nDuração (${moment.duration(res.playlist.duration).format("d:hh:mm:ss")})`);
+          return message.channel.send(embed2);
           case 'SEARCH_RESULT':
             let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|cancelar)$/i.test(m.content);
             if(res.tracks.length < max) max = res.tracks.length;
@@ -61,11 +70,12 @@ module.exports.run = async (bot, message, args) => {
             
             const embed = new MessageEmbed()
             .setColor(config.color)
+            .setTimestamp()
             .addFields(
               { name: "Cancelar", value: `Digite \`cancelar\` para cancelar` }
             )
             .setDescription(results)
-            message.channel.send({embed});
+            message.channel.send(embed);
 
             try {
               collected = await message.channel.awaitMessages(filter, { max: 1, time: 30e3, errors: ['time'] });
@@ -86,9 +96,13 @@ module.exports.run = async (bot, message, args) => {
 
         const track = res.tracks[index];
         player.queue.add(track);
-
+        
+        let embed3 = new MessageEmbed()
+        embed3.setColor(config.color)
+        embed3.setFooter(`Solicitado por ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed3.setDescription(`**Adicionado a fila** \`${track.title}\` \n **Duração** \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
         if (!player.playing && !player.paused && !player.queue.length) player.play();
-        return message.reply(`Adicionado a fila \`${track.title}\` (${moment.duration(track.duration).format("d:hh:mm:ss")}).`);
+        return message.channel.send(embed3);
       }
     };
 

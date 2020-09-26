@@ -32,5 +32,5 @@ exports.help = {
     nome: "reload",
     descrição: "",
     uso: "reload <COMANDO>",
-    categoria: "Outros"
+    categoria: "Desenvolvedor"
 }

@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const config = require("../../config.json");
 const os = require("os");
 const cpu = require('os-utils');
+const byteSize = require('byte-size')
 module.exports.run = async (bot, message, args) => {
     var uptime = process.uptime();
     var days = Math.floor((uptime % 31536000) / 86400);
@@ -12,12 +13,13 @@ module.exports.run = async (bot, message, args) => {
     const embed = new MessageEmbed()
     .setTitle("Minhas informações | Eclipse")
     .setColor(config.color)
+	.setTimestamp()
     .addFields(
         { name: "Minha versão", value: `\`\`\`${config.versão}\`\`\``, inline: true },
         { name: "Discord.js", value: `\`\`\`12.2.2\`\`\``, inline: true },
         { name: "Uptime", value: `\`\`\`${final}\`\`\``, inline: true },
         { name: "Ping", value: `\`\`\`${bot.ws.ping}ms\`\`\``, inline: true },
-        { name: "Memória RAM Usada", value: `\`\`\`${(process.memoryUsage().rss/1024/1024).toFixed(2)}MB\`\`\``, inline: true },
+        { name: "Memória RAM Usada", value: `\`\`\`${byteSize(process.memoryUsage().rss).value}${byteSize(process.memoryUsage().rss).unit}/${byteSize(os.totalmem()).value}${byteSize(os.totalmem()).unit}\`\`\``, inline: true },
         { name: "Sistema Operacional", value: `\`\`\`${os.platform()}\`\`\``, inline: true },
         { name: "Servidores", value: `\`\`\`${bot.guilds.cache.size.toLocaleString("pt-br")}\`\`\``, inline: true },
         { name: "Usuários", value: `\`\`\`${bot.users.cache.size.toLocaleString("pt-br")}\`\`\``, inline: true },

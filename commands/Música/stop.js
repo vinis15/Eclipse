@@ -5,10 +5,10 @@ module.exports.run = async (bot, message, args) => {
     const { channel } = message.member.voice
 
     if(!channel) return message.reply("Você não esta em um canal de voz");
-    if (channel.id !== player.voiceChannel) return message.reply("Você não esta no mesmo canal de voz que eue estou :/");
+    if (channel.id !== player.voiceChannel) return message.reply("Você não esta no mesmo canal de voz que que eu estou :/");
 
     player.destroy();
-    return message.channel.send("Parei de tocar :/");
+    return message.channel.send("Parei de tocar");
 }
 
 exports.conf = {

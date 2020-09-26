@@ -30,5 +30,5 @@ exports.help = {
   nome: "eval",
   descrição: "Roda codigos",
   uso: "eval <CODIGO>",
-  categoria: "Outros"
+  categoria: "Desenvolvedor"
 }

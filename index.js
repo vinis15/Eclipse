@@ -9,8 +9,11 @@ const clientID = config.clientID;
 const clientSecret = config.clientSecret;
 const glob = require('glob')
 const prefix = config.prefix
+
+
 bot.commands = new Discord.Collection(undefined,undefined);
 bot.aliases = new Discord.Collection(undefined,undefined);
+
 
 glob(__dirname+'/commands/*/*.js', function (er, files) {
     if(er) console.log(er)
@@ -24,6 +27,7 @@ glob(__dirname+'/commands/*/*.js', function (er, files) {
     console.log("[COMANDOS] - Comandos carregados com sucesso")
 })
 
+
 fs.readdir("./events/", (err, files) => {
     if(err)
         console.error(err);
@@ -36,7 +40,6 @@ fs.readdir("./events/", (err, files) => {
     console.log("[EVENTOS] - Carregos com sucesso")
 });
 
-bot.on("raw", d => bot.manager.updateVoiceState(d));
 
 bot.manager = new Manager({
     nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, }],
@@ -47,15 +50,21 @@ bot.manager = new Manager({
       if (guild) guild.shard.send(payload);
     }
 })
+
     .on("nodeConnect", node => console.log(`[NODE] - ${node.options.identifier} conectado`))
     .on("nodeError", (node, error) => console.log(`[NODE] - ${node.options.identifier} encontrou um erro: ${error.message}.`))
     .on("trackStart", (player, track) => {
-      const channel = bot.channels.cache.get(player.textChannel);
-      channel.send(`Tocando agora: \`${track.title}\`, pedido por \`${track.requester.tag}\`.`);
+        let embed = new Discord.MessageEmbed()
+        embed.setDescription(`**Tocando agora** \`${track.title}\``)
+        embed.setTimestamp()
+        embed.setColor(config.color)
+        embed.setFooter(`A pedido de ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        const channel = bot.channels.cache.get(player.textChannel);
+        channel.send({embed});
     })
     .on("queueEnd", player => {
       const channel = bot.channels.cache.get(player.textChannel);
-      channel.send("Saindo do canal de voz, pos a música terminou");
+      channel.send("Saindo do canal de voz. Acabaram as músicas");
       player.destroy();
     });
 
@@ -63,11 +72,13 @@ bot.manager = new Manager({
         bot.manager.init(bot.user.id);
     });
 
+    bot.on("raw", d => bot.manager.updateVoiceState(d));
 
 bot.login(config.token)
 bot.badge = function(badges){
   return (badges.join(' ').replace('HOUSE_BALANCE', '<:balance:746939323143946320>').replace('HOUSE_BRILLIANCE', '<:Brilliance:746939322904870973>').replace('HOUSE_BRAVERY', '<:Bravery:746939322996883516>').replace('BUGHUNTER_LEVEL_1', '<:Hunter:750415765424963634>').replace('BUGHUNTER_LEVEL_2', '<:hunterv2:750415765496135700>').replace('VERIFIED_DEVELOPER', '<:developer:746940343252942956>').replace('DISCORD_PARTNER', '<:parceiro:750415765366112457>').replace('VERIFIED_BOT', '<:bot:750415765311717476>').replace('EARLY_SUPPORTER', '<:early:750416436458946773>').replace('HYPESQUAD_EVENTS', '<:hypesquad:750415765026635929>').replace('TEAM_USER', '<:funcionario:750415765655519403>').replace('SYSTEM', '<:funcionario:750415765655519403>') || 'Não possui')
 }
+
 module.exports = {
     bot,
     Manager
