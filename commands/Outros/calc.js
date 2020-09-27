@@ -2,7 +2,7 @@ var happycalculator = require('happycalculator');
 module.exports.run = async (bot, message, args) => {
 	if (!args.length) return message.reply('insira uma equação.');
 	try {
-		var resultado = happycalculator.calculate(args.join(' '));
+		var resultado = happycalculator.calculate(args.join(' ').split('÷').join('/'));
 		if (resultado.toString().includes(bot.token)) return message.reply('TÁ TENTANDO PEGAR MEU TOKEN RAPA?');
 		if (resultado === Infinity) return message.reply('o resultado foi **Infinito**.');
 		return message.reply('`' + resultado + '`');
