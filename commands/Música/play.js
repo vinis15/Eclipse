@@ -15,7 +15,6 @@ module.exports.run = async (bot, message, args) => {
     voiceChannel: channel.id,
     textChannel: message.channel.id,
     selfDeafen: true,
-    volume: 50,
   });
 
     player.connect();
@@ -45,9 +44,9 @@ module.exports.run = async (bot, message, args) => {
         embed1.setTimestamp()
         embed1.setColor(config.color)
         embed1.setDescription(`**Adicionado a fila** \`${res.tracks[0].title}\`\n**Duração:** \`${moment.duration(res.tracks[0].duration).format("d:hh:mm:ss")}\``)
-        embed1.setFooter(`Solicitado por ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed1.setFooter(`Solicitado por ${res.tracks[0].requester.tag}`, `${res.tracks[0].requester.avatarURL({ dynamic: true, size: 2048 })}`)
         if(!player.playing && !player.paused && !player.queue.length) player.play();
-        return message.channel.send({embed1});
+        return message.channel.send(embed1);
         case 'PLAYLIST_LOADED':
           player.queue.add(res.tracks);
           if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();

@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["parar"]
+    aliase: ["parar", "leave"]
 }
 exports.help = {
     nome: "stop",

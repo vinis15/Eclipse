@@ -2,6 +2,7 @@ module.exports.run = async(bot, message, args) => {
     const player = message.client.manager.players.get(message.guild.id);
 
     if(!player) return message.channel.send("Não tem nada tocando nesta guilda")
+    if(!args.length) return message.channel.send(`O volume do players esta em \`${player.volume}\``)
 
     const { channel } = message.member.voice
 
