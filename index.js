@@ -9,6 +9,10 @@ const clientID = config.clientID;
 const clientSecret = config.clientSecret;
 const glob = require('glob')
 const prefix = config.prefix
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('database.json')
+const db = low(adapter)
 
 
 bot.commands = new Discord.Collection(undefined,undefined);

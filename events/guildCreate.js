@@ -1,8 +1,13 @@
 const { bot } = require("../index");
 const { MessageEmbed } = require("discord.js")
 const config = require("../config.json");
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('database.json')
+const db = low(adapter)
 
 bot.on("guildCreate", guild => {
+  db.set(guild.id, []).write()
   const embed  = new MessageEmbed()
   embed.setColor(config.color)
   embed.setTitle(`Novo servidor ${guild.name}`)
