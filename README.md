@@ -1,7 +1,7 @@
 # EclipseBot
 
 ## Comandos diversos
-Eclipse contem comandos diversos como, `e.userinfo`, `e.avatar`, `e.emojify`.
+Eclipse contem comandos diversos como, `e.userinfo`, `e.avatar`, `e.emojify`, `e.calc`.
 
 ### Comandos de música (Aceitando **LINK** do spotify)
 Comandos de música em **BETA** `e.loop`, `e.pause`, `e.play`, `e.queue`, `e.resume`, `e.shuffle`, `e.skip`, `e.stop`, `e.volume`, `e.nodes`.

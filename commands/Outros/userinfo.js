@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
     }
     if(isNaN(args[0])) return message.reply('insira um ID válido de um usuário ou mencione um.')
     try {
-        var member = bot.users.cache.get(args[0]) || message.guild.members.cache.get(args[0]).user || await bot.users.fetch(args[0]);
+        var member = await bot.users.fetch(args[0]);
         embed.setTitle(`🧐 **|** ${member.tag} - (${member.id})`)
         embed.setColor(config.color)
         embed.setDescription(`⇾ **Tag:** \`${member.tag}\`\n⇾ **Conta criada no dia:** \`${moment(member.createdAt).format("LLL")}\`\n⇾ **Emblemas:** ${bot.badge(member.flags.toArray())}`)
