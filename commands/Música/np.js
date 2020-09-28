@@ -20,7 +20,7 @@ module.exports.run = async(bot, message, args) => {
     .setThumbnail(thumbnail)
     .setTimestamp()
     .setDescription(stripIndents`
-            ${player.playing ? "▶️" : "⏸️"} **${title}** \`(${moment.duration(duration).format("d:hh:mm:ss")})(${moment.duration(player.position).format("d:hh:mm:ss")})\` Por **${author}**
+            ${player.playing ? "▶️" : "⏸️"} **${title}** \`(${moment.duration(duration).format("d:hh:mm:ss")})(${moment.duration(player.position).format("d:hh:mm:ss")})\` \nPor **${author}**
             `);
     
             return message.channel.send(embed);

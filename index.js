@@ -9,10 +9,6 @@ const clientID = config.clientID;
 const clientSecret = config.clientSecret;
 const glob = require('glob')
 const prefix = config.prefix
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('database.json')
-const db = low(adapter)
 
 
 bot.commands = new Discord.Collection(undefined,undefined);
@@ -28,7 +24,7 @@ glob(__dirname+'/commands/*/*.js', function (er, files) {
             bot.aliases.set(aliase,props)
         };})
     
-    console.log("[COMANDOS] - Comandos carregados com sucesso")
+    console.log("[COMANDOS] - Carregados com sucesso")
 })
 
 
@@ -41,7 +37,7 @@ fs.readdir("./events/", (err, files) => {
     eventsFiles.forEach((file, i) => {
         require("./events/" + file);
     })
-    console.log("[EVENTOS] - Carregos com sucesso")
+    console.log("[EVENTOS] - Carregados com sucesso")
 });
 
 
@@ -64,7 +60,7 @@ bot.manager = new Manager({
         embed.setColor(config.color)
         embed.setFooter(`A pedido de ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
         const channel = bot.channels.cache.get(player.textChannel);
-        channel.send({embed});
+        channel.send({embed})
     })
     .on("queueEnd", player => {
       const channel = bot.channels.cache.get(player.textChannel);
