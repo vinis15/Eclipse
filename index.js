@@ -58,9 +58,12 @@ bot.manager = new Manager({
         embed.setDescription(`**Tocando agora** \`${track.title}\``)
         embed.setTimestamp()
         embed.setColor(config.color)
-        embed.setFooter(`A pedido de ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed.setFooter(`Requisitado por ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
         const channel = bot.channels.cache.get(player.textChannel);
-        channel.send({embed})
+        channel.send(embed).then(msg => player.set("message", msg));
+    })
+    .on("trackEnd", (player, track) => {
+        if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
     })
     .on("queueEnd", player => {
       const channel = bot.channels.cache.get(player.textChannel);

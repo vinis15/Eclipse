@@ -10,7 +10,6 @@ module.exports.run = async (bot, message, args) => {
     if(player.queue.size <= 1) return message.channel.send("Não ha músicas por favor use e.stop")
     
     player.stop();
-    return message.react('✅');
 }
 
 exports.conf = {
