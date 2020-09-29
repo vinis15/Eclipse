@@ -45,11 +45,14 @@ Entre em contato com `BONEE#1234` ou abra um **issue**!
 
 No Windows:
 ```npm i -g --add-python-to-path --vs2015 --production windows-build-tools```
+
 ```npm i better-sqlite3```
-```npm j```
+
+```npm i```
 
 No Linux:
 ```npm i better-sqlite3```
+
 ```npm i```
 
 * Em seguida use:
