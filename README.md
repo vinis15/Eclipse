@@ -31,7 +31,7 @@ O Eclipse contém comandos de música! Ouça aquele batidão em alta qualidade c
 
 [Discord.js](https://www.npmjs.com/package/discord.js)
 
-[Então](https://www.npmjs.com/package/enmap)
+[Enmap](https://www.npmjs.com/package/enmap)
 
 
 #### Dúvidas? Achou um erro?
@@ -42,6 +42,14 @@ Entre em contato com `BONEE#1234` ou abra um **issue**!
 * Preencha o arquivo `config.example.json` com as informações necessárias, salve e renomeie para `config.json`
 
 * Abra o terminal e de o seguinte comando:
+
+No Windows:
+```npm i -g --add-python-to-path --vs2015 --production windows-build-tools```
+```npm i better-sqlite3```
+```npm j```
+
+No Linux:
+```npm i better-sqlite3```
 ```npm i```
 
 * Em seguida use:
