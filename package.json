@@ -12,6 +12,7 @@
     "byte-size": "^7.0.0",
     "common-tags": "^1.8.0",
     "discord.js": "^12.3.1",
+    "enmap": "^5.7.3",
     "erela.js": "latest",
     "erela.js-spotify": "latest",
     "fs": "0.0.1-security",
