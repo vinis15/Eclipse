@@ -22,7 +22,7 @@ const mapping = {
   'ã': ':regional_indicator_a:',
   'é': ':regional_indicator_e:'
 };
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, idioma) => {
     if(!args.length) return message.reply('insira um texto para converter.')
 'abcdefghijklmnopqrstuvwxyz'.split('').forEach(c => {
   mapping[c] = mapping[c.toUpperCase()] = ` :regional_indicator_${c}:`;
