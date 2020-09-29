@@ -12,7 +12,7 @@ bot.on("message", async message => {
     let messageArray = message.content.split(' ').join(' ').split(" ");
     let cmd = messageArray[0]
     let args = messageArray.slice(1);
-    let idioma = bot.idiomas.get(message.guild.id) || 'pt'
+    let idioma = bot.idioma.get(message.guild.id) || 'pt'
     if(idioma==='en') idioma = bot.idiomas.en
     if(idioma==='pt') idioma = bot.idiomas.pt
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
