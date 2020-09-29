@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const config = require("../../config.json")
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, idioma) => {
     const embed = new MessageEmbed()
     if(!message.mentions.users.first()&&!args[0]) {
         embed.setTitle("Seu avatar 🖼️")

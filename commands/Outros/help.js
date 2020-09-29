@@ -8,9 +8,9 @@ module.exports.run = async (bot, message, args, idioma) => {
 	embed.setTimestamp()
 	embed.setFooter(`Não inclua <> ou [], isso significa <> é necessário e [] é opcional | Eclipse ${config.versão}`);
 	embed.addFields(
-	{ name: `Outros (${bot.commands.filter(command => command.help.categoria === "Outros").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Outros").map(e => `\`e.${e.help.nome}\``).join(", ")}` + '.', inline: false },
-	{ name: `Música (${bot.commands.filter(command => command.help.categoria === "Música").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Música").map(e => `\`e.${e.help.nome}\``).join(", ")}` + '.', inline: false },
-	{ name: `Desenvolvedor (${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").map(e => `\`e.${e.help.nome}\``).join(", ")}` + '.', inline: false }
+	{ name: `${idioma.help.outros} (${bot.commands.filter(command => command.help.categoria === "Outros").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Outros").map(e => `\`e.${e.help.nome}\``).join(", ")}` + '.', inline: false },
+	{ name: `${idioma.help.música} (${bot.commands.filter(command => command.help.categoria === "Música").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Música").map(e => `\`e.${e.help.nome}\``).join(", ")}` + '.', inline: false },
+	{ name: `${idioma.help.desenvolvedor} (${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").map(e => `\`e.${e.help.nome}\``).join(", ")}` + '.', inline: false }
 	)
 	message.channel.send({embed})
 }
