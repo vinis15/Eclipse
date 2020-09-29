@@ -1,7 +1,7 @@
 console.log("[LOGIN] - Iniciando conexão")
 const Discord = require("discord.js");
 const fs = require("fs");
-const Enmap = require('enamp')
+const Enmap = require('enmap')
 const bot = new Discord.Client({ disableMentions: 'everyone' })
 const config = require("./config.json");
 const { Manager } = require("erela.js");
@@ -10,7 +10,8 @@ const clientID = config.clientID;
 const clientSecret = config.clientSecret;
 const glob = require('glob')
 const prefix = config.prefix
-//Carregar idiomas.
+
+bot.idiomas = {}
 require('./idiomas/pt')(bot)
 require('./idiomas/en')(bot)
 
@@ -54,7 +55,6 @@ bot.manager = new Manager({
       if (guild) guild.shard.send(payload);
     }
 })
-
     .on("nodeConnect", node => console.log(`[NODE] - ${node.options.identifier} conectado`))
     .on("nodeError", (node, error) => console.log(`[NODE] - ${node.options.identifier} encontrou um erro: ${error.message}.`))
     .on("trackStart", (player, track) => {

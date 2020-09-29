@@ -3,10 +3,10 @@ const Discord = require("discord.js");
 const embed = new Discord.MessageEmbed()
 
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, idioma) => {
     embed.setTitle("🧐 **|** Eclipse ping")
     embed.setColor(config.color)
-    embed.setDescription(`**Latência:** \`${bot.ws.ping}ms\`\n**API:** \`${Date.now()-message.createdTimestamp}ms\``)
+    embed.setDescription(`${idioma.ping.latencia} \`${bot.ws.ping}ms\`\n**API:** \`${Date.now()-message.createdTimestamp}ms\``)
     return message.channel.send(embed)
 }
 

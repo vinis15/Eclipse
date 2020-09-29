@@ -1,6 +1,6 @@
 const config = require("../../config.json")
-exports.run = async (bot, message, args) => {
-	const {MessageEmbed} = require('discord.js') 
+const {MessageEmbed} = require('discord.js') 
+module.exports.run = async (bot, message, args, idioma) => {
 	var embed = new MessageEmbed()
 	embed.setColor(config.color)
 	embed.setDescription(`Comandos no total: \`${bot.commands.size}\`\nCriado por: \`BONEE#1234\``)
