@@ -23,7 +23,7 @@ const mapping = {
   'é': ':regional_indicator_e:'
 };
 module.exports.run = async (bot, message, args, idioma) => {
-    if(!args.length) return message.reply('insira um texto para converter.')
+    if(!args.length) return message.reply(idioma.emojify.args)
 'abcdefghijklmnopqrstuvwxyz'.split('').forEach(c => {
   mapping[c] = mapping[c.toUpperCase()] = ` :regional_indicator_${c}:`;
 });
