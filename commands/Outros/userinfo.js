@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const moment = require('moment');
 moment.locale('pt-BR');
 const embed = new Discord.MessageEmbed()
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, idioma) => {
     if(!message.mentions.users.first()&&!args[0]) {
         embed.setTitle(`🧐 **|** ${message.author.tag} - (${message.author.id})`)
         embed.setColor(config.color)
