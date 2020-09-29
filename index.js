@@ -9,10 +9,12 @@ const clientID = config.clientID;
 const clientSecret = config.clientSecret;
 const glob = require('glob')
 const prefix = config.prefix
+//Carregar idiomas.
+require('./idiomas/pt')(bot)
+require('./idiomas/en')(bot)
 
-
-bot.commands = new Discord.Collection(undefined,undefined);
-bot.aliases = new Discord.Collection(undefined,undefined);
+bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 
 
 glob(__dirname+'/commands/*/*.js', function (er, files) {
