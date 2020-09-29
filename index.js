@@ -1,6 +1,7 @@
 console.log("[LOGIN] - Iniciando conexão")
 const Discord = require("discord.js");
 const fs = require("fs");
+const Enmap = require('enamp')
 const bot = new Discord.Client({ disableMentions: 'everyone' })
 const config = require("./config.json");
 const { Manager } = require("erela.js");
@@ -13,6 +14,7 @@ const prefix = config.prefix
 require('./idiomas/pt')(bot)
 require('./idiomas/en')(bot)
 
+bot.idiomas = new Enmap({name:'idiomas'})
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
