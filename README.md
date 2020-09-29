@@ -43,14 +43,16 @@ Entre em contato com `BONEE#1234` ou abra um **issue**!
 
 * Abra o terminal e de o seguinte comando:
 
-No Windows:
+#### No Windows:
+
 ```npm i -g --add-python-to-path --vs2015 --production windows-build-tools```
 
 ```npm i better-sqlite3```
 
 ```npm i```
 
-No Linux:
+#### No Linux:
+
 ```npm i better-sqlite3```
 
 ```npm i```
