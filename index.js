@@ -14,7 +14,7 @@ const prefix = config.prefix
 require('./idiomas/pt')(bot)
 require('./idiomas/en')(bot)
 
-bot.idiomas = new Enmap({name:'idiomas'})
+bot.idioma = new Enmap({name:'idiomas'})
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
