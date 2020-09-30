@@ -81,6 +81,12 @@ module.exports = client => {
       nada: "There's nothing touching this guild",
       por: "Per"
     },
-    
+    pause: {
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      paused: "Music paused",
+      noplaying: "There is no music playing in this guild",
+      already: "The music is already paused"
+    }
   }
 }
