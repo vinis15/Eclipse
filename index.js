@@ -45,7 +45,6 @@ fs.readdir("./events/", (err, files) => {
     console.log("[EVENTOS] - Carregados com sucesso")
 });
 
-
 bot.manager = new Manager({
     nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, }],
     plugins: [new Spotify({clientID, clientSecret})],
@@ -58,21 +57,27 @@ bot.manager = new Manager({
     .on("nodeConnect", node => console.log(`[NODE] - ${node.options.identifier} conectado`))
     .on("nodeError", (node, error) => console.log(`[NODE] - ${node.options.identifier} encontrou um erro: ${error.message}.`))
     .on("trackStart", (player, track) => {
+        const channel = bot.channels.cache.get(player.textChannel);
+        let idioma = bot.idioma.get(channel.guild.id) || 'pt'
+        if(idioma === 'en') idioma = bot.idiomas.en
+        if(idioma === 'pt') idioma = bot.idiomas.pt
         let embed = new Discord.MessageEmbed()
-        embed.setDescription(`**Tocando agora** \`${track.title}\``)
+        embed.setDescription(`**${idioma.erela.tocando}** \`${track.title}\``)
         embed.setTimestamp()
         embed.setColor(config.color)
-        embed.setFooter(`Requisitado por ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
-        const channel = bot.channels.cache.get(player.textChannel);
+        embed.setFooter(`${idioma.erela.pedido} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
         channel.send(embed).then(msg => player.set("message", msg));
     })
     .on("trackEnd", (player, track) => {
         if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
     })
     .on("queueEnd", player => {
-      const channel = bot.channels.cache.get(player.textChannel);
-      channel.send("Saindo do canal de voz. Acabaram as músicas");
-      player.destroy();
+        const channel = bot.channels.cache.get(player.textChannel);
+        let idioma = bot.idioma.get(channel.guild.id) || 'pt'
+        if(idioma === 'en') idioma = bot.idiomas.en
+        if(idioma === 'pt') idioma = bot.idiomas.pt
+        channel.send(`${idioma.erela.saindo}`);
+        player.destroy();
     });
 
     bot.once("ready", () => {

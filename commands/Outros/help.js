@@ -3,7 +3,7 @@ const {MessageEmbed} = require('discord.js')
 module.exports.run = async (bot, message, args, idioma) => {
 	var embed = new MessageEmbed()
 	embed.setColor(config.color)
-	embed.setDescription(`Comandos no total: \`${bot.commands.size}\`\nCriado por: \`BONEE#1234\``)
+	embed.setDescription(`${idioma.help.comandos}: \`${bot.commands.size}\`\n${idioma.help.dev}: \`${bot.users.cache.get("672652538880720896").tag}\``)
 	embed.setAuthor(`${bot.user.username}`, `${bot.user.avatarURL()}`)
 	embed.setTimestamp()
 	embed.setFooter(`${idioma.help.footer} | Eclipse ${config.versão}`);
@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args, idioma) => {
   
 exports.conf = {
     enabled: true,
-    guildOnly: false,
+    guildOnly: true,
     aliase: ["ajuda", "comandos", "cmds"]
 }
 exports.help = {

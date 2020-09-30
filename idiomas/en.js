@@ -1,5 +1,17 @@
 module.exports = client => {
   client.idiomas.en = {
+    message: {
+      inico: "Hi",
+      meio: "my prefix is",
+      use: "use",
+      ou: "or",
+      final: "to know my commands"
+    },
+    erela: {
+      tocando: "Playing now",
+      pedido: "Requested by",
+      saindo: "Leaving the voice channel. No more songs"
+    },
     emojify: {
       args: "enter text to convert",
       grande: "the result was very great"
@@ -8,6 +20,8 @@ module.exports = client => {
       latencia: "**Latency:**"
     },
     help: {
+      dev: "Criado por",
+      comandos: "Commands in total",
       outros: "Others",
       música: "Music",
       desenvolvedor: "Developer",
@@ -45,6 +59,9 @@ module.exports = client => {
       seu: "Your avatar",
       de: "Avatar of",
       erro: "User not found!"
+    },
+    setlang: {
+      noperm: "You are not allowed to change the bot language"
     }
   }
 }

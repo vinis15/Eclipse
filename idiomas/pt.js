@@ -1,5 +1,17 @@
 module.exports = client => {
   client.idiomas.pt = {
+    message: {
+      inico: "Olá",
+      meio: "meu prefixo é",
+      use: "use",
+      ou: "ou",
+      final: "para saber meus comandos"
+    },
+    erela: {
+      tocando: "Tocando agora",
+      pedido: "Requisitado por",
+      saindo: "Saindo do canal de voz. Acabaram as músicas",
+    },
     emojify: {
       args: "de um texto para converter",
       grande: "o resultado foi muito grande"
@@ -8,6 +20,8 @@ module.exports = client => {
       latencia: "**Latência:**"
     },
     help: {
+      dev: "Criado por",
+      comandos: "Comandos no total",
       outros: "Outros",
       música: "Música",
       desenvolvedor: "Desenvolvedor",
@@ -45,6 +59,9 @@ module.exports = client => {
       seu: "Seu avatar",
       de: "Avatar de",
       erro: "Usuário não encontrado!"
+    },
+    setlang: {
+      noperm: "Você não tem permissão para trocar o idioma do bot"
     }
   }
 }
