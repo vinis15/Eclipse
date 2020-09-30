@@ -87,6 +87,15 @@ module.exports = client => {
       paused: "Music paused",
       noplaying: "There is no music playing in this guild",
       already: "The music is already paused"
+    },
+     queue: {
+      nothing: "There is no music playing unfortunately",
+      np: "Now playing",
+      fila: "Play queue",
+      nohasmusic: "No has music in the",
+      arg1: "page",
+      arg2: "queue",
+      arg3: "of"
     }
   }
 }
