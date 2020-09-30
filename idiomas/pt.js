@@ -85,7 +85,8 @@ module.exports = client => {
       conectar: "Você tem que se conectar em algum canal de voz",
       conectar2: "Se conecte ao mesmo canal de voz que eu",
       paused: "Musica pausada",
-      noplaying: "Não tem nada tocando nesta guilda"
+      noplaying: "Não tem nada tocando nesta guilda",
+      already: "A musica ja esta pausada"
     }
   }
 }
