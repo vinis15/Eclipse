@@ -1,7 +1,7 @@
 module.exports.run = async(bot, message, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send("Não tem nada tocando nesta guilda")
+    if(!player) return message.channel.send(idioma.pause.noplaying)
 
     const { channel } = message.member.voice
 
