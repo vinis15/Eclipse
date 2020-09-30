@@ -80,6 +80,11 @@ module.exports = client => {
     np: {
       nada: "Não tem nada tocando nesta guilda",
       por: "Por"
+    },
+    pause: {
+      conectar: "Você tem que se conectar em algum canal de voz",
+      conectar2: "Se conecte ao mesmo canal de voz que eu",
+      paused: "Musica pausada"
     }
   }
 }
