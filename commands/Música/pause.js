@@ -9,7 +9,7 @@ module.exports.run = async(bot, message, idioma) => {
 
     if(channel.id !== player.voiceChannel) return message.channel.send(idioma.loop.conectar2)
 
-    if(player.paused) return message.channel.send("A musica ja esta pausada")
+    if(player.paused) return message.channel.send(idioma.pause.already)
 
     player.pause(true)
     return message.reply(idioma.loop.paused)
