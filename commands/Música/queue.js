@@ -1,12 +1,12 @@
 const config = require("../../config.json")
 const { MessageEmbed } = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
-    if (!player) return message.reply("Não a nada tocando infelizmente");
+    if (!player) return message.reply(idioma.queue.nothing);
 
     const queue = player.queue;
-    const embed = new MessageEmbed().setAuthor(`Fila de reprodução de ${message.guild.name}`);
+    const embed = new MessageEmbed().setAuthor(`${idioma.queue.fila} ${message.guild.name}`);
 
     // change for the amount of tracks per page
     const multiple = 10;
@@ -17,14 +17,14 @@ module.exports.run = async (bot, message, args) => {
 
     const tracks = queue.slice(start, end);
 
-    if (queue.current) embed.addField("Tocando agora", `[${queue.current.title}](${queue.current.uri})`);
+    if (queue.current) embed.addField(idioma.queue.np, `[${queue.current.title}](${queue.current.uri})`);
 
-    if (!tracks.length) embed.setDescription(`Não ha músicas na ${page > 1 ? `pagina ${page}` : "fila"}.`);
+    if (!tracks.length) embed.setDescription(`${idioma.queue.nohasmusic} ${page > 1 ? `${idioma.queue.arg1} ${page}` : "${idioma.queue.arg2}"}.`);
     else embed.setDescription(tracks.map((track, i) => `**${start + (++i)} -** [${track.title}](${track.uri})`).join("\n"));
 
     const maxPages = Math.ceil(queue.length / multiple);
     embed.setColor(config.color)
-    embed.setFooter(`Pagina ${page > maxPages ? maxPages : page} de ${maxPages}`);
+    embed.setFooter(`${idioma.queue.arg1.replace(/^./, idioma.queue.arg1[0].toUpperCase()} ${page > maxPages ? maxPages : page} ${idioma.queue.arg3} ${maxPages}`);
 
     return message.channel.send(embed);
   }
