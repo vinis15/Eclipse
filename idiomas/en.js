@@ -33,7 +33,8 @@ module.exports = client => {
       emblemas: "Badges",
       não: "Doesn't have",
       erro: "User not found!",
-      locale: "en"
+      locale: "en",
+      invalido: "enter a valid user ID or mention one."
     },
     convite: {
       menssagem: "Hi",
@@ -58,10 +59,28 @@ module.exports = client => {
     avatar: {
       seu: "Your avatar",
       de: "Avatar of",
-      erro: "User not found!"
+      erro: "User not found!",
+      invalido: "enter a valid user ID or mention one."
     },
     setlang: {
       noperm: "You are not allowed to change the bot language"
-    }
+    },
+    nodes: {
+      memoria: "Memory usage"
+    },
+    loop: {
+      nada: "There's nothing touching this guild",
+      naota: "You have to connect to some voice channel",
+      mesmo: "Connect to the same voice channel as me",
+      queue: "queue loop was",
+      musica: "music loop was",
+      ativado: "activated",
+      desativado: "disabled"
+    },
+    np: {
+      nada: "There's nothing touching this guild",
+      por: "Per"
+    },
+    
   }
 }

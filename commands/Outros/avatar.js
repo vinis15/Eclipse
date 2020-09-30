@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         embed.setTimestamp()
         return message.channel.send(embed)  
     }
-    if(isNaN(args[0])) return message.reply('insira um ID válido de um usuário ou mencione um.')
+    if(isNaN(args[0])) return message.reply(`${idioma.avatar.invalido}`)
     try {
         var member = await bot.users.fetch(args[0]);
         embed.setTitle(`${idioma.avatar.de} ${member.tag} 🖼️`)

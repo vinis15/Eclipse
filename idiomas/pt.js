@@ -33,7 +33,8 @@ module.exports = client => {
       emblemas: "Emblemas",
       não: "Não possui",
       erro: "Usuário não encontrado!",
-      locale: "pt-BR"
+      locale: "pt-BR",
+      invalido: "insira um ID válido de um usuário ou menciona um."
     },
     convite: {
       menssagem: "Olá",
@@ -58,10 +59,27 @@ module.exports = client => {
     avatar: {
       seu: "Seu avatar",
       de: "Avatar de",
-      erro: "Usuário não encontrado!"
+      erro: "Usuário não encontrado!",
+      invalido: "insira um ID válido de um usuário ou menciona um."
     },
     setlang: {
       noperm: "Você não tem permissão para trocar o idioma do bot"
+    },
+    nodes: {
+      memoria: "Uso de memoria"
+    },
+    loop: {
+      nada: "Não tem nada tocando nesta guilda",
+      naota: "Você tem que se conectar em algum canal de voz",
+      mesmo: "Se conecte ao mesmo canal de voz que eu",
+      queue: "loop de queue foi",
+      musica: "loop de música foi",
+      ativado: "ativado",
+      desativado: "desativado"
+    },
+    np: {
+      nada: "Não tem nada tocando nesta guilda",
+      por: "Por"
     }
   }
 }

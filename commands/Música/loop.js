@@ -1,23 +1,23 @@
-module.exports.run = async(bot, message, args) => {
+module.exports.run = async(bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send("Não tem nada tocando nesta guilda")
+    if(!player) return message.channel.send(`${idioma.loop.nada}`)
 
     const { channel } = message.member.voice
 
-    if(!channel) return message.channel.send("Você tem que se conectar em algum canal de voz")
+    if(!channel) return message.channel.send(`${idioma.loop.naota}`)
 
-    if(channel.id !== player.voiceChannel) return message.channel.send("Se conecte ao mesmo canal de voz que eu")
+    if(channel.id !== player.voiceChannel) return message.channel.send(`${idioma.loop.mesmo}`)
 
     if(args.length && /queue/i.test(args[0])) {
         player.setQueueRepeat(!player.queueRepeat);
-        const queueRepeat = player.queueRepeat ? "ativado" : "desativado";
-        return message.reply(`loop de queue foi ${queueRepeat}`);
+        const queueRepeat = player.queueRepeat ? `${idioma.loop.ativado}` : `${idioma.loop.desativado}`;
+        return message.reply(`${idioma.loop.queue} ${queueRepeat}`);
       }
   
       player.setTrackRepeat(!player.trackRepeat);
-      const trackRepeat = player.trackRepeat ? "ativado" : "desativado";
-      return message.reply(`loop de música foi ${trackRepeat}`);
+      const trackRepeat = player.trackRepeat ? `${idioma.loop.ativado}` : `${idioma.loop.desativado}`;
+      return message.reply(`${idioma.loop.musica} ${trackRepeat}`);
 }
 
 exports.conf = {
