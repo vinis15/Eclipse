@@ -92,7 +92,7 @@ module.exports = client => {
       nothing: "There is no music playing, unfortunately",
       np: "Now playing",
       fila: "Play queue",
-      nohasmusic: "There is no music in the queue",
+      nohasmusic: "There is no music in the",
       arg1: "page",
       arg2: "queue",
       arg3: "of"

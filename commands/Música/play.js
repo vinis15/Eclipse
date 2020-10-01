@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         throw new Error(res.exception.message);
       }
     } catch (err) {
-      return message.reply(`${idioma.play.error}: ${err.message}`);
+      return message.reply(idioma.play.error + err.message);
     }
 
     switch (res.loadType) {
