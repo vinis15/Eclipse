@@ -1,16 +1,16 @@
-module.exports.run = async(bot, message, args) => {
+module.exports.run = async(bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send("Não tem nada tocando nesta guilda")
+    if(!player) return message.channel.send(idioma.shuffle.nada)
 
     const { channel } = message.member.voice
 
-    if(!channel) return message.channel.send("Você tem que se conectar em algum canal de voz")
+    if(!channel) return message.channel.send(idioma.shuffle.conectar)
 
-    if(channel.id !== player.voiceChannel) return message.channel.send("Se conecte ao mesmo canal de voz que eu")
+    if(channel.id !== player.voiceChannel) return message.channel.send(idioma.shuffle.conectar2)
 
     player.queue.shuffle();
-    return message.reply("Queue embaralhada")
+    return message.reply(idioma.shuffle.embaralhado)
 }
 
 exports.conf = {

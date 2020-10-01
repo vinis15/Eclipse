@@ -96,6 +96,30 @@ module.exports = client => {
       arg1: "página",
       arg2: "fila",
       arg3: "de"
+    },
+    shuffle: {
+      nada: "Não há nada tocando nesta guilda",
+      conectar: "Você tem que se conectar em algum canal de voz",
+      conectar2: "Se conecte ao mesmo canal de voz que eu",
+      embaralhado: "Fila embaralhada"
+    },
+    play: {
+      conectar: "Por favor, conecte-se a um canal de voz e tente novamente",
+      nada: "Me dê um link ou busque algo",
+      semPerm: "Não posso conectar a este canal!",
+      error: "Desculpe, algo aconteceu: ",
+      semResultado: "Nenhum resultado encontrado",
+      adicionado: "**Adicionado à fila:** ",
+      duracao: "**Duração:** ",
+      solicitado: "Solicitado por",
+      playlist: "**Adicionada a playlist** ",
+      com: "com",
+      musicas: "músicas",
+      cancelar1: "Cancelar", 
+      cancelar2: "Digite `cancelar` para canelar",
+      acabouTempo: "o tempo de seleção acabou",
+      cancelado: "Seleção cancelada",
+      numeroInvalido: "O número providenciado é muito pequeno ou muito grande (1-"
     }
   }
 }
