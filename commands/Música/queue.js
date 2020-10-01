@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 
     const maxPages = Math.ceil(queue.length / multiple);
     embed.setColor(config.color)
-    embed.setFooter(`${idioma.queue.arg1.replace(/^./, idioma.queue.arg1[0].toUpperCase()} ${page > maxPages ? maxPages : page} ${idioma.queue.arg3} ${maxPages}`);
+    embed.setFooter(`${idioma.queue.arg1.replace(/^./, idioma.queue.arg1[0].toUpperCase())} ${page > maxPages ? maxPages : page} ${idioma.queue.arg3} ${maxPages}`);
 
     return message.channel.send(embed);
   }
