@@ -1,7 +1,7 @@
 module.exports.run = async(bot, message, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send(`${idioma.resume.nada5}`)
+    if(!player) return message.channel.send(`${idioma.resume.nada}`)
 
     const { channel } = message.member.voice
 

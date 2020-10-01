@@ -123,7 +123,6 @@ module.exports = client => {
     },
     volume: {
       nada: "Não há nada tocando",
-      volume: "O volume do player esta em  ",
       conectar: "Você tem que se conectar a algum canal de voz",
       conectar2: "Conecte-se ao mesmo canal de voz que eu",
       invalido: "Você tem que colocar um número entre 1 e 100",
@@ -136,7 +135,7 @@ module.exports = client => {
       parou: "Parei de tocar e sai do canal"
     },
     resume: {
-      nada5: "Não há nada tocando esta guilda",
+      nada: "Não há nada tocando esta guilda",
       canal1: "Você tem que se conectar a algum canal de voz",
       canal2: "Conecte-se ao mesmo canal de voz que eu",
       nao: "A musica nao esta pausada",
@@ -147,6 +146,6 @@ module.exports = client => {
       conectar: "Você tem que se conectar a algum canal de voz",
       conectar2: "Conecte-se ao mesmo canal de voz que eu",
       semMusica: "Não há músicas na fila, use e.stop"
-    },
+    }
   }
 }

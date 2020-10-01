@@ -59,7 +59,7 @@ module.exports.run = async (bot, message, args, idioma) => {
           if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
           return message.channel.send(embed2);
           case 'SEARCH_RESULT':
-            let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|cancelar)$/i.test(m.content);
+            let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|cancelar)$/i.test(m.content) || message.author.id && /^(\d+|cancel)$/i.test(m.content);
             if(res.tracks.length < max) max = res.tracks.length;
 
             const results = res.tracks

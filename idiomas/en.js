@@ -135,14 +135,13 @@ module.exports = client => {
     },
     volume: {
       nada: "There us nothing playing",
-      volume: "The player volume is in ",
       conectar: "You have to connect to some voice channel",
       conectar2: "Connect to the same voice channel as me",
       invalido: "You have to puta number between 1 and 100",
       mudado: "I've changed the player volume to "
     },
     resume: {
-      nada5: "There's nothing touching this guild",
+      nada: "There's nothing touching this guild",
       canal1: "You have to connect to some voice channel",
       canal2: "Connect to the same voice channel as me",
       nao: "The music is not paused",
