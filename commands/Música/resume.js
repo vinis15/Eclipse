@@ -1,4 +1,4 @@
-module.exports.run = async(bot, message, idioma) => {
+module.exports.run = async (bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
     if(!player) return message.channel.send(idioma.resume.nada)
