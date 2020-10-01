@@ -145,7 +145,7 @@ module.exports = client => {
       canal1: "You have to connect to some voice channel",
       canal2: "Connect to the same voice channel as me",
       nao: "The music is not paused",
-      certo: "Free music"
+      certo: "Unpaused music"
     }
   }
 }

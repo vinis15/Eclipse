@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args, idioma) => {
     if(player.paused) return message.channel.send(idioma.pause.already)
 
     player.pause(true)
-    return message.reply(idioma.loop.paused)
+    return message.reply(idioma.pause.paused)
 }
 
 exports.conf = {
