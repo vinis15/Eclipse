@@ -120,6 +120,26 @@ module.exports = client => {
       acabouTempo: "Selection timed out",
       cancelado: "Cancelled the selection",
       numeroInvalido: "The provived number is either too small or too big (1-"
+    },
+    skip: {
+      nada: "There is nothing playing",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      semMusica: "There aren't songs in the queue, please use e.stop"
+    },
+    stop: {
+      nada: "There is nothing playing",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      parou: "Player stopped"
+    },
+    volume: {
+      nada: "There us nothing playing",
+      volume: "The player volume is in ",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      invalido: "You have to puta number between 1 and 100",
+      mudado: "I've changed the player volume to "
     }
   }
 }
