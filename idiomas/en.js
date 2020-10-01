@@ -140,6 +140,24 @@ module.exports = client => {
       conectar2: "Connect to the same voice channel as me",
       invalido: "You have to puta number between 1 and 100",
       mudado: "I've changed the player volume to "
+    },
+    play: {
+      conectar: "Please connect to a voice channel and try again",
+      nada: "Give me a link or search for something",
+      semPerm: "I cannot connect to this channel!",
+      error: "Sorry, something happened: ",
+      semResultado: "No results found",
+      adicionado: "**Added to the queue:** ",
+      duracao: "**Duration:** ",
+      solicitado: "Asked by",
+      playlist: "**Added to playlist** ",
+      com: "with",
+      musicas: "songs",
+      cancelar1: "Cancel", 
+      cancelar2: "Type `cancel` to cancel",
+      acabouTempo: "selection time is over",
+      cancelado: "Selection canceled",
+      numeroInvalido: "The number provided is too small or too large (1-"
     }
   }
 }
