@@ -1,18 +1,18 @@
 module.exports.run = async(bot, message, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send(`${idioma.resume.nada}`)
+    if(!player) return message.channel.send(idioma.resume.nada)
 
     const { channel } = message.member.voice
 
-    if(!channel) return message.channel.send(`${idioma.resume.canal1}`)
+    if(!channel) return message.channel.send(idioma.resume.canal1)
 
-    if(channel.id !== player.voiceChannel) return message.channel.send(`${idioma.resume.canal2}`)
+    if(channel.id !== player.voiceChannel) return message.channel.send(idioma.resume.canal2)
 
-    if(!player.paused) return message.channel.send(`${idioma.resume.nao}`)
+    if(!player.paused) return message.channel.send(idioma.resume.nao)
 
     player.pause(false)
-    return message.reply(`${idioma.resume.certo}`)
+    return message.reply(idioma.resume.certo)
 }
 
 exports.conf = {
