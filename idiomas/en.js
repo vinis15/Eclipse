@@ -92,7 +92,7 @@ module.exports = client => {
       nothing: "There is no music playing, unfortunately",
       np: "Now playing",
       fila: "Play queue",
-      nohasmusic: "There is no music in the queue",
+      nohasmusic: "There is no music in the",
       arg1: "page",
       arg2: "queue",
       arg3: "of"
@@ -119,7 +119,7 @@ module.exports = client => {
       cancelar2: "Type `cancel` to cancel",
       acabouTempo: "Selection timed out",
       cancelado: "Cancelled the selection",
-      numeroInvalido: "The provived number is either too small or too big (1-"
+      numeroInvalido: "The provided number is either too small or too big (1-"
     }
   }
 }
