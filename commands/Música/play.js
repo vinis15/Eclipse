@@ -3,12 +3,12 @@ const config = require("../../config.json");
 const moment = require('moment');
 var momentDurationFormatSetup = require("moment-duration-format");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, idioma) => {
   const { channel } = message.member.voice;
   const eucanal = message.guild.me.voice.channel
-  if(!channel) return message.reply('Por favor se conecte ao algum canal de voz e tente novamente');
-  if(!args.length) return message.reply('Me de um LINK ou alguma PESQUISA');
-  if(eucanal&&eucanal.id !== channel.id && !channel.joinable) return message.reply("Não posso me conectar a este canal")
+  if(!channel) return message.reply(idioma.play.conectar);
+  if(!args.length) return message.reply(idioma.play.nada);
+  if(eucanal&&eucanal.id !== channel.id && !channel.joinable) return message.reply(idioma.play.semPerm)
   
   const player = message.client.manager.create({
     guild: message.guild.id,
@@ -30,21 +30,21 @@ module.exports.run = async (bot, message, args) => {
         throw new Error(res.exception.message);
       }
     } catch (err) {
-      return message.reply(`Ouve uma falha desculpa: ${err.message}`);
+      return message.reply(`${idioma.play.error}: ${err.message}`);
     }
 
     switch (res.loadType) {
       case 'NO_MATCHES':
         if (!player.queue.current) player.destroy();
-        return message.reply('Desculpa não achei resultados.');
+        return message.reply(idioma.play.semResultado);
       case 'TRACK_LOADED':
         player.queue.add(res.tracks[0]);
 
         let embed1 = new MessageEmbed()
         embed1.setTimestamp()
         embed1.setColor(config.color)
-        embed1.setDescription(`**Adicionado a fila** \`${res.tracks[0].title}\`\n**Duração:** \`${moment.duration(res.tracks[0].duration).format("d:hh:mm:ss")}\``)
-        embed1.setFooter(`Solicitado por ${res.tracks[0].requester.tag}`, `${res.tracks[0].requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed1.setDescription(`${idioma.play.adicionado} \`${res.tracks[0].title}\`\n${idioma.play.duracao} \`${moment.duration(res.tracks[0].duration).format("d:hh:mm:ss")}\``)
+        embed1.setFooter(idioma.play.solicitado + res.tracks[0].requester.tag, `${res.tracks[0].requester.avatarURL({ dynamic: true, size: 2048 })}`)
         if(!player.playing && !player.paused && !player.queue.length) player.play();
         return message.channel.send(embed1);
         case 'PLAYLIST_LOADED':
@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
           let embed2 = new MessageEmbed()
           embed2.setTimestamp()
           embed2.setColor(config.color)
-          embed2.setDescription(`**Adicionado a playlist** \`${res.playlist.name}\` **com** \`${res.tracks.length}\` **músicas**\n**Duração de** \`${moment.duration(res.playlist.duration).format("d:hh:mm:ss")}\``)
+          embed2.setDescription(`${idioma.play.playlist} \`${res.playlist.name}\` ${idioma.play.com} \`${res.tracks.length}\` ${idioma.play.musicas}\n${idioma.play.duracao} \`${moment.duration(res.playlist.duration).format("d:hh:mm:ss")}\``)
           if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
           return message.channel.send(embed2);
           case 'SEARCH_RESULT':
@@ -71,7 +71,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor(config.color)
             .setTimestamp()
             .addFields(
-              { name: "Cancelar", value: `Digite \`cancelar\` para cancelar` }
+              { name: idioma.play.cancelar1, value: idioma.play.cancelar2 }
             )
             .setDescription(results)
             message.channel.send(embed);
@@ -80,26 +80,26 @@ module.exports.run = async (bot, message, args) => {
               collected = await message.channel.awaitMessages(filter, { max: 1, time: 30e3, errors: ['time'] });
             } catch (e) {
               if (!player.queue.current) player.destroy();
-              return message.reply("acabou o tempo de seleção");
+              return message.reply(idioma.play.acabouTempo);
             }
 
             const first = collected.first().content;
 
-            if (first.toLowerCase() === 'cancelar') {
+            if (first.toLowerCase() === 'cancelar' || first.toLowerCase() === 'cancel') {
               if (!player.queue.current) player.destroy();
-              return message.channel.send('Seleção cancelada');
+              return message.channel.send(idioma.play.cancelado);
             }
             
             const index = Number(first) - 1;
-        if (index < 0 || index > max - 1) return message.reply(`O número que você forneceu muito pequeno ou muito grande (1-${max}).`);
+        if (index < 0 || index > max - 1) return message.reply(idioma.play.numeroInvalido + max + ')');
 
         const track = res.tracks[index];
         player.queue.add(track);
         
         let embed3 = new MessageEmbed()
         embed3.setColor(config.color)
-        embed3.setFooter(`Solicitado por ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
-        embed3.setDescription(`**Adicionado a fila** \`${track.title}\` \n **Duração** \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
+        embed3.setFooter(idioma.play.solicitado + track.requester.tag, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n ${idioma.play.duracao} \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
         if (!player.playing && !player.paused && !player.queue.length) player.play();
         return message.channel.send(embed3);
       }

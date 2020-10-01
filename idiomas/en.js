@@ -47,7 +47,7 @@ module.exports = client => {
       args: "enter an equation."
     },
     botinfo: {
-      infos: "My informations",
+      infos: "My information",
       versão: "My version",
       ram: "RAM Used",
       sistema: "Operational system",
@@ -69,7 +69,7 @@ module.exports = client => {
       memoria: "Memory usage"
     },
     loop: {
-      nada: "There's nothing touching this guild",
+      nada: "There's nothing playing in this guild",
       naota: "You have to connect to some voice channel",
       mesmo: "Connect to the same voice channel as me",
       queue: "queue loop was",
@@ -78,8 +78,8 @@ module.exports = client => {
       desativado: "disabled"
     },
     np: {
-      nada: "There's nothing touching this guild",
-      por: "Per"
+      nada: "There's nothing playing this guild",
+      por: "By"
     },
     pause: {
       conectar: "You have to connect to some voice channel",
@@ -89,13 +89,37 @@ module.exports = client => {
       already: "The music is already paused"
     },
      queue: {
-      nothing: "There is no music playing unfortunately",
+      nothing: "There is no music playing, unfortunately",
       np: "Now playing",
       fila: "Play queue",
-      nohasmusic: "No has music in the",
+      nohasmusic: "There is no music in the queue",
       arg1: "page",
       arg2: "queue",
       arg3: "of"
+    },
+    shuffle: {
+      nada: "There is no music playing in this guild",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      embaralhado: "Queue shuffled"
+    },
+    play: {
+      conectar: "Please connect to a voice channel and try again",
+      nada: "Give me a link or search something",
+      semPerm: "I can't connect to this channel",
+      error: "Sorry, something bad happened: ",
+      semResultado: "No matches found",
+      adicionado: "**Added to the queue** ",
+      duracao: "**Duration:** ",
+      solicitado: "Requested by ",
+      playlist: "**Added the playlist** ",
+      com: "with",
+      musicas: "songs",
+      cancelar1: "Cancel", 
+      cancelar2: "Type `cancel` to cancel",
+      acabouTempo: "Selection timed out",
+      cancelado: "Cancelled the selection",
+      numeroInvalido: "The provived number is either too small or too big (1-"
     }
   }
 }
