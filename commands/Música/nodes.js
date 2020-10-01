@@ -1,7 +1,7 @@
-const { MessageEmbed, Message } = require("discord.js")
+const { MessageEmbed } = require("discord.js")
 const config = require("../../config.json")
 const moment = require("moment")
-var momentDurationFormatSetup = require("moment-duration-format");
+require("moment-duration-format");
 module.exports.run = async(bot, message, args, idioma) => {
     let embed = new MessageEmbed()
     embed.setColor(config.color)

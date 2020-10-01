@@ -1,13 +1,13 @@
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
-    if(!player) return message.reply("Não ha nada tocando")
+    if(!player) return message.reply(idioma.skip.nada)
 
     const { channel } = message.member.voice
 
-    if(!channel) return message.reply("Você não esta em um canal de voz");
-    if(channel.id !== player.voiceChannel) return message.reply("Você não esta no mesmo canal de voz que eue estou :/");
+    if(!channel) return message.reply(idioma.skip.conectar);
+    if(channel.id !== player.voiceChannel) return message.reply(idioma.skip.conectar2);
 
-    if(player.queue.size <= 1) return message.channel.send("Não ha músicas por favor use e.stop")
+    if(player.queue.size <= 1) return message.channel.send(idioma.skip.semMusica)
     
     player.stop();
 }

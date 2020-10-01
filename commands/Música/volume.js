@@ -1,19 +1,19 @@
-module.exports.run = async(bot, message, args) => {
+module.exports.run = async(bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send("Não tem nada tocando nesta guilda")
-    if(!args.length) return message.channel.send(`O volume do players esta em \`${player.volume}\``)
+    if(!player) return message.channel.send(idioma.volume.nada)
+    if(!args.length) return message.channel.send(idioma.volume.volume + player.volume)
 
     const { channel } = message.member.voice
 
-    if(!channel) return message.channel.send("Você tem que se conectar em algum canal de voz")
+    if(!channel) return message.channel.send(idioma.volume.conectar)
 
-    if(channel.id !== player.voiceChannel) return message.channel.send("Se conecte ao mesmo canal de voz que eu")
+    if(channel.id !== player.voiceChannel) return message.channel.send(idioma.player.conectar2)
 
     const volume = Number(args[0]);
-    if (!volume || volume < 1 || volume > 100) return message.reply("Você tem que dar um volume entre 1 a 100");
+    if (!volume || volume < 1 || volume > 100) return message.reply(idioma.volume.invalido);
     player.setVolume(volume);
-    return message.reply(`Setado volume do player em \`${volume}\`.`);
+    return message.reply(idioma.volume.mudado + player.volume);
 }
 
 exports.conf = {
