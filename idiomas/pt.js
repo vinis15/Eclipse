@@ -85,7 +85,7 @@ module.exports = client => {
       conectar: "Você tem que se conectar em algum canal de voz",
       conectar2: "Se conecte ao mesmo canal de voz que eu",
       paused: "Musica pausada",
-      noplaying: "Não tem nada tocando nesta guilda",
+      nada: "Não tem nada tocando nesta guilda",
       already: "A musica ja esta pausada"
     },
     queue: {
@@ -120,6 +120,33 @@ module.exports = client => {
       acabouTempo: "o tempo de seleção acabou",
       cancelado: "Seleção cancelada",
       numeroInvalido: "O número providenciado é muito pequeno ou muito grande (1-"
-    }
+    },
+    volume: {
+      nada: "Não há nada tocando",
+      volume: "O volume do player esta em  ",
+      conectar: "Você tem que se conectar a algum canal de voz",
+      conectar2: "Conecte-se ao mesmo canal de voz que eu",
+      invalido: "Você tem que colocar um número entre 1 e 100",
+      mudado: "Eu mudei o volume do player para "
+    },
+    stop: {
+      nada: "Não há nada tocando",
+      conectar: "Você tem que se conectar a algum canal de voz",
+      conectar2: "Conecte-se ao mesmo canal de voz que eu",
+      parou: "Parei de tocar e sai do canal"
+    },
+    resume: {
+      nada5: "Não há nada tocando esta guilda",
+      canal1: "Você tem que se conectar a algum canal de voz",
+      canal2: "Conecte-se ao mesmo canal de voz que eu",
+      nao: "A musica nao esta pausada",
+      certo: "Música despausada"
+    },
+    skip: {
+      nada: "Não há nada tocando",
+      conectar: "Você tem que se conectar a algum canal de voz",
+      conectar2: "Conecte-se ao mesmo canal de voz que eu",
+      semMusica: "Não há músicas na fila, use e.stop"
+    },
   }
 }

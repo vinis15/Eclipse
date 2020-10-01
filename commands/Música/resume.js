@@ -1,18 +1,18 @@
-module.exports.run = async(bot, message) => {
+module.exports.run = async(bot, message, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send("Não tem nada tocando nesta guilda")
+    if(!player) return message.channel.send(`${idioma.resume.nada5}`)
 
     const { channel } = message.member.voice
 
-    if(!channel) return message.channel.send("Você tem que se conectar em algum canal de voz")
+    if(!channel) return message.channel.send(`${idioma.resume.canal1}`)
 
-    if(channel.id !== player.voiceChannel) return message.channel.send("Se conecte ao mesmo canal de voz que eu")
+    if(channel.id !== player.voiceChannel) return message.channel.send(`${idioma.resume.canal2}`)
 
-    if(!player.paused) return message.channel.send("A musica não esta pausada")
+    if(!player.paused) return message.channel.send(`${idioma.resume.nao}`)
 
     player.pause(false)
-    return message.reply("Musica despausada")
+    return message.reply(`${idioma.resume.certo}`)
 }
 
 exports.conf = {

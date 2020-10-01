@@ -85,10 +85,10 @@ module.exports = client => {
       conectar: "You have to connect to some voice channel",
       conectar2: "Connect to the same voice channel as me",
       paused: "Music paused",
-      noplaying: "There is no music playing in this guild",
+      nada: "There's nothing touching this guild",
       already: "The music is already paused"
     },
-     queue: {
+    queue: {
       nothing: "There is no music playing, unfortunately",
       np: "Now playing",
       fila: "Play queue",
@@ -141,23 +141,12 @@ module.exports = client => {
       invalido: "You have to puta number between 1 and 100",
       mudado: "I've changed the player volume to "
     },
-    play: {
-      conectar: "Please connect to a voice channel and try again",
-      nada: "Give me a link or search for something",
-      semPerm: "I cannot connect to this channel!",
-      error: "Sorry, something happened: ",
-      semResultado: "No results found",
-      adicionado: "**Added to the queue:** ",
-      duracao: "**Duration:** ",
-      solicitado: "Asked by",
-      playlist: "**Added to playlist** ",
-      com: "with",
-      musicas: "songs",
-      cancelar1: "Cancel", 
-      cancelar2: "Type `cancel` to cancel",
-      acabouTempo: "selection time is over",
-      cancelado: "Selection canceled",
-      numeroInvalido: "The number provided is too small or too large (1-"
+    resume: {
+      nada5: "There's nothing touching this guild",
+      canal1: "You have to connect to some voice channel",
+      canal2: "Connect to the same voice channel as me",
+      nao: "The music is not paused",
+      certo: "Free music"
     }
   }
 }
