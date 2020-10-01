@@ -89,10 +89,10 @@ module.exports = client => {
       already: "A musica ja esta pausada"
     },
     queue: {
-      nothing: "Não há nada tocando infelizmente",
+      nothing: "Não há nada tocando, infelizmente",
       np: "Tocando agora",
       fila: "Fila de reprodução de",
-      nohasmusic: "Não ha músicas na",
+      nohasmusic: "Não ha músicas na fila",
       arg1: "página",
       arg2: "fila",
       arg3: "de"
