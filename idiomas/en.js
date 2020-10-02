@@ -25,7 +25,7 @@ module.exports = client => {
       outros: "Others",
       música: "Music",
       desenvolvedor: "Developer",
-      footer: "Do not include <> or [], it means <> is required and [] is optional",
+      footer: "Do not include <> or [], it means <> is required and [] is optional"
     },
     userinfo: {
       criado: "Account created on the day",

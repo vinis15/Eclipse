@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const config = require("../../config.json");
 const moment = require('moment');
+const { off } = require("npm");
 require("moment-duration-format");
 
 module.exports.run = async (bot, message, args, idioma) => {
@@ -15,6 +16,7 @@ module.exports.run = async (bot, message, args, idioma) => {
     voiceChannel: channel.id,
     textChannel: message.channel.id,
     selfDeafen: true,
+    bassboost: false
   });
 
     player.connect();

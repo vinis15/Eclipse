@@ -10,7 +10,7 @@ module.exports = client => {
     erela: {
       tocando: "Tocando agora",
       pedido: "Requisitado por",
-      saindo: "Saindo do canal de voz. Acabaram as músicas",
+      saindo: "Saindo do canal de voz. Acabaram as músicas"
     },
     emojify: {
       args: "de um texto para converter",
@@ -25,7 +25,7 @@ module.exports = client => {
       outros: "Outros",
       música: "Música",
       desenvolvedor: "Desenvolvedor",
-      footer: "Não inclua <> ou [], isso significa <> é necessário e [] é opcional",
+      footer: "Não inclua <> ou [], isso significa <> é necessário e [] é opcional"
     },
     userinfo: {
       criado: "Conta criada no dia",
