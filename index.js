@@ -5,7 +5,6 @@ const Enmap = require('enmap')
 const bot = new Discord.Client({ disableMentions: 'everyone' })
 const config = require("./config.json");
 const { Manager } = require("erela.js");
-const { Player } = require("erela.js")
 const Spotify  = require("erela.js-spotify");
 const clientID = config.clientID;
 const clientSecret = config.clientSecret;

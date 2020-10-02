@@ -147,6 +147,13 @@ module.exports = client => {
       conectar: "Você tem que se conectar a algum canal de voz",
       conectar2: "Conecte-se ao mesmo canal de voz que eu",
       semMusica: "Não há músicas na fila, use e.stop"
+    },
+    bassboost: {
+      ativado: "Bassboost ativado sente o grave",
+      desativado: "Bassboost desativado",
+      nada: "Não há nada tocando nesta guilda",
+      naota: "Por favor se conecte em algum canal de voz",
+      mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
     }
   }
 }

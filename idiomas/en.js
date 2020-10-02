@@ -147,6 +147,13 @@ module.exports = client => {
       canal2: "Connect to the same voice channel as me",
       nao: "The music is not paused",
       certo: "Unpaused music"
+    },
+    bassboost: {
+      ativado: "Bassboost activated feels the bass",
+      desativado: "Bassboost disabled",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
     }
   }
 }

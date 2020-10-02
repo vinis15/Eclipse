@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         { name: idioma.botinfo.servidores, value: `\`\`\`${bot.guilds.cache.size.toLocaleString("pt-br")}\`\`\``, inline: true },
         { name: idioma.botinfo.usuarios, value: `\`\`\`${bot.users.cache.size.toLocaleString("pt-br")}\`\`\``, inline: true },
         { name: idioma.botinfo.músic, value: `\`\`\`${message.client.manager.players.size}\`\`\``, inline: true },
-        { name: idioma.botinfo.processador, value: `\`\`\`${os.cpus()[0].model.toString().trim()}\`\`\``, inline: false },
+        { name: idioma.botinfo.processador, value: `\`\`\`${os.cpus()[0].model.toString().trim()}\`\`\``, inline: false }
     )
     return message.channel.send({embed})
 }
