@@ -25,7 +25,7 @@ module.exports = client => {
       outros: "Others",
       música: "Music",
       desenvolvedor: "Developer",
-      footer: "Do not include <> or [], it means <> is required and [] is optional"
+      footer: "Do not include <> or [], it means <> is required and [] is optional",
     },
     userinfo: {
       criado: "Account created on the day",
@@ -107,6 +107,7 @@ module.exports = client => {
       conectar: "Please connect to a voice channel and try again",
       nada: "Give me a link or search something",
       semPerm: "I can't connect to this channel",
+      tocandoja: "I'm already playing in this guild",
       error: "Sorry, something bad happened: ",
       semResultado: "No matches found",
       adicionado: "**Added to the queue** ",

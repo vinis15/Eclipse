@@ -4,9 +4,9 @@ const config = require("../../config.json")
 module.exports.run = async (bot, message, args, idioma) => {
     const embed = new MessageEmbed()
     if(!message.mentions.users.first()&&!args[0]) {
-        embed.setTitle(`${idioma.avatar.seu} 🖼️`)
+        embed.setTitle(idioma.avatar.seu + '🖼️')
         embed.setColor(config.color)
-        embed.setImage(`${message.author.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed.setImage(message.author.avatarURL({ dynamic: true, size: 2048 }))
         embed.setTimestamp()
         return message.channel.send(embed)
     } 
@@ -14,16 +14,16 @@ module.exports.run = async (bot, message, args, idioma) => {
         let mention = message.mentions.users.first()
         embed.setTitle(`${idioma.avatar.de} ${mention.tag} 🖼️`)
         embed.setColor(config.color)
-        embed.setImage(`${mention.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed.setImage(mention.avatarURL({ dynamic: true, size: 2048 }))
         embed.setTimestamp()
         return message.channel.send(embed)  
     }
-    if(isNaN(args[0])) return message.reply(`${idioma.avatar.invalido}`)
+    if(isNaN(args[0])) return message.reply(idioma.avatar.invalido)
     try {
         var member = await bot.users.fetch(args[0]);
         embed.setTitle(`${idioma.avatar.de} ${member.tag} 🖼️`)
         embed.setColor(config.color)
-        embed.setImage(`${member.displayAvatarURL({ dynamic: true, size: 2048 })}`)
+        embed.setImage(member.displayAvatarURL({ dynamic: true, size: 2048 }))
         embed.setTimestamp()
         return message.channel.send(embed)
     } catch (erro) {

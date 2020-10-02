@@ -5,6 +5,7 @@ const Enmap = require('enmap')
 const bot = new Discord.Client({ disableMentions: 'everyone' })
 const config = require("./config.json");
 const { Manager } = require("erela.js");
+const { Player } = require("erela.js")
 const Spotify  = require("erela.js-spotify");
 const clientID = config.clientID;
 const clientSecret = config.clientSecret;
@@ -45,6 +46,7 @@ fs.readdir("./events/", (err, files) => {
     console.log("[EVENTOS] - Carregados com sucesso")
 });
 
+
 bot.manager = new Manager({
     nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, }],
     plugins: [new Spotify({clientID, clientSecret})],
@@ -76,13 +78,14 @@ bot.manager = new Manager({
         let idioma = bot.idioma.get(channel.guild.id) || 'pt'
         if(idioma === 'en') idioma = bot.idiomas.en
         if(idioma === 'pt') idioma = bot.idiomas.pt
-        channel.send(`${idioma.erela.saindo}`);
+        channel.send(idioma.erela.saindo);
         player.destroy();
     });
 
     bot.once("ready", () => {
         bot.manager.init(bot.user.id);
     });
+ 
 
     bot.on("raw", d => bot.manager.updateVoiceState(d));
 
@@ -94,4 +97,4 @@ bot.badge = function(badges){
 module.exports = {
     bot,
     Manager
-} 
+}

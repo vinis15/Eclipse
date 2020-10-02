@@ -25,7 +25,7 @@ module.exports = client => {
       outros: "Outros",
       música: "Música",
       desenvolvedor: "Desenvolvedor",
-      footer: "Não inclua <> ou [], isso significa <> é necessário e [] é opcional"
+      footer: "Não inclua <> ou [], isso significa <> é necessário e [] é opcional",
     },
     userinfo: {
       criado: "Conta criada no dia",
@@ -107,6 +107,7 @@ module.exports = client => {
       conectar: "Por favor, conecte-se a um canal de voz e tente novamente",
       nada: "Me dê um link ou busque algo",
       semPerm: "Não posso conectar a este canal!",
+      tocandoja: "Eu já estou tocando nesta guilda",
       error: "Desculpe, algo aconteceu: ",
       semResultado: "Nenhum resultado encontrado",
       adicionado: "**Adicionado à fila:** ",
