@@ -6,7 +6,7 @@ const config = require("../../config.json")
 module.exports.run = async(bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send(`${idioma.np.nada}`)
+    if(!player) return message.channel.send(idioma.np.nada)
 
 
     const { title, author, duration, thumbnail } = player.queue.current;

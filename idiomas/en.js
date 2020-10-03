@@ -112,7 +112,7 @@ module.exports = client => {
       semResultado: "No matches found",
       adicionado: "**Added to the queue** ",
       duracao: "**Duration:** ",
-      solicitado: "Requested by ",
+      solicitado: "Requested by",
       playlist: "**Added the playlist** ",
       com: "with",
       musicas: "songs",

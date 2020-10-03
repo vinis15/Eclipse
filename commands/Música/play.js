@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args, idioma) => {
   const eucanal = message.guild.me.voice.channel
   if(!channel) return message.reply(idioma.play.conectar);
   if(!args.length) return message.reply(idioma.play.nada);
-  if(eucanal&&eucanal.id !== channel.id && !channel.joinable) return message.reply(idioma.play.semPerm)
+  if(eucanal && eucanal.id !== channel.id && !channel.joinable) return message.reply(idioma.play.semPerm)
   
   const player = message.client.manager.create({
     guild: message.guild.id,
@@ -100,7 +100,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         
         let embed3 = new MessageEmbed()
         embed3.setColor(config.color)
-        embed3.setFooter(idioma.play.solicitado + track.requester.tag, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed3.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
         embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n ${idioma.play.duracao} \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
         if (!player.playing && !player.paused && !player.queue.length) player.play();
         return message.channel.send(embed3);
