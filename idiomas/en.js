@@ -20,8 +20,8 @@ module.exports = client => {
       latencia: "**Latency:**"
     },
     help: {
-      dev: "Criado por",
-      comandos: "Commands in total",
+      dev: "Created by",
+      comandos: "Total commands",
       outros: "Others",
       música: "Music",
       desenvolvedor: "Developer",
@@ -72,10 +72,8 @@ module.exports = client => {
       nada: "There's nothing playing in this guild",
       naota: "You have to connect to some voice channel",
       mesmo: "Connect to the same voice channel as me",
-      queue: "queue loop was",
-      musica: "music loop was",
-      ativado: "activated",
-      desativado: "disabled"
+      loopon: "The loop has been activated",
+      loopoff: "The loop has been disabled"
     },
     np: {
       nada: "There's nothing playing this guild",

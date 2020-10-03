@@ -2,9 +2,10 @@ const Discord = require('discord.js')
 const config = require("../../config.json")
 
 module.exports.run = async (bot, message, args) => {
-var ids = ["672652538880720896", "704468807229505637"]
-if (ids.includes (message.author.id)) {
-  
+if(config.eval.includes(message.author.id) == false) {
+    return message.channel.send("Sem perm irmão")
+}
+
         try {
             if(!args.join(' ')) return message.reply('Escreve ai')
             let code = await eval(args.join(" "));
@@ -18,7 +19,6 @@ if (ids.includes (message.author.id)) {
         } catch(e) {
             message.channel.send(`\`\`\`js\n${e}\n\`\`\``);
         }
-}
 }
 exports.conf = {
     enabled: true,

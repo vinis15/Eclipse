@@ -11,6 +11,7 @@
   "dependencies": {
     "better-sqlite3": "^7.1.1",
     "byte-size": "^7.0.0",
+    "colors": "^1.4.0",
     "common-tags": "^1.8.0",
     "discord.js": "^12.3.1",
     "enmap": "^5.7.3",

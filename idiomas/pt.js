@@ -72,10 +72,8 @@ module.exports = client => {
       nada: "Não tem nada tocando nesta guilda",
       naota: "Você tem que se conectar em algum canal de voz",
       mesmo: "Se conecte ao mesmo canal de voz que eu",
-      queue: "loop de queue foi",
-      musica: "loop de música foi",
-      ativado: "ativado",
-      desativado: "desativado"
+      loopon: "O loop foi ativado",
+      loopoff:  "O loop foi desativado"
     },
     np: {
       nada: "Não tem nada tocando nesta guilda",

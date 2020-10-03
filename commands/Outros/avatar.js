@@ -4,7 +4,7 @@ const config = require("../../config.json")
 module.exports.run = async (bot, message, args, idioma) => {
     const embed = new MessageEmbed()
     if(!message.mentions.users.first()&&!args[0]) {
-        embed.setTitle(idioma.avatar.seu + '🖼️')
+        embed.setTitle(`${idioma.avatar.seu} 🖼️`)
         embed.setColor(config.color)
         embed.setImage(message.author.avatarURL({ dynamic: true, size: 2048 }))
         embed.setTimestamp()
