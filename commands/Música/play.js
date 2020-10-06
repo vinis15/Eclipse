@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args, idioma) => {
   if(!channel) return message.reply(idioma.play.conectar);
   if(!args.length) return message.reply(idioma.play.nada);
   if(eucanal && eucanal.id !== channel.id && !channel.joinable) return message.reply(idioma.play.semPerm)
+  if(!channel.joinable) return message.channel.send(idioma.play.erro2)
   
   const player = message.client.manager.create({
     guild: message.guild.id,

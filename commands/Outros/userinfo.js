@@ -30,9 +30,8 @@ module.exports.run = async (bot, message, args, idioma) => {
         embed.setThumbnail(`${member.displayAvatarURL({ dynamic: true, size: 2048 })}`)
         embed.setTimestamp()
         return message.channel.send(embed)
-    } catch (e) {
+    } catch {
         message.channel.send(`:x: **${idioma.userinfo.erro}**`);
-        console.log(e)
     }
 }
 

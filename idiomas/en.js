@@ -118,7 +118,8 @@ module.exports = client => {
       cancelar2: "Type `cancel` to cancel",
       acabouTempo: "Selection timed out",
       cancelado: "Cancelled the selection",
-      numeroInvalido: "The provived number is either too small or too big (1-"
+      numeroInvalido: "The provived number is either too small or too big (1-",
+      erro2: "I can't connect to this channel please try another one"
     },
     skip: {
       nada: "There is nothing playing",

@@ -118,7 +118,8 @@ module.exports = client => {
       cancelar2: "Digite `cancelar` para canelar",
       acabouTempo: "o tempo de seleção acabou",
       cancelado: "Seleção cancelada",
-      numeroInvalido: "O número providenciado é muito pequeno ou muito grande (1-"
+      numeroInvalido: "O número providenciado é muito pequeno ou muito grande (1-",
+      erro2: "Eu não posso me conectar a este canal por favor tente outro"
     },
     volume: {
       nada: "Não há nada tocando",

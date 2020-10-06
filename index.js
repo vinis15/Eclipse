@@ -48,7 +48,7 @@ fs.readdir("./events/", (err, files) => {
 
 
 bot.manager = new Manager({
-    nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, identifier: "KAT"}],
+    nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, identifier: "SOL"}],
     plugins: [new Spotify({clientID, clientSecret})],
     autoPlay: true,
     send: (id, payload) => {
