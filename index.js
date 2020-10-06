@@ -45,8 +45,7 @@ fs.readdir("./events/", (err, files) => {
     })
     console.log("[EVENTOS] - Carregados com sucesso".brightCyan)
 });
-
-
+require("./Structures/player")
 bot.manager = new Manager({
     nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, identifier: "LUA"}],
     plugins: [new Spotify({clientID, clientSecret})],
