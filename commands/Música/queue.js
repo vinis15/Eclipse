@@ -19,12 +19,12 @@ module.exports.run = async (bot, message, args, idioma) => {
 
     if (queue.current) embed.addField(idioma.queue.np, `[${queue.current.title}](${queue.current.uri})`);
 
-    if (!tracks.length) embed.setDescription(`${idioma.queue.nohasmusic} ${page > 1 ? `${idioma.queue.arg1} ${page}` : "${idioma.queue.arg2}"}.`);
+    if (!tracks.length) embed.setDescription(`${idioma.queue.nohasmusic} ${page > 1 ? `${idioma.queue.arg1} ${page}` : `${idioma.queue.arg2}`}.`);
     else embed.setDescription(tracks.map((track, i) => `**${start + (++i)} -** [${track.title}](${track.uri})`).join("\n"));
 
     const maxPages = Math.ceil(queue.length / multiple);
     embed.setColor(config.color)
-    embed.setFooter(`${idioma.queue.arg1.replace(/^./, idioma.queue.arg1[0].toUpperCase()} ${page > maxPages ? maxPages : page} ${idioma.queue.arg3} ${maxPages}`);
+    embed.setFooter(`${idioma.queue.arg1.replace(/^./, idioma.queue.arg1[0].toUpperCase())} ${page > maxPages ? maxPages : page} ${idioma.queue.arg3} ${maxPages}`);
 
     return message.channel.send(embed);
   }

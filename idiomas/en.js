@@ -10,7 +10,8 @@ module.exports = client => {
     erela: {
       tocando: "Playing now",
       pedido: "Requested by",
-      saindo: "Leaving the voice channel. No more songs"
+      saindo: "Leaving the voice channel. No more songs",
+      erro: "Error playing the track"
     },
     emojify: {
       args: "enter text to convert",
@@ -20,11 +21,12 @@ module.exports = client => {
       latencia: "**Latency:**"
     },
     help: {
-      dev: "Criado por",
-      comandos: "Commands in total",
+      dev: "Created by",
+      comandos: "Total commands",
       outros: "Others",
       música: "Music",
       desenvolvedor: "Developer",
+      filtros: "Filters",
       footer: "Do not include <> or [], it means <> is required and [] is optional"
     },
     userinfo: {
@@ -47,7 +49,7 @@ module.exports = client => {
       args: "enter an equation."
     },
     botinfo: {
-      infos: "My informations",
+      infos: "My information",
       versão: "My version",
       ram: "RAM Used",
       sistema: "Operational system",
@@ -69,33 +71,104 @@ module.exports = client => {
       memoria: "Memory usage"
     },
     loop: {
-      nada: "There's nothing touching this guild",
+      nada: "There's nothing playing in this guild",
       naota: "You have to connect to some voice channel",
       mesmo: "Connect to the same voice channel as me",
-      queue: "queue loop was",
-      musica: "music loop was",
-      ativado: "activated",
-      desativado: "disabled"
+      loopon: "The loop has been activated",
+      loopoff: "The loop has been disabled"
     },
     np: {
-      nada: "There's nothing touching this guild",
-      por: "Per"
+      nada: "There's nothing playing this guild",
+      por: "By"
     },
     pause: {
       conectar: "You have to connect to some voice channel",
       conectar2: "Connect to the same voice channel as me",
       paused: "Music paused",
-      noplaying: "There is no music playing in this guild",
+      nada: "There's nothing touching this guild",
       already: "The music is already paused"
     },
-     queue: {
-      nothing: "There is no music playing unfortunately",
+    queue: {
+      nothing: "There is no music playing, unfortunately",
       np: "Now playing",
       fila: "Play queue",
-      nohasmusic: "No has music in the",
+      nohasmusic: "There is no music in the",
       arg1: "page",
       arg2: "queue",
       arg3: "of"
+    },
+    shuffle: {
+      nada: "There is no music playing in this guild",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      embaralhado: "Queue shuffled"
+    },
+    play: {
+      conectar: "Please connect to a voice channel and try again",
+      nada: "Give me a link or search something",
+      semPerm: "I can't connect to this channel",
+      tocandoja: "I'm already playing in this guild",
+      error: "Sorry, something bad happened: ",
+      semResultado: "No matches found",
+      adicionado: "**Added to the queue** ",
+      duracao: "**Duration:** ",
+      solicitado: "Requested by",
+      playlist: "**Added the playlist** ",
+      com: "**with**",
+      musicas: "**songs**",
+      cancelar1: "Cancel", 
+      cancelar2: "Type `cancel` to cancel",
+      acabouTempo: "Selection timed out",
+      cancelado: "Cancelled the selection",
+      numeroInvalido: "The provived number is either too small or too big (1-",
+      erro2: "I can't connect to this channel please try another one"
+    },
+    skip: {
+      nada: "There is nothing playing",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      semMusica: "There aren't songs in the queue, please use e.stop"
+    },
+    stop: {
+      nada: "There is nothing playing",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      parou: "Player stopped"
+    },
+    volume: {
+      nada: "There is nothing playing",
+      conectar: "You have to connect to some voice channel",
+      conectar2: "Connect to the same voice channel as me",
+      invalido: "You have to put number between 1 and 100",
+      mudado: "I've changed the player volume to "
+    },
+    resume: {
+      nada: "There's nothing touching this guild",
+      canal1: "You have to connect to some voice channel",
+      canal2: "Connect to the same voice channel as me",
+      nao: "The music is not paused",
+      certo: "Unpaused music"
+    },
+    bassboost: {
+      ativado: "Bassboost activated feels the bass",
+      desativado: "Bassboost disabled",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
+    },
+    nightcore: {
+      ativado: "Nightcore filter on",
+      desativado: "Nightcore filter off",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
+    },
+    vaporwave: {
+      ativado: "Vaporwave filter on",
+      desativado: "Vaporwave filter off",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
     }
   }
 }

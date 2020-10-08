@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["p", "latencia"]
+    aliase: ["latencia"]
 }
 exports.help = {
     nome: "ping",

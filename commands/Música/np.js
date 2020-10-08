@@ -1,12 +1,12 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const moment = require("moment")
-var momentDurationFormatSetup = require("moment-duration-format");
+require("moment-duration-format");
 const config = require("../../config.json")
 module.exports.run = async(bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send(`${idioma.np.nada}`)
+    if(!player) return message.channel.send(idioma.np.nada)
 
 
     const { title, author, duration, thumbnail } = player.queue.current;

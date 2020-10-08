@@ -1,6 +1,6 @@
 const { MessageEmbed, Message } = require("discord.js")
 const config = require("../../config.json")
-module.exports.run = async(bot, message, args, idioma) => {
+module.exports.run = async (bot, message, args, idioma) => {
     let embed = new MessageEmbed()
     embed.setColor(config.color)
     embed.setAuthor(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true, size: 2048})}`)

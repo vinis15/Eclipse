@@ -1,13 +1,13 @@
 var happycalculator = require('happycalculator');
 module.exports.run = async (bot, message, args, idioma) => {
-	if (!args.length) return message.reply(`${idioma.calc.args}`);
+	if (!args.length) return message.reply(idioma.calc.args);
 	try {
 		var resultado = happycalculator.calculate(args.join(' ').split('÷').join('/'));
 		if (resultado.toString().includes(bot.token)) return message.reply('TÁ TENTANDO PEGAR MEU TOKEN RAPA?');
-		if (resultado === Infinity) return message.reply(`${idioma.calc.infinito}`);
+		if (resultado === Infinity) return message.reply(idioma.calc.infinito);
 		return message.reply('`' + resultado + '`');
 	} catch {
-		return message.reply(`${idioma.calc.erro}`);
+		return message.reply(idioma.calc.erro);
 	};
 }
 

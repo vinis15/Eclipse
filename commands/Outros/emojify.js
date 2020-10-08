@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 });
       
   let result = args.join(' ').split('').map(c => mapping[c] || c).join('')
-  if(result.length>2000) return message.reply(`${idioma.emojify.grande}`)
+  if(result.length>2000) return message.reply(idioma.emojify.grande)
   return message.channel.send(result)
 }
 

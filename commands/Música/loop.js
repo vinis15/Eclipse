@@ -1,23 +1,23 @@
 module.exports.run = async(bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
-    if(!player) return message.channel.send(`${idioma.loop.nada}`)
+    if(!player) return message.channel.send(idioma.loop.nada)
 
     const { channel } = message.member.voice
 
-    if(!channel) return message.channel.send(`${idioma.loop.naota}`)
+    if(!channel) return message.channel.send(idioma.loop.naota)
 
-    if(channel.id !== player.voiceChannel) return message.channel.send(`${idioma.loop.mesmo}`)
+    if(channel.id !== player.voiceChannel) return message.channel.send(idioma.loop.mesmo)
 
-    if(args.length && /queue/i.test(args[0])) {
-        player.setQueueRepeat(!player.queueRepeat);
-        const queueRepeat = player.queueRepeat ? `${idioma.loop.ativado}` : `${idioma.loop.desativado}`;
-        return message.reply(`${idioma.loop.queue} ${queueRepeat}`);
-      }
-  
-      player.setTrackRepeat(!player.trackRepeat);
-      const trackRepeat = player.trackRepeat ? `${idioma.loop.ativado}` : `${idioma.loop.desativado}`;
-      return message.reply(`${idioma.loop.musica} ${trackRepeat}`);
+    if(player.queueRepeat == false) {
+        player.queueRepeat == true
+        return message.channel.send(idioma.loop.loopon)
+    }
+
+    if(player.queueRepeat == true) {
+        player.queueRepeat = false
+        return message.channel.send(idioma.loop.loopoff)
+    }
 }
 
 exports.conf = {
