@@ -60,7 +60,6 @@ module.exports.run = async (bot, message, args, idioma) => {
       case 'PLAYLIST_LOADED':
 
           player.queue.add(res.tracks);
-          if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
 
 
           let embed2 = new MessageEmbed()
