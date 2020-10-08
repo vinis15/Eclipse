@@ -22,25 +22,31 @@ module.exports.run = async (bot, message, args, idioma) => {
 
     player.connect();
 
-  const search = args.join(' ');
+    const search = args.join(' ');
     let res;
 
 
     try {
+
       res = await player.search(search, message.author);
       if (res.loadType === 'LOAD_FAILED') {
         if (!player.queue.current) player.destroy();
         throw new Error(res.exception.message);
       }
+
     } catch (err) {
-      return message.reply(idioma.play.error + err.message);
+        return message.reply(idioma.play.error + err.message);
     }
 
     switch (res.loadType) {
+
       case 'NO_MATCHES':
+
         if (!player.queue.current) player.destroy();
         return message.reply(idioma.play.semResultado);
+
       case 'TRACK_LOADED':
+
         player.queue.add(res.tracks[0]);
 
         let embed1 = new MessageEmbed()
@@ -50,9 +56,10 @@ module.exports.run = async (bot, message, args, idioma) => {
         embed1.setFooter(idioma.play.solicitado + res.tracks[0].requester.tag, `${res.tracks[0].requester.avatarURL({ dynamic: true, size: 2048 })}`)
         if(!player.playing && !player.paused && !player.queue.length) player.play();
         return message.channel.send(embed1);
-        case 'PLAYLIST_LOADED':
+
+      case 'PLAYLIST_LOADED':
+
           player.queue.add(res.tracks);
-          if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
 
 
           let embed2 = new MessageEmbed()
@@ -60,50 +67,51 @@ module.exports.run = async (bot, message, args, idioma) => {
           embed2.setColor(config.color)
           embed2.setDescription(`${idioma.play.playlist} \`${res.playlist.name}\` ${idioma.play.com} \`${res.tracks.length}\` ${idioma.play.musicas}\n${idioma.play.duracao} \`${moment.duration(res.playlist.duration).format("d:hh:mm:ss")}\``)
           return message.channel.send(embed2);
-          case 'SEARCH_RESULT':
-            let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|cancelar)$/i.test(m.content) || message.author.id && /^(\d+|cancel)$/i.test(m.content);
-            if(res.tracks.length < max) max = res.tracks.length;
 
-            const results = res.tracks
-            .slice(0, max)
-            .map((track, index) => `${++index} - \`${track.title}\``)
-            .join('\n');
+      case 'SEARCH_RESULT':
+
+          let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|cancelar)$/i.test(m.content) || message.author.id && /^(\d+|cancel)$/i.test(m.content);
+          if(res.tracks.length < max) max = res.tracks.length;
+
+          const results = res.tracks
+          .slice(0, max)
+          .map((track, index) => `${++index} - \`${track.title}\``)
+          .join('\n');
             
-            const embed = new MessageEmbed()
-            .setColor(config.color)
-            .setTimestamp()
-            .addFields(
-              { name: idioma.play.cancelar1, value: idioma.play.cancelar2 }
-            )
-            .setDescription(results)
-            message.channel.send(embed);
+          const embed = new MessageEmbed()
+          .setColor(config.color)
+          .setTimestamp()
+          .addFields({ name: idioma.play.cancelar1, value: idioma.play.cancelar2 })
+          .setDescription(results)
+          message.channel.send(embed);
 
-            try {
+          try {
               collected = await message.channel.awaitMessages(filter, { max: 1, time: 30e3, errors: ['time'] });
-            } catch (e) {
-              if (!player.queue.current) player.destroy();
-              return message.reply(idioma.play.acabouTempo);
-            }
+          } catch (e) {
+            if (!player.queue.current) player.destroy();
+            return message.reply(idioma.play.acabouTempo);
+          }
 
-            const first = collected.first().content;
+          const first = collected.first().content;
 
-            if (first.toLowerCase() === 'cancelar' || first.toLowerCase() === 'cancel') {
-              if (!player.queue.current) player.destroy();
-              return message.channel.send(idioma.play.cancelado);
-            }
+          if (first.toLowerCase() === 'cancelar' || first.toLowerCase() === 'cancel') {
+            if (!player.queue.current) player.destroy();
+            return message.channel.send(idioma.play.cancelado);
+          }
             
-            const index = Number(first) - 1;
-        if (index < 0 || index > max - 1) return message.reply(idioma.play.numeroInvalido + max + ')');
+          const index = Number(first) - 1;
+          if (index < 0 || index > max - 1) return message.reply(idioma.play.numeroInvalido + max + ')');
 
-        const track = res.tracks[index];
-        player.queue.add(track);
-        
-        let embed3 = new MessageEmbed()
-        embed3.setColor(config.color)
-        embed3.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
-        embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n ${idioma.play.duracao} \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
-        if(!player.playing && !player.paused && !player.queue.length) player.play();
-        return message.channel.send(embed3);
+          const track = res.tracks[index];
+          player.queue.add(track);
+          
+          let embed3 = new MessageEmbed()
+          embed3.setColor(config.color)
+          embed3.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+          embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n ${idioma.play.duracao} \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
+          if(!player.playing && !player.paused && !player.queue.length) player.play();
+          return message.channel.send(embed3);
+
       }
     };
 
