@@ -59,7 +59,6 @@ module.exports.run = async (bot, message, args, idioma) => {
           embed2.setTimestamp()
           embed2.setColor(config.color)
           embed2.setDescription(`${idioma.play.playlist} \`${res.playlist.name}\` ${idioma.play.com} \`${res.tracks.length}\` ${idioma.play.musicas}\n${idioma.play.duracao} \`${moment.duration(res.playlist.duration).format("d:hh:mm:ss")}\``)
-          if(!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
           return message.channel.send(embed2);
           case 'SEARCH_RESULT':
             let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|cancelar)$/i.test(m.content) || message.author.id && /^(\d+|cancel)$/i.test(m.content);
@@ -103,7 +102,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         embed3.setColor(config.color)
         embed3.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
         embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n ${idioma.play.duracao} \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
-        if (!player.playing && !player.paused && !player.queue.length) player.play();
+        if(!player.playing && !player.paused && !player.queue.length) player.play();
         return message.channel.send(embed3);
       }
     };

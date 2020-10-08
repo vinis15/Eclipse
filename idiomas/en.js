@@ -10,7 +10,8 @@ module.exports = client => {
     erela: {
       tocando: "Playing now",
       pedido: "Requested by",
-      saindo: "Leaving the voice channel. No more songs"
+      saindo: "Leaving the voice channel. No more songs",
+      erro: "Error playing the track"
     },
     emojify: {
       args: "enter text to convert",
@@ -25,6 +26,7 @@ module.exports = client => {
       outros: "Others",
       música: "Music",
       desenvolvedor: "Developer",
+      filtros: "Filters",
       footer: "Do not include <> or [], it means <> is required and [] is optional"
     },
     userinfo: {
@@ -112,8 +114,8 @@ module.exports = client => {
       duracao: "**Duration:** ",
       solicitado: "Requested by",
       playlist: "**Added the playlist** ",
-      com: "with",
-      musicas: "songs",
+      com: "**with**",
+      musicas: "**songs**",
       cancelar1: "Cancel", 
       cancelar2: "Type `cancel` to cancel",
       acabouTempo: "Selection timed out",
@@ -150,6 +152,20 @@ module.exports = client => {
     bassboost: {
       ativado: "Bassboost activated feels the bass",
       desativado: "Bassboost disabled",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
+    },
+    nightcore: {
+      ativado: "Nightcore filter on",
+      desativado: "Nightcore filter off",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
+    },
+    vaporwave: {
+      ativado: "Vaporwave filter on",
+      desativado: "Vaporwave filter off",
       nada: "There is nothing playing in this guild",
       naota: "Please connect to any voice channel",
       mesmo: "Please connect to the same voice channel as me"

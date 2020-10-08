@@ -10,7 +10,8 @@ module.exports = client => {
     erela: {
       tocando: "Tocando agora",
       pedido: "Requisitado por",
-      saindo: "Saindo do canal de voz. Acabaram as músicas"
+      saindo: "Saindo do canal de voz. Acabaram as músicas",
+      erro: "Erro ao reproduzir a faixa"
     },
     emojify: {
       args: "de um texto para converter",
@@ -25,6 +26,7 @@ module.exports = client => {
       outros: "Outros",
       música: "Música",
       desenvolvedor: "Desenvolvedor",
+      filtros: "Filtros",
       footer: "Não inclua <> ou [], isso significa <> é necessário e [] é opcional"
     },
     userinfo: {
@@ -112,8 +114,8 @@ module.exports = client => {
       duracao: "**Duração:** ",
       solicitado: "Solicitado por",
       playlist: "**Adicionada a playlist** ",
-      com: "com",
-      musicas: "músicas",
+      com: "**com**",
+      musicas: "**músicas**",
       cancelar1: "Cancelar", 
       cancelar2: "Digite `cancelar` para canelar",
       acabouTempo: "o tempo de seleção acabou",
@@ -150,6 +152,20 @@ module.exports = client => {
     bassboost: {
       ativado: "Bassboost ativado sente o grave",
       desativado: "Bassboost desativado",
+      nada: "Não há nada tocando nesta guilda",
+      naota: "Por favor se conecte em algum canal de voz",
+      mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
+    },
+    nightcore: {
+      ativado: "Filtro nightcore ativado",
+      desativado: "Filtro nightcore desativado",
+      nada: "Não há nada tocando nesta guilda",
+      naota: "Por favor se conecte em algum canal de voz",
+      mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
+    },
+    vaporwave: {
+      ativado: "Filtro vaporwave ativado",
+      desativado: "Filtro vaporwave desativado",
       nada: "Não há nada tocando nesta guilda",
       naota: "Por favor se conecte em algum canal de voz",
       mesmo: "Por favor se conecte ao mesmo canal de voz que eu"

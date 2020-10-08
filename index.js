@@ -45,6 +45,8 @@ fs.readdir("./events/", (err, files) => {
     })
     console.log("[EVENTOS] - Carregados com sucesso".brightCyan)
 });
+
+
 require("./Structures/player")
 bot.manager = new Manager({
     nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, identifier: "LUA"}],
@@ -69,8 +71,12 @@ bot.manager = new Manager({
         embed.setFooter(`${idioma.erela.pedido} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
         channel.send(embed).then(msg => player.set("message", msg));
     })
+    .on("socketClosed", player => player.destroy())
     .on("trackEnd", (player, track) => {
         if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
+    })
+    .on("playerMove", (player, currentChannel, newChannel) => {
+        player.voiceChannel = client.channels.cache.get(newChannel);
     })
     .on("queueEnd", player => {
         const channel = bot.channels.cache.get(player.textChannel);

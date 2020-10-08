@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 	embed.addFields(
 	{ name: `${idioma.help.outros} (${bot.commands.filter(command => command.help.categoria === "Outros").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Outros").map(e => `\`${config.prefix}${e.help.nome}\``).join(", ")}` + '.', inline: false },
 	{ name: `${idioma.help.música} (${bot.commands.filter(command => command.help.categoria === "Música").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Música").map(e => `\`${config.prefix}${e.help.nome}\``).join(", ")}` + '.', inline: false },
+	{ name: `${idioma.help.filtros} (${bot.commands.filter(command => command.help.categoria === "Filtros").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Filtros").map(e => `\`${config.prefix}${e.help.nome}\``).join(", ")}` + '.', inline: false },
 	{ name: `${idioma.help.desenvolvedor} (${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").map(e => `\`${config.prefix}${e.help.nome}\``).join(", ")}` + '.', inline: false }
 	)
 	message.channel.send({embed})

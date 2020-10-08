@@ -17,7 +17,7 @@ module.exports = Structure.extend('Player', Player => {
             this.setTimescale(speed)
             return this;
         }
-    
+
         setPitch(pitch) {
             if (isNaN(pitch))
                 throw new RangeError("Player#setPitch() Pitch must be a number.");

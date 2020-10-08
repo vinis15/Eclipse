@@ -30,5 +30,5 @@ exports.help = {
     nome: "bassboost",
     descrição: "",
     uso: "Coloca um pouco de grave na música",
-    categoria: "Música"
+    categoria: "Filtros"
 }
