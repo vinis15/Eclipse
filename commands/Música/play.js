@@ -1,8 +1,6 @@
 const { MessageEmbed } = require("discord.js");
-const config = require("../../config.json");
-const moment = require('moment');
-const { off } = require("npm");
-require("moment-duration-format");
+const config = require("../../Structures/jsons/config.json");
+const API = require("../../Structures/extensions/utils")
 
 module.exports.run = async (bot, message, args, idioma) => {
   const { channel } = message.member.voice;
@@ -17,7 +15,6 @@ module.exports.run = async (bot, message, args, idioma) => {
     voiceChannel: channel.id,
     textChannel: message.channel.id,
     selfDeafen: true,
-    bassboost: false
   });
 
     player.connect();
@@ -52,7 +49,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         let embed1 = new MessageEmbed()
         embed1.setTimestamp()
         embed1.setColor(config.color)
-        embed1.setDescription(`${idioma.play.adicionado} \`${res.tracks[0].title}\`\n${idioma.play.duracao} \`${moment.duration(res.tracks[0].duration).format("d:hh:mm:ss")}\``)
+        embed1.setDescription(`${idioma.play.adicionado} \`${res.tracks[0].title}\`\n${idioma.play.duracao} ${API.time2(res.tracks[0].duration)}`)
         embed1.setFooter(idioma.play.solicitado + res.tracks[0].requester.tag, `${res.tracks[0].requester.avatarURL({ dynamic: true, size: 2048 })}`)
         if(!player.playing && !player.paused && !player.queue.length) player.play();
         return message.channel.send(embed1);
@@ -65,7 +62,7 @@ module.exports.run = async (bot, message, args, idioma) => {
           let embed2 = new MessageEmbed()
           embed2.setTimestamp()
           embed2.setColor(config.color)
-          embed2.setDescription(`${idioma.play.playlist} \`${res.playlist.name}\` ${idioma.play.com} \`${res.tracks.length}\` ${idioma.play.musicas}\n${idioma.play.duracao} \`${moment.duration(res.playlist.duration).format("d:hh:mm:ss")}\``)
+          embed2.setDescription(`${idioma.play.playlist} \`${res.playlist.name}\` ${idioma.play.com} \`${res.tracks.length}\` ${idioma.play.musicas}\n${idioma.play.duracao} ${API.time2(res.playlist.duration)}`)
           return message.channel.send(embed2);
 
       case 'SEARCH_RESULT':
@@ -108,7 +105,7 @@ module.exports.run = async (bot, message, args, idioma) => {
           let embed3 = new MessageEmbed()
           embed3.setColor(config.color)
           embed3.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
-          embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n ${idioma.play.duracao} \`${moment.duration(track.duration).format("d:hh:mm:ss")}\``)
+          embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n${idioma.play.duracao} ${API.time2(track.duration)}`)
           if(!player.playing && !player.paused && !player.queue.length) player.play();
           return message.channel.send(embed3);
 

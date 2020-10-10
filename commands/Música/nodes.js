@@ -1,7 +1,6 @@
 const { MessageEmbed } = require("discord.js")
-const config = require("../../config.json")
-const moment = require("moment")
-require("moment-duration-format");
+const config = require("../../Structures/jsons/config.json")
+const API = require("../../Structures/extensions/utils")
 module.exports.run = async(bot, message, args, idioma) => {
     let embed = new MessageEmbed()
     embed.setColor(config.color)
@@ -10,7 +9,7 @@ module.exports.run = async(bot, message, args, idioma) => {
         { name: "Players", value: `\`\`\`ini\n[ ${message.client.manager.nodes.get("LUA").stats.playingPlayers} ]\`\`\``, inline: true },
         { name: `${idioma.nodes.memoria}`, value: `\`\`\`diff\n- ${(message.client.manager.nodes.get("LUA").stats.memory.used/1024/1024).toFixed(2)}MB\`\`\``, inline: true },
         { name: "Node", value: `\`\`\`ini\n[ LUA ]\`\`\``, inline: true },
-        { name: "Uptime", value: `\`\`\`glsl\n# ${moment.duration(message.client.manager.nodes.get("LUA").stats.uptime).format("d[d] h[h] m[m] s[s]")}\`\`\``, inline: false }
+        { name: "Uptime", value: `\`\`\`glsl\n# ${API.time(message.client.manager.nodes.get("LUA").stats.uptime)}\`\`\``, inline: false }
     )
     message.channel.send({embed})
 }

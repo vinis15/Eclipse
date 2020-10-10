@@ -10,13 +10,10 @@ module.exports.run = async(bot, message, args, idioma) => {
     if(channel.id !== player.voiceChannel) return message.channel.send(idioma.nightcore.mesmo)
 
     if(player.nightcore == false) {
-        if(player.options.bassboost == true) {
-            bot.manager.players.get(message.guild.id).setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.0 })));
-            player.options.bassboost = false
-        }
         player.setNightcore(true)
         return message.channel.send(idioma.nightcore.ativado)
-    } 
+    }
+    
     if(player.nightcore == true) {
         player.setNightcore(false)
         return message.channel.send(idioma.nightcore.desativado)

@@ -1,6 +1,6 @@
 const { bot } = require("../index");
 const { MessageEmbed } = require("discord.js")
-const config = require("../config.json");
+const config = require("../Structures/jsons/config.json");
 
 bot.on("guildCreate", guild => {
   const embed  = new MessageEmbed()

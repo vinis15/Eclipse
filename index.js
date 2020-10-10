@@ -4,13 +4,12 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const Enmap = require('enmap')
 const bot = new Discord.Client({ disableMentions: 'everyone' })
-const config = require("./config.json");
+const config = require("./Structures/jsons/config.json");
 const { Manager } = require("erela.js");
 const Spotify  = require("erela.js-spotify");
 const clientID = config.clientID;
 const clientSecret = config.clientSecret;
 const glob = require('glob')
-const prefix = config.prefix
 
 bot.idiomas = {}
 require('./idiomas/pt')(bot)
@@ -47,7 +46,7 @@ fs.readdir("./events/", (err, files) => {
 });
 
 
-require("./Structures/player")
+require("./Structures/extensions/player")
 bot.manager = new Manager({
     nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, identifier: "LUA"}],
     plugins: [new Spotify({clientID, clientSecret})],
@@ -96,13 +95,6 @@ bot.manager = new Manager({
     bot.on("raw", d => bot.manager.updateVoiceState(d));
 
 bot.login(config.token)
-
-bot.badge = function(badges){
-  return (badges.join(' ').replace('HOUSE_BALANCE', '<:balance:746939323143946320>').replace('HOUSE_BRILLIANCE', '<:Brilliance:746939322904870973>').replace('HOUSE_BRAVERY', '<:Bravery:746939322996883516>').replace('BUGHUNTER_LEVEL_1', '<:Hunter:750415765424963634>').replace('BUGHUNTER_LEVEL_2', '<:hunterv2:750415765496135700>').replace('VERIFIED_DEVELOPER', '<:developer:746940343252942956>').replace('DISCORD_PARTNER', '<:parceiro:750415765366112457>').replace('VERIFIED_BOT', '<:bot:750415765311717476>').replace('EARLY_SUPPORTER', '<:early:750416436458946773>').replace('HYPESQUAD_EVENTS', '<:hypesquad:750415765026635929>').replace('TEAM_USER', '<:funcionario:750415765655519403>').replace('SYSTEM', '<:funcionario:750415765655519403>') || 'Não possui')
-}
-bot.status = function(status){
-    return (status.replace('offline', '<:off:757819465915170836>').replace('idle', '<:idle:757819466037067776>').replace('dnd', '<:nopertube:757819465655386263>').replace('online', '<:online:757819465609117747>'))
-}
 
 module.exports = {
     bot,

@@ -1,4 +1,4 @@
-const config = require("../../config.json")
+const config = require("../../Structures/jsons/config.json")
 const Discord = require("discord.js");
 const embed = new Discord.MessageEmbed()
 

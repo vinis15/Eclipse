@@ -1,4 +1,4 @@
-const config = require("../../config.json");
+const config = require("../../Structures/jsons/config.json");
 const glob = require("glob")
 
 module.exports.run = async (bot, message, args) => {

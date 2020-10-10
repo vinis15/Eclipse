@@ -1,12 +1,12 @@
 const Discord = require('discord.js')
-const config = require("../../config.json")
-
+const config = require("../../Structures/jsons/config.json")
+const API = require("../../Structures/extensions/utils")
+const emojis = require("../../Structures/jsons/emojis.json")
 
 module.exports.run = async (bot, message, args) => {
 if(config.eval.includes(message.author.id) == false) {
     return message.channel.send("Sem perm irmão")
 }
-
         try {
             if(!args.join(' ')) return message.reply('Escreve ai')
             let code = await eval(args.join(" "));

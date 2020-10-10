@@ -169,6 +169,13 @@ module.exports = client => {
       nada: "There is nothing playing in this guild",
       naota: "Please connect to any voice channel",
       mesmo: "Please connect to the same voice channel as me"
+    },
+    fxoff: {
+      naotem: "No filters to clean",
+      tem: "Filters off",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
     }
   }
 }

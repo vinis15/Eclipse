@@ -169,6 +169,13 @@ module.exports = client => {
       nada: "Não há nada tocando nesta guilda",
       naota: "Por favor se conecte em algum canal de voz",
       mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
+    },
+    fxoff: {
+      naotem: "Não há filtros para limpar",
+      tem: "Filtros desativdos",
+      nada: "Não há nada tocando nesta guilda",
+      naota: "Por favor se conecte em algum canal de voz",
+      mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
     }
   }
 }

@@ -1,4 +1,4 @@
-const config = require("../../config.json")
+const config = require("../../Structures/jsons/config.json")
 const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (bot, message, args, idioma) => {

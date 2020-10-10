@@ -1,4 +1,4 @@
-const config = require("../config.json");
+const config = require("../Structures/jsons/config.json");
 const { bot } = require("../index");
 const ptbr = JSON.parse(JSON.stringify(bot.idiomas.pt))
 const enus = JSON.parse(JSON.stringify(bot.idiomas.en))

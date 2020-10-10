@@ -1,5 +1,5 @@
-const config = require("../../config.json")
-const {MessageEmbed} = require('discord.js') 
+const config = require("../../Structures/jsons/config.json")
+const { MessageEmbed } = require('discord.js') 
 module.exports.run = async (bot, message, args, idioma) => {
 	var embed = new MessageEmbed()
 	embed.setColor(config.color)
@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 	{ name: `${idioma.help.filtros} (${bot.commands.filter(command => command.help.categoria === "Filtros").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Filtros").map(e => `\`${config.prefix}${e.help.nome}\``).join(", ")}` + '.', inline: false },
 	{ name: `${idioma.help.desenvolvedor} (${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").size})`, value: `${bot.commands.filter(command => command.help.categoria === "Desenvolvedor").map(e => `\`${config.prefix}${e.help.nome}\``).join(", ")}` + '.', inline: false }
 	)
-	message.channel.send({embed})
+	message.channel.send(embed)
 }
   
 exports.conf = {

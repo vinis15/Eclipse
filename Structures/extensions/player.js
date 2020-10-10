@@ -9,6 +9,7 @@ module.exports = Structure.extend('Player', Player => {
             this.rate = 1;
             this.nightcore = false;
             this.vaporwave = false;
+            this.bassboost = false;
         }
         setSpeed(speed) {
             if (isNaN(speed))
@@ -33,6 +34,7 @@ module.exports = Structure.extend('Player', Player => {
             this.nightcore = nighcore;
             if(nighcore) {
                 this.vaporwave = false;
+                this.bassboost = false;
                 this.setTimescale(1.2999999523162842, 1.2999999523162842, 1);
             } else this.setTimescale(1, 1, 1);
             return this;
@@ -45,8 +47,22 @@ module.exports = Structure.extend('Player', Player => {
             this.vaporwave = vaporwave;
             if(vaporwave) {
                 this.nightcore = false;
+                this.bassboost = false;
                 this.setTimescale(0.8500000238418579, 0.800000011920929, 1);
             } else this.setTimescale(1, 1, 1);
+            return this;
+        }
+
+        setBassboost(bassboost) {
+            if (typeof bassboost !== "boolean")
+                throw new RangeError('Player#setBassboost() Bassboost can only be "true" or "false".');
+
+            this.bassboost = bassboost;
+            if(bassboost) {
+                this.nightcore = false;
+                this.vaporwave = false;
+                this.setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.5 })));
+            } else this.setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.0 })))
             return this;
         }
     
@@ -64,6 +80,23 @@ module.exports = Structure.extend('Player', Player => {
                     rate: this.rate
                 },
             });
+            return this;
+        }
+        clearEffects() {
+            this.speed = 1;
+            this.pitch = 1;
+            this.rate = 1;
+            this.bassboost = false;
+            this.nightcore = false;
+            this.vaporwave = false;
+
+            this.clearEQ();
+
+            this.node.send({
+                op: "filters",
+                guildId: this.guild
+            });
+            
             return this;
         }
     }

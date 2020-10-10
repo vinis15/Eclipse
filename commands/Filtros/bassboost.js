@@ -9,14 +9,13 @@ module.exports.run = async(bot, message, args, idioma) => {
 
     if(channel.id !== player.voiceChannel) return message.channel.send(idioma.bassboost.mesmo)
 
-    if(player.options.bassboost == false) {
-        bot.manager.players.get(message.guild.id).setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.5 })));
-        player.options.bassboost = true
+    if(player.bassboost == false) {
+        player.setBassboost(true)
         return message.channel.send(idioma.bassboost.ativado)
     }
-    if(player.options.bassboost == true) {
-        bot.manager.players.get(message.guild.id).setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.0 })));
-        player.options.bassboost = false
+
+    if(player.bassboost == true) {
+        player.setBassboost(false)
         return message.channel.send(idioma.bassboost.desativado)
     }
 }
