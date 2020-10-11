@@ -1,6 +1,7 @@
 const moment = require("moment")
 require("moment-duration-format")
 const byteSize = require('byte-size')
+moment.locale('pt-br')
 const API = {}
 
 API.time = function(s) {
@@ -21,7 +22,7 @@ API.time = function(s) {
     var meses = parseInt(Math.floor(days / 30));
     days = parseInt(days % 30);
     
-    return (meses > 0 ? pad(meses) + ' mêses, ' : "") + (days > 0 ? pad(days) + ' dias, ' : "") + (hrs > 0 ? pad(hrs) + ' horas, ' : "") + (mins > 0 ? pad(mins) + ' minutos e ' : "") + (pad(secs) + ' segundos')
+    return (meses > 0 ? pad(meses) + ' meses, ' : "") + (days > 0 ? pad(days) + ' dias, ' : "") + (hrs > 0 ? pad(hrs) + ' horas, ' : "") + (mins > 0 ? pad(mins) + ' minutos e ' : "") + (pad(secs) + ' segundos')
 
 }
 
@@ -61,5 +62,29 @@ API.bytes = function(size) {
 API.format = function(numero) {
     return (moment.duration(numero).format("Y:M:w:d:hh:mm:ss"))
 }
+
+API.moment = function(numero, formato) {
+    return (moment(numero).format(formato))
+}
+
+API.emojis = {
+    "ativado": {
+        "id": "<:switchon:764574248562982972>",
+        "nome": "ativado"
+    },
+    "desativado": {
+        "id": "<:switchoff:764574248445804574>",
+        "nome": "desativado"
+    },
+    "play": {
+        "id": "<:play:764567204641112165>",
+        "nome": "play"
+    },
+    "pause": {
+        "id": "<:pause:764567204775460875>",
+        "nome": "pause"
+    }
+}
+
 
 module.exports = API

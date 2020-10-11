@@ -3,17 +3,17 @@ console.log("[LOGIN] - Iniciando conexão".brightCyan)
 const Discord = require("discord.js");
 const fs = require("fs");
 const Enmap = require('enmap')
-const bot = new Discord.Client({ disableMentions: 'everyone' })
+const bot = new Discord.Client({ disableMentions: 'everyone', ws: { properties: { $browser: 'Discord Android' } } })
 const config = require("./Structures/jsons/config.json");
 const { Manager } = require("erela.js");
 const Spotify  = require("erela.js-spotify");
 const clientID = config.clientID;
 const clientSecret = config.clientSecret;
-const glob = require('glob')
+const glob = require('glob');
 
 bot.idiomas = {}
-require('./idiomas/pt')(bot)
-require('./idiomas/en')(bot)
+require('./languages/pt')(bot)
+require('./languages/en')(bot)
 
 bot.idioma = new Enmap({name:'idiomas'})
 bot.commands = new Discord.Collection();
@@ -90,7 +90,6 @@ bot.manager = new Manager({
     bot.once("ready", () => {
         bot.manager.init(bot.user.id);
     });
- 
 
     bot.on("raw", d => bot.manager.updateVoiceState(d));
 

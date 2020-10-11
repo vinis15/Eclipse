@@ -2,7 +2,6 @@ const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 const API = require("../../Structures/extensions/utils")
 const config = require("../../Structures/jsons/config.json")
-const emojis = require("../../Structures/jsons/emojis.json")
 module.exports.run = async(bot, message, args, idioma) => {
     const player = message.client.manager.players.get(message.guild.id);
 
@@ -16,7 +15,7 @@ module.exports.run = async(bot, message, args, idioma) => {
     .setThumbnail(thumbnail)
     .setTimestamp()
     .setDescription(stripIndents`
-            ${player.playing ? emojis.play.id : emojis.pause.id} **${title}** \`(${API.format(duration)})(${API.format(player.position)})\` \n${idioma.np.por} **${author}**
+            ${player.playing ? API.emojis.play.id : API.emojis.pause.id} **${title}** \`(${API.format(duration)})(${API.format(player.position)})\` \n${idioma.np.por} **${author}**
             `);
     
             return message.channel.send(embed);

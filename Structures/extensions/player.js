@@ -82,23 +82,6 @@ module.exports = Structure.extend('Player', Player => {
             });
             return this;
         }
-        clearEffects() {
-            this.speed = 1;
-            this.pitch = 1;
-            this.rate = 1;
-            this.bassboost = false;
-            this.nightcore = false;
-            this.vaporwave = false;
-
-            this.clearEQ();
-
-            this.node.send({
-                op: "filters",
-                guildId: this.guild
-            });
-            
-            return this;
-        }
     }
     return boneeplayer;
 });

@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 
     if(player.queue.size <= 1) return message.channel.send(idioma.skip.semMusica)
     
-    player.stop();
+    return player.stop();
 }
 
 exports.conf = {

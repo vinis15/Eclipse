@@ -16,7 +16,7 @@ module.exports.run = async(bot, message, args, idioma) => {
 
     if(player.vaporwave == true) {
         player.setVaporwave(false)
-        return message.channel.semd(idioma.vaporwave.desativado)
+        return message.channel.send(idioma.vaporwave.desativado)
     }
 }
 
