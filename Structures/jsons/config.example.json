@@ -1,0 +1,8 @@
+{
+    "token": "TOKEN",
+    "prefix": "PREFIXO",
+    "versão": "VERSÃO",
+    "color": "cor",
+    "clientID": "Spotify ID",
+    "clientSecret": "Spotify Secret"
+}

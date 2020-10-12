@@ -12,10 +12,9 @@ module.exports.run = async(bot, message, args, idioma) => {
     const embed = new MessageEmbed()
     .setColor(config.color)
     .setAuthor("NowPlaying.", message.author.avatarURL({dynamic: true, size: 2048}))
-    .setThumbnail(thumbnail)
     .setTimestamp()
     .setDescription(stripIndents`
-            ${player.playing ? API.emojis.play.id : API.emojis.pause.id} **${title}** \`(${API.format(duration)})(${API.format(player.position)})\` \n${idioma.np.por} **${author}**
+            ${player.playing ? API.emojis.play.id : API.emojis.pause.id} **${title}** \`(${API.time2(duration)})(${API.time2(player.position)})\` \n${idioma.np.por} **${author}**
             `);
     
             return message.channel.send(embed);

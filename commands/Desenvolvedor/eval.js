@@ -3,9 +3,8 @@ const config = require("../../Structures/jsons/config.json")
 const API = require("../../Structures/extensions/utils")
 
 module.exports.run = async (bot, message, args) => {
-if(config.eval.includes(message.author.id) == false) {
-    return message.channel.send("Sem perm irmão")
-}
+    const player = message.client.manager.players.get(message.guild.id);
+    if(!API.eval.includes(message.author.id)) return message.reply('sem perm')
         try {
             if(!args.join(' ')) return message.reply('Escreve ai')
             let code = await eval(args.join(" "));

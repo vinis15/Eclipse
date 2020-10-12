@@ -1,7 +1,6 @@
 const moment = require("moment")
 require("moment-duration-format")
 const byteSize = require('byte-size')
-moment.locale('pt-br')
 const API = {}
 
 API.time = function(s) {
@@ -44,7 +43,7 @@ API.time2 = function(s) {
     var meses = parseInt(Math.floor(days / 30));
     days = parseInt(days % 30);
     
-    return (meses > 0 ? pad(meses) + 'm, ' : "") + (days > 0 ? pad(days) + 'd, ' : "") + (hrs > 0 ? pad(hrs) + 'h, ' : "") + (mins > 0 ? pad(mins) + 'm ' : "") + (pad(secs) + 's')
+    return (meses > 0 ? pad(meses) + 'm, ' : "") + (days > 0 ? pad(days) + 'd, ' : "") + (hrs > 0 ? pad(hrs) + 'h, ' : "") + (mins > 0 ? pad(mins) + 'm ' : "") + (pad(secs) + 's' )
 }
 
 API.status = function(status) {
@@ -57,10 +56,6 @@ API.badges = function(badges) {
 
 API.bytes = function(size) {
     return (byteSize(size))
-}
-
-API.format = function(numero) {
-    return (moment.duration(numero).format("Y:M:w:d:hh:mm:ss"))
 }
 
 API.moment = function(numero, formato) {
@@ -85,6 +80,8 @@ API.emojis = {
         "nome": "pause"
     }
 }
+
+API.eval = ["422002630106152970", "672652538880720896", "704468807229505637"]
 
 
 module.exports = API

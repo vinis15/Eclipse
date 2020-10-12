@@ -93,8 +93,8 @@ module.exports.run = async(bot, message, args, idioma) => {
 
       let embed4 = new MessageEmbed()
       embed4.setColor(config.color)
-      embed3.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
-      embed3.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n${idioma.play.duracao} ${API.time2(track.duration)}`)
+      embed4.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+      embed4.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n${idioma.play.duracao} ${API.time2(track.duration)}`)
       if(!player.playing && !player.paused && !player.queue.length) player.play();
       return message.channel.send(embed4);
     }

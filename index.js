@@ -7,9 +7,10 @@ const bot = new Discord.Client({ disableMentions: 'everyone', ws: { properties: 
 const config = require("./Structures/jsons/config.json");
 const { Manager } = require("erela.js");
 const Spotify  = require("erela.js-spotify");
-const clientID = config.clientID;
-const clientSecret = config.clientSecret;
 const glob = require('glob');
+const clientID = config.clientID
+const clientSecret = config.clientSecret
+
 
 bot.idiomas = {}
 require('./languages/pt')(bot)
