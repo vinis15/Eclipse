@@ -47,17 +47,23 @@ Entre em contato com `BONEE#9999` ou abra um **issue**!
 
 ```npm i -g --add-python-to-path --vs2015 --production windows-build-tools```
 
-```npm i better-sqlite3```
-
+* Em seguida:
 ```npm i```
 
 #### No Linux:
 
-```npm i better-sqlite3```
-
 ```npm i```
 
+#### No macOS:
+
+Instale o [XCode](https://developer.apple.com/xcode/download)
+Após instalar o XCode vá em Preferences, Downloads, e instale **Command Line Tools**.
+
 * Em seguida use:
-```node .```
+```npm i```
+
+## Inicialização
+
+* Abra o terminal/command line no diretório onde você baixou o código e execute `node .`
 
 O bot deve estar online e funcionando!
