@@ -35,7 +35,7 @@ O Eclipse contém comandos de música! Ouça aquele batidão em alta qualidade c
 
 
 #### Dúvidas? Achou um erro?
-Entre em contato com `BONEE#1234` ou abra um **issue**!
+Entre em contato com `BONEE#9999` ou abra um **issue**!
 
 ## Como usar?
 
