@@ -22,6 +22,8 @@ O Eclipse contém comandos de música! Ouça aquele batidão em alta qualidade c
 
 </details>
 
+## Filtros para música
+O Eclipse tambem contem filtros de música.
 <details>
   <summary>Filtros de música <b>BETA</b></summary>
   <br>
