@@ -20,7 +20,7 @@ exports.conf = {
 }
 exports.help = {
     nome: "shuffle",
-    descrição: "",
+    descrição: "Embaralha a queue",
     uso: "Embaralha a queue",
     categoria: "Música"
 }

@@ -17,5 +17,5 @@ exports.help = {
     nome: "convite",
     descrição: "Convite do bot",
     uso: "convite",
-    categoria: "Outros"
+	categoria: "Outros"
 }

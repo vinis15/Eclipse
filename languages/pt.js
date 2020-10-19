@@ -11,7 +11,12 @@ module.exports = client => {
       tocando: "Tocando agora",
       pedido: "Requisitado por",
       saindo: "Saindo do canal de voz. Acabaram as músicas",
-      erro: "Erro ao reproduzir a faixa"
+      erro: "Erro ao reproduzir a faixa",
+      saindo2: "Eu vou sair do canal em",
+      final: "minutos",
+      solo: "Sai do canal de voz pois fiquei sozinho.",
+      falta: "Saindo do canal em",
+      minutos: "minutos"
     },
     emojify: {
       args: "de um texto para converter",
@@ -170,9 +175,9 @@ module.exports = client => {
       naota: "Por favor se conecte em algum canal de voz",
       mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
     },
-    fxoff: {
-      naotem: "Não há filtros para limpar",
-      tem: "Filtros desativdos",
+    tremolo: {
+      ativado: "Filtro tremolo ativado",
+      desativado: "Filtro tremolo desativado",
       nada: "Não há nada tocando nesta guilda",
       naota: "Por favor se conecte em algum canal de voz",
       mesmo: "Por favor se conecte ao mesmo canal de voz que eu"

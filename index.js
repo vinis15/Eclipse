@@ -23,7 +23,7 @@ bot.aliases = new Discord.Collection();
 
 glob(__dirname+'/commands/*/*.js', function (er, files) {
     if(er) console.log(er)
-    files.forEach(f=>{
+    files.forEach(f => {
         let props = require(`${f.replace('.js', '')}`)
         bot.commands.set(props.help.nome,props)
         for (const aliase of props.conf.aliase){
@@ -50,7 +50,7 @@ fs.readdir("./events/", (err, files) => {
 require("./Structures/extensions/player")
 bot.manager = new Manager({
     nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, identifier: "LUA"}],
-    plugins: [new Spotify({clientID, clientSecret})],
+    plugins: [ new Spotify({clientID, clientSecret}) ],
     autoPlay: true,
     send: (id, payload) => {
       const guild = bot.guilds.cache.get(id);
@@ -76,8 +76,28 @@ bot.manager = new Manager({
             player.destroy()
         }
     })
-    .on("trackEnd", (player, track) => {
+    .on("trackEnd", player => {
         if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
+    })
+    .on("trackStuck", (player, track, payload) => {
+        const channel = bot.channels.cache.get(player.textChannel)
+        let idioma = bot.idioma.get(channel.guild.id) || 'pt'
+        if(idioma === 'en') idioma = bot.idiomas.en
+        if(idioma === 'pt') idioma = bot.idiomas.pt
+        if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
+        channel.send(`${idioma.erela.erro}`)
+    })
+    .on("trackError", (player, track, payload) => {
+        const channel = bot.channels.cache.get(player.textChannel)
+        let idioma = bot.idioma.get(channel.guild.id) || 'pt'
+        if(idioma === 'en') idioma = bot.idiomas.en
+        if(idioma === 'pt') idioma = bot.idiomas.pt
+        if(!player.get("message")) { return }
+        if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
+        channel.send(`${idioma.erela.erro}`)
+    })
+    .on("playerMove", (player, currentChannel, newChannel) => {
+        player.voiceChannel = bot.channels.cache.get(newChannel);
     })
     .on("queueEnd", player => {
         const channel = bot.channels.cache.get(player.textChannel);
@@ -85,7 +105,7 @@ bot.manager = new Manager({
         if(idioma === 'en') idioma = bot.idiomas.en
         if(idioma === 'pt') idioma = bot.idiomas.pt
         channel.send(idioma.erela.saindo);
-        player.destroy();
+        player.destroy()
     });
 
     bot.once("ready", () => {

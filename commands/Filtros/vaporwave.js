@@ -28,7 +28,7 @@ exports.conf = {
 }
 exports.help = {
     nome: "vaporwave",
-    descrição: "Ativa o filtro nightcore na música",
+    descrição: "Ativa o filtro vaporwave na música",
     uso: "vaporwave",
     categoria: "Filtros"
 }

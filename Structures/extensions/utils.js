@@ -1,6 +1,8 @@
+console.log("[UTILS] - Carregado com sucesso".brightCyan)
 const moment = require("moment")
 require("moment-duration-format")
 const byteSize = require('byte-size')
+moment.locale("pt-br")
 const API = {}
 
 API.time = function(s) {

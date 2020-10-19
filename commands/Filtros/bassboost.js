@@ -27,7 +27,7 @@ exports.conf = {
 }
 exports.help = {
     nome: "bassboost",
-    descrição: "",
+    descrição: "Coloca um pouco de grave na música",
     uso: "Coloca um pouco de grave na música",
     categoria: "Filtros"
 }

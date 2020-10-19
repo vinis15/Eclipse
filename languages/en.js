@@ -11,7 +11,12 @@ module.exports = client => {
       tocando: "Playing now",
       pedido: "Requested by",
       saindo: "Leaving the voice channel. No more songs",
-      erro: "Error playing the track"
+      erro: "Error playing the track",
+      saindo2: "I will leave the channel in",
+      final: "minutes",
+      solo: "I left because I was left alone.",
+      falta: "Leaving the channel at",
+      minutos: "minutes"
     },
     emojify: {
       args: "enter text to convert",
@@ -173,6 +178,13 @@ module.exports = client => {
     fxoff: {
       naotem: "No filters to clean",
       tem: "Filters off",
+      nada: "There is nothing playing in this guild",
+      naota: "Please connect to any voice channel",
+      mesmo: "Please connect to the same voice channel as me"
+    },
+    tremolo: {
+      ativado: "Tremolo filter on",
+      desativado: "Tremolo filter off",
       nada: "There is nothing playing in this guild",
       naota: "Please connect to any voice channel",
       mesmo: "Please connect to the same voice channel as me"

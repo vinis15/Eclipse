@@ -3,19 +3,24 @@ const config = require("../../Structures/jsons/config.json")
 const { MessageEmbed } = require("discord.js")
 module.exports.run = async(bot, message, args, idioma) => {
 
+  let play = message.client.manager.players.get(message.guild.id)
+
   const { channel } = message.member.voice;
 
   if(!channel) return message.reply(idioma.play.conectar);
   if(!args.length) return message.reply(idioma.play.nada);
 
-  const player = message.client.manager.create({
+  if(!play) {
+    const player = message.client.manager.create({
     guild: message.guild.id,
     voiceChannel: channel.id,
     textChannel: message.channel.id,
     selfDeafen: true,
-  });
+    });
+    player.connect();
+  }
 
-  player.connect();
+  const player = message.client.manager.players.get(message.guild.id)
 
   const search = args.join(' ');
   let res;
@@ -34,8 +39,8 @@ module.exports.run = async(bot, message, args, idioma) => {
     case 'NO_MATCHES':
       if (!player.queue.current) player.destroy();
       return message.reply(idioma.play.semResultado);
-    case 'TRACK_LOADED':
-      player.queue.add(res.tracks[0]);
+      case 'TRACK_LOADED':
+      await player.queue.add(res.tracks[0]);
 
       if (!player.playing && !player.paused && !player.queue.length) player.play();
       let embed = new MessageEmbed()
@@ -46,7 +51,7 @@ module.exports.run = async(bot, message, args, idioma) => {
       return message.channel.send(embed)
 
     case 'PLAYLIST_LOADED':
-      player.queue.add(res.tracks);
+      await player.queue.add(res.tracks);
 
       if (!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
       let embed2 = new MessageEmbed()
@@ -89,7 +94,7 @@ module.exports.run = async(bot, message, args, idioma) => {
       if (index < 0 || index > max - 1) return message.reply(idioma.play.numeroInvalido + max + ')');
 
       const track = res.tracks[index];
-      player.queue.add(track);
+      await player.queue.add(track);
 
       let embed4 = new MessageEmbed()
       embed4.setColor(config.color)

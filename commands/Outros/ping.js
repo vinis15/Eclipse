@@ -19,5 +19,5 @@ exports.help = {
     nome: "ping",
     descrição: "Mostra o ping do bot",
     uso: "",
-    categoria: "Outros"
+	categoria: "Outros"
 }

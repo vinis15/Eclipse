@@ -1,8 +1,9 @@
 const { bot } = require("../index");
-const { MessageEmbed } = require("discord.js")
+const { MessageEmbed, WebhookClient } = require("discord.js")
 const config = require("../Structures/jsons/config.json");
 
 bot.on("guildDelete", guild => {
+  const hook = new WebhookClient(config.hook.id, config.hook.token);
   const embed = new MessageEmbed()
   embed.setColor(config.color)
   embed.setTitle(`Saida de um servidor ${guild.name}`)
@@ -13,7 +14,8 @@ bot.on("guildDelete", guild => {
     { name: "Região", value: `${guild.region}`, inline: true },
     { name: "Dono", value: `${guild.owner.user.tag}`, inline: true },
     { name: "Nome do server", value: `${guild.name}`, inline: true },
-    { name: "ID", value: `${guild.id}`, inline: true }
+    { name: "ID", value: `${guild.id}`, inline: true },
+    { name: "Shard", value: `${guild.shard.id}`, inline: true }
   )
-  bot.users.cache.get("672652538880720896").send({embed})
+  return hook.send(embed)
 })

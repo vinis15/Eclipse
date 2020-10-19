@@ -22,7 +22,7 @@ exports.conf = {
 }
 exports.help = {
     nome: "volume",
-    descrição: "",
+    descrição: "Aumenta ou diminiu o volume",
     uso: "Aumenta ou diminiu o volume",
     categoria: "Música"
 }

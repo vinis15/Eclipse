@@ -8,7 +8,7 @@ module.exports.run = async(bot, message, args, idioma) => {
     if(!player) return message.channel.send(idioma.np.nada)
 
 
-    const { title, author, duration, thumbnail } = player.queue.current;
+    const { title, author, duration } = player.queue.current;
     const embed = new MessageEmbed()
     .setColor(config.color)
     .setAuthor("NowPlaying.", message.author.avatarURL({dynamic: true, size: 2048}))

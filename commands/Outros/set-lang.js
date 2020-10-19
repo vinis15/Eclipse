@@ -21,5 +21,5 @@ exports.help = {
     nome: "lang",
     descrição: "Altera o idioma na guilda",
     uso: "lang",
-    categoria: "Outros"
+	categoria: "Outros"
 }
