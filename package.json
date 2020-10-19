@@ -13,6 +13,7 @@
     "@sindresorhus/to-milliseconds": "^1.2.0",
     "ascii-table": "0.0.9",
     "better-sqlite3": "^7.1.1",
+    "better-sqlite-pool": "latest",
     "byte-size": "^7.0.0",
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
