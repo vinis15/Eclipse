@@ -8,19 +8,22 @@ module.exports.run = async(bot, message, args, idioma) => {
   const { channel } = message.member.voice;
 
   if(!channel) return message.reply(idioma.play.conectar);
-  if(!args.length) return message.reply(idioma.play.nada);
+  if(!args.length) return message.reply(idioma.play.nada)
 
   if(!play) {
     const player = message.client.manager.create({
-    guild: message.guild.id,
-    voiceChannel: channel.id,
-    textChannel: message.channel.id,
-    selfDeafen: true,
+      guild: message.guild.id,
+      voiceChannel: channel.id,
+      textChannel: message.channel.id,
+      selfDeafen: true,
     });
+    if(!channel.joinable) { return message.channel.send(idioma.play.semPerm) }
     player.connect();
   }
 
   const player = message.client.manager.players.get(message.guild.id)
+
+  if(!player.options.voiceChannel === channel.id) { return message.channel.send(idioma.play.tocandoja) }
 
   const search = args.join(' ');
   let res;

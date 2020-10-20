@@ -15,8 +15,8 @@ module.exports.run = async (bot, message, args) => {
             .addField('🚩 Saída', `\`\`\`js\n${code.slice(0, 1010)}\n\`\`\``)
             if(code.length > 1010) embed.addField('🚩 Continuação do Resultado', `\`\`\`js\n${code.slice(1010, 2020)}\n\`\`\``)
             message.reply({embed})
-        } catch(e) {
-            message.channel.send(`\`\`\`js\n${e}\n\`\`\``);
+        } catch(err) {
+            message.channel.send(`\`\`\`js\n${err}\n\`\`\``);
         }
 }
 exports.conf = {
@@ -30,5 +30,4 @@ exports.help = {
   descrição: "Roda codigos",
   uso: "eval <CODIGO>",
   categoria: "Desenvolvedor",
-  categoria_en: "Developer"
 }

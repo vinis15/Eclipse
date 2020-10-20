@@ -15,10 +15,7 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
     let guilda = player.options.guild
 
     if(bot.guilds.cache.get(guilda).channels.cache.get(canal).members.size == 1) {
-        await channel.send(`${idioma.erela.falta} **2** ${idioma.erela.minutos}`)
-        setTimeout(() => {
-            channel.send(idioma.erela.solo) 
-            player.destroy()
-        }, 120000)
+        channel.send(idioma.erela.solo) 
+        player.destroy()
     }
 })

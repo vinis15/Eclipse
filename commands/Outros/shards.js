@@ -23,7 +23,7 @@ module.exports.run = async(bot, message, args, idioma) => {
 	let players = await bot.shard.fetchClientValues('manager.players.size')
 
     for(let i = 0; i < bot.options.shardCount; i++) {
-        table.addRow(i, API.time2(uptime[i]), '~' + ping[i] + 'ms', API.bytes(memoria[i]).value + API.bytes(memoria[i]).unit, servidores[i].toLocaleString('pt-br'), players[i].toLocaleString('pt-BR'), usuarios[i].toLocaleString('pt-BR'))
+        table.addRow(i === message.guild.shard.id ? i + '*' : i, API.time2(uptime[i]), '~' + ping[i] + 'ms', API.bytes(memoria[i]).value + API.bytes(memoria[i]).unit, servidores[i].toLocaleString('pt-br'), players[i].toLocaleString('pt-BR'), usuarios[i].toLocaleString('pt-BR'))
     }
 
     let total_servers = servidores.reduce((prev, val) => prev + val)
@@ -37,7 +37,7 @@ module.exports.run = async(bot, message, args, idioma) => {
 
     table.addRow('TOTAL', '-', '~' + Math.round(media) + 'ms', API.bytes(total_mem, 2).value + API.bytes(total_mem, 2).unit, total_servers.toLocaleString('pt-BR'), total_players, total_users.toLocaleString('pt-BR'))
 
-    message.channel.send(table.toString(), { code: 'prolog' })
+    message.channel.send(table.toString(), { code: 'apache' })
 
     return table.clearRows()
 
