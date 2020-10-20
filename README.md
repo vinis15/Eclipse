@@ -1,4 +1,4 @@
-# EclipseBot
+# Eclipse
 
 ## Comandos diversos
 O Eclipse contém comandos de úteis para serem usados no dia a dia!
@@ -7,7 +7,7 @@ O Eclipse contém comandos de úteis para serem usados no dia a dia!
 <summary>Comandos diversos</summary>
 <br>
 
-`e.userinfo`, `e.avatar`, `e.emojify`, `e.calc`
+`e.userinfo`, `e.avatar`, `e.emojify`, `e.shards`, `e.botinfo`
 
 </details>
 
@@ -15,12 +15,20 @@ O Eclipse contém comandos de úteis para serem usados no dia a dia!
 O Eclipse contém comandos de música! Ouça aquele batidão em alta qualidade com seus amigos.
 
 <details>
-<summary>Comandos de Música <b>BETA</b></summary>
+<summary>Comandos de Música </summary>
 <br>
 
-`e.loop`, `e.pause`, `e.play`, `e.queue`, `e.resume`, `e.shuffle`, `e.skip`, `e.stop`, `e.volume`, `e.nodes`
+`e.pause`, `e.play`, `e.queue`, `e.resume`, `e.shuffle`, `e.skip`, `e.stop`, `e.volume`, `e.nodes`
 
 </details>
+
+## Filtros para música
+O Eclipse tambem contem filtros de música.
+<details>
+  <summary>Filtros de música <b>BETA</b></summary>
+  <br>
+  
+  `e.nightcore`, `e.tremolo`, `e.vaporwave`, `e.bassboost`
 
 ### Créditos
 [LavaLink](https://github.com/Frederikam/Lavalink#server-configuration)
