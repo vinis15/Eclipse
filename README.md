@@ -30,6 +30,8 @@ O Eclipse tambem contem filtros de música.
   
   `e.nightcore`, `e.tremolo`, `e.vaporwave`, `e.bassboost`
 
+</details>
+
 ### Créditos
 [LavaLink](https://github.com/Frederikam/Lavalink#server-configuration)
 
