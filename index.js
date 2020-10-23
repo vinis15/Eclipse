@@ -16,9 +16,10 @@ bot.idiomas = {}
 require('./languages/pt')(bot)
 require('./languages/en')(bot)
 
-bot.idioma = new Enmap({name:'idiomas'})
+bot.idioma = new Enmap({ name:'idiomas' })
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
+bot.manutencao = new Enmap({ name: 'manutencao' })
 
 
 glob(__dirname+'/commands/*/*.js', function (er, files) {

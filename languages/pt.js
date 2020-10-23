@@ -181,6 +181,9 @@ module.exports = client => {
       nada: "Não há nada tocando nesta guilda",
       naota: "Por favor se conecte em algum canal de voz",
       mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
+    },
+    manutencao: {
+      ativado: "O modo manutenção esta ativado volte mais tarde"
     }
   }
 }

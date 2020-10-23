@@ -5,15 +5,15 @@ module.exports = Structure.extend('Player', Player => {
     class boneeplayer extends Player {
         constructor(...args) {
             super(...args)
+
             this.speed = 1;
             this.pitch = 1;
             this.rate = 1;
-            this.frequency = 0;
-            this.depth = 0;
+            this.gain = 0;
+            this.band = 0;
             this.nightcore = false;
             this.vaporwave = false;
             this.bassboost = false;
-            this.tremolo = false;
         }
 
         setSpeed(speed) {
@@ -24,19 +24,19 @@ module.exports = Structure.extend('Player', Player => {
             return this;
         }
 
-        setFrequency(frequency) {
-            if (isNaN(frequency))
-                throw new RangeError("Player#setFrequency() Speed must be a number.");
-            this.pitch = Math.max(Math.min(frequency, 5), 0.05);
-            this.setFilter(frequency)
+        setGain(gain) {
+            if (isNaN(gain))
+                throw new RangeError("Player#setGain() Speed must be a number.");
+            this.gain = Math.max(Math.min(gain, 5), 0.05);
+            this.setEqualizer(gain)
             return this;
         }
 
-        setDepth(depth) {
-            if (isNaN(depth))
-                throw new RangeError("Player#setDepth() Speed must be a number.");
-            this.depth = Math.max(Math.min(depth, 5), 0.05);
-            this.setFilter(depth)
+        setBand(band) {
+            if (isNaN(band))
+                throw new RangeError("Player#setBand() Speed must be a number.");
+            this.band = Math.max(Math.min(band, 5), 0.05);
+            this.setEqualizer(band)
             return this;
         }
 
@@ -57,6 +57,7 @@ module.exports = Structure.extend('Player', Player => {
                 this.vaporwave = false;
                 this.tremolo = false
                 this.setBassboost(false);
+                this.bassboost = false;
                 this.setTimescale(1.2999999523162842, 1.2999999523162842, 1);
             } else this.setTimescale(1, 1, 1);
             return this;
@@ -69,26 +70,12 @@ module.exports = Structure.extend('Player', Player => {
             this.vaporwave = vaporwave;
             if(vaporwave) {
                 this.nightcore = false;
+                this.setBassboost(false)
                 this.bassboost = false;
-                this.tremolo = false;
                 this.setTimescale(0.8500000238418579, 0.800000011920929, 1);
             } else this.setTimescale(1, 1, 1);
             return this;
         }
-
-        setTremolo(tremolo) {
-            if (typeof tremolo !== "boolean")
-            throw new RangeError('Player#Tremolo() Tremolo can only be "true" or "false".');
-
-            this.tremolo = tremolo;
-            if(tremolo) {
-                this.nightcore = false;
-                this.vaporwave = false;
-                this.bassboost = false;
-                this.setFilter(2.0, 0.5);
-            } else this.setFilter(0.1, 0.1);
-            return this;
-       }
 
         setBassboost(bassboost) {
             if (typeof bassboost !== "boolean")
@@ -98,23 +85,46 @@ module.exports = Structure.extend('Player', Player => {
             if(bassboost) {
                 this.nightcore = false;
                 this.vaporwave = false;
-                this.tremolo = false;
-                this.setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.5 })));
-            } else this.setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.0 })));
+                this.setVaporwave(false)
+                this.setNightcore(false)
+                this.setEqualizer(1, 0.65);
+            } else this.clearEQ();
             return this;
         }
 
-        setFilter(frequency, depth) {
-            this.frequency = frequency || this.frequency;
-            this.depth = depth || this.depth;
+        setEqualizer(band, gain) {
+            this.band = band || this.band;
+            this.gain = gain || this.gain;
 
             this.node.send({
                 op: "filters",
                 guildId: this.guild,
-                tremolo: {
-                    frequency: this.frequency,
-                    depth: this.depth
-                },
+                equalizer: [
+                    {
+                        band: this.band,
+                        gain: this.gain
+                    },
+                    {
+                        band: this.band,
+                        gain: this.gain
+                    },
+                    {
+                        band: this.band,
+                        gain: this.gain
+                    },
+                    {
+                        band: this.band,
+                        gain: this.gain
+                    },
+                    {
+                        band: this.band,
+                        gain: this.gain
+                    },
+                    {
+                        band: this.band,
+                        gain: this.gain
+                    }
+                ]
             });
             return this;
         }

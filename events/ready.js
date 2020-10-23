@@ -11,5 +11,5 @@ bot.on("ready", () => {
 
 
 async function setStatus(){
-    bot.user.setActivity(`[${bot.manager.players.size}] players`, { type: "LISTENING" })
+    bot.user.setActivity(`[${bot.manager.players.size}] players`, { type: 5 })
 }

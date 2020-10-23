@@ -16,6 +16,6 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
 
     if(bot.guilds.cache.get(guilda).channels.cache.get(canal).members.size == 1) {
         channel.send(idioma.erela.solo) 
-        player.destroy()
+        return player.destroy()
     }
 })

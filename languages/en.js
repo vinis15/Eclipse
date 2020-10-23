@@ -182,12 +182,8 @@ module.exports = client => {
       naota: "Please connect to any voice channel",
       mesmo: "Please connect to the same voice channel as me"
     },
-    tremolo: {
-      ativado: "Tremolo filter on",
-      desativado: "Tremolo filter off",
-      nada: "There is nothing playing in this guild",
-      naota: "Please connect to any voice channel",
-      mesmo: "Please connect to the same voice channel as me"
+    manutencao: {
+      ativado: "Maintenance mode is activated, come back later"
     }
   }
 }

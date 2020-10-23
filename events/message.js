@@ -2,6 +2,7 @@ const config = require("../Structures/jsons/config.json");
 const { bot } = require("../index");
 const ptbr = JSON.parse(JSON.stringify(bot.idiomas.pt))
 const enus = JSON.parse(JSON.stringify(bot.idiomas.en))
+const API = require("../Structures/extensions/utils")
 bot.on("message", async message => {
     if(message.author.bot) return;
     let prefix;
@@ -25,7 +26,11 @@ bot.on("message", async message => {
     }
     if(message.content.startsWith('<@') && message.content.endsWith(bot.user.id + '>')) return message.channel.send(`${idioma.message.inico} **${message.author.tag}**, ${idioma.message.meio} \`${config.prefix}\`, ${idioma.message.use} \`${config.prefix}ajuda\` ${idioma.message.ou} \`${config.prefix}help\` ${idioma.message.final} ❤️`)
     if(!message.content.startsWith(prefix)) return;
-    if(!message.content.startsWith(prefix2)) return;
+    if(!API.eval.includes(message.author.id)) {
+        if(bot.manutencao.get('Estado')) {
+            return message.reply(idioma.manutencao.ativado)
+        }
+    }
     let commandfile = bot.commands.get(cmd.slice(prefix.length));
     if(!commandfile) commandfile = bot.aliases.get(cmd.slice(prefix.length).toLowerCase())
     if(!message.guild) return;
