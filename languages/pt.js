@@ -122,7 +122,7 @@ module.exports = client => {
       com: "**com**",
       musicas: "**músicas**",
       cancelar1: "Cancelar", 
-      cancelar2: "Digite `cancelar` para canelar",
+      cancelar2: "Digite `cancelar` para cancelar",
       acabouTempo: "o tempo de seleção acabou",
       cancelado: "Seleção cancelada",
       numeroInvalido: "O número providenciado é muito pequeno ou muito grande (1-",
@@ -184,6 +184,10 @@ module.exports = client => {
     },
     manutencao: {
       ativado: "O modo manutenção esta ativado volte mais tarde"
+    },
+    ascii: {
+      args: "Forneça algum texto",
+      grande: "Forneça um texto com menos de 13 caracteres"
     }
   }
 }

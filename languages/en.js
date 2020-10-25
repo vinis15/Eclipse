@@ -184,6 +184,10 @@ module.exports = client => {
     },
     manutencao: {
       ativado: "Maintenance mode is activated, come back later"
+    },
+    ascii: {
+      args: "Please provide some text",
+      grande: "Please provide text shorter than 13 characters"
     }
   }
 }
