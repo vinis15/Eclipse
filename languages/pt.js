@@ -93,6 +93,22 @@ module.exports = client => {
       nada: "Não tem nada tocando nesta guilda",
       already: "A musica ja esta pausada"
     },
+    pop: {
+   sucessOff: "Pop desativado com sucesso!",
+   sucessOn: "Pop ativado com sucesso!"
+    },
+    soft: {
+        sucessOff: "Soft desativado com sucesso!",
+        sucessOn: "Soft ativado com sucesso!"
+         },
+    join: {
+      joinErr: "Não consegui achar esse canal.",
+      joinSucess: "Eu entrei no canal"
+    },
+    leave: {
+      err: "Não estou conectado a um canal.",
+      sucess: "Saí do canal."
+    },
     queue: {
       nothing: "Não há nada tocando, infelizmente",
       np: "Tocando agora",
