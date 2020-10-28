@@ -49,7 +49,7 @@ Entre em contato com `BONEE#9999` ou abra um **issue**!
 
 ## Como usar?
 
-* Preencha o arquivo `config.example.json` com as informações necessárias, salve e renomeie para `config.json`
+* Abra a pasta **Structures**, *jsons** e abra e preencha o arquivo `config.example.json` com as informações necessárias, salve e renomeie para `config.json`
 
 * Abra o terminal e de o seguinte comando:
 
