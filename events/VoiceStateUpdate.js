@@ -18,12 +18,4 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
         channel.send(idioma.erela.solo) 
         return player.destroy()
     }
-
-   if (oldState.channel){
-    let entry = await oldState.channel.guild.fetchAuditLogs({
-        type: 'MEMBER_DISCONNECT'
-      }).then(audit => audit.entries.first())
-        if(entry.id != bot.user.id) return;
-        oldState.channel.join()
-   }
 })

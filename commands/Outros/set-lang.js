@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliase: ["lang"]
+    aliase: ["lang", "set-lang", "language"]
 }
 exports.help = {
     nome: "lang",

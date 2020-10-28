@@ -5,7 +5,8 @@ module.exports = client => {
       meio: "meu prefixo é",
       use: "use",
       ou: "ou",
-      final: "para saber meus comandos"
+      final: "para saber meus comandos",
+      desabilitado: "Este comando esta desabilitado"
     },
     erela: {
       tocando: "Tocando agora",
@@ -17,10 +18,6 @@ module.exports = client => {
       solo: "Sai do canal de voz pois fiquei sozinho.",
       falta: "Saindo do canal em",
       minutos: "minutos"
-    },
-    emojify: {
-      args: "de um texto para converter",
-      grande: "o resultado foi muito grande"
     },
     ping: {
       latencia: "**Latência:**"
@@ -34,53 +31,27 @@ module.exports = client => {
       filtros: "Filtros",
       footer: "Não inclua <> ou [], isso significa <> é necessário e [] é opcional"
     },
-    userinfo: {
-      criado: "Conta criada no dia",
-      entrou: "Entrou aqui no dia",
-      emblemas: "Emblemas",
-      não: "Não possui",
-      erro: "Usuário não encontrado!",
-      locale: "pt-BR",
-      invalido: "insira um ID válido de um usuário ou menciona um."
-    },
     convite: {
       menssagem: "Olá",
       menssagem2: "Que bom que gostou das minhas funções",
       link: "Este é o [link de convite]"
     },
-    calc: {
-      erro: "não foi possível calcular.",
-      infinito: "o resultado foi **Infinito**.",
-      args: "insira uma equação."
-    },
     botinfo: {
-      infos: "Minhas informações",
-      versão: "Minha versão",
-      ram: "Memória RAM Usada",
-      sistema: "Sistema Operacional",
-      servidores: "Servidores",
-      usuarios: "Usuários",
-      músic: "Músicas tocando",
-      processador: "Processador"
-    },
-    avatar: {
-      seu: "Seu avatar",
-      de: "Avatar de",
-      erro: "Usuário não encontrado!",
-      invalido: "insira um ID válido de um usuário ou menciona um."
+      status: "Status",
+      servers: "**Estou em:**",
+      users: "**Usuarios:**",
+      tocando: "**Tocando em:**",
+      ping: "**Ping:**",
+      memoria: "**Uso de ram:**",
+      shards: "**Shards:**",
+      guildas: "Servidores",
+      usuarios: "Usuarios",
     },
     setlang: {
       noperm: "Você não tem permissão para trocar o idioma do bot"
     },
     nodes: {
       memoria: "Uso de memoria"
-    },
-    loop: {
-      nada: "Não tem nada tocando nesta guilda",
-      naota: "Você tem que se conectar em algum canal de voz",
-      mesmo: "Se conecte ao mesmo canal de voz que eu",
-      loopon: "O loop foi ativado",
-      loopoff:  "O loop foi desativado"
     },
     np: {
       nada: "Não tem nada tocando nesta guilda",
@@ -92,22 +63,6 @@ module.exports = client => {
       paused: "Musica pausada",
       nada: "Não tem nada tocando nesta guilda",
       already: "A musica ja esta pausada"
-    },
-    pop: {
-   sucessOff: "Pop desativado com sucesso!",
-   sucessOn: "Pop ativado com sucesso!"
-    },
-    soft: {
-        sucessOff: "Soft desativado com sucesso!",
-        sucessOn: "Soft ativado com sucesso!"
-         },
-    join: {
-      joinErr: "Não consegui achar esse canal.",
-      joinSucess: "Eu entrei no canal"
-    },
-    leave: {
-      err: "Não estou conectado a um canal.",
-      sucess: "Saí do canal."
     },
     queue: {
       nothing: "Não há nada tocando, infelizmente",
@@ -138,7 +93,7 @@ module.exports = client => {
       com: "**com**",
       musicas: "**músicas**",
       cancelar1: "Cancelar", 
-      cancelar2: "Digite `cancelar` para cancelar",
+      cancelar2: "Digite `cancelar` para canelar",
       acabouTempo: "o tempo de seleção acabou",
       cancelado: "Seleção cancelada",
       numeroInvalido: "O número providenciado é muito pequeno ou muito grande (1-",
@@ -171,7 +126,7 @@ module.exports = client => {
       semMusica: "Não há músicas na fila, use e.stop"
     },
     bassboost: {
-      ativado: "Bassboost ativado sente o grave",
+      ativado: "Bass ativado sente o som",
       desativado: "Bassboost desativado",
       nada: "Não há nada tocando nesta guilda",
       naota: "Por favor se conecte em algum canal de voz",
@@ -191,19 +146,12 @@ module.exports = client => {
       naota: "Por favor se conecte em algum canal de voz",
       mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
     },
-    tremolo: {
-      ativado: "Filtro tremolo ativado",
-      desativado: "Filtro tremolo desativado",
+    distortion: {
+      ativado: "Filtro distortion ativado",
+      desativado: "Filtro distortion desativado",
       nada: "Não há nada tocando nesta guilda",
       naota: "Por favor se conecte em algum canal de voz",
       mesmo: "Por favor se conecte ao mesmo canal de voz que eu"
     },
-    manutencao: {
-      ativado: "O modo manutenção esta ativado volte mais tarde"
-    },
-    ascii: {
-      args: "Forneça algum texto",
-      grande: "Forneça um texto com menos de 13 caracteres"
-    }
   }
 }

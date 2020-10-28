@@ -11,19 +11,21 @@
   "license": "ISC",
   "dependencies": {
     "@sindresorhus/to-milliseconds": "^1.2.0",
-    "ascii-art": "^2.5.0",
     "ascii-table": "0.0.9",
     "better-sqlite-pool": "latest",
     "better-sqlite3": "^7.1.1",
     "byte-size": "^7.0.0",
+    "canvacord": "^5.0.7",
+    "canvas": "^2.6.1",
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
     "discord-giveaways": "^4.2.1",
+    "discord.bots.gg": "^0.3.0-v1.2",
     "discord.js": "^12.3.1",
+    "discord.js-light": "^3.3.3",
     "enmap": "^5.7.3",
     "erela.js": "latest",
     "erela.js-spotify": "latest",
-    "figlet": "^1.5.0",
     "fs": "0.0.1-security",
     "get-image-colors": "^4.0.0",
     "glob": "^7.1.6",
@@ -38,6 +40,8 @@
     "os-utils": "0.0.14",
     "path": "^0.12.7",
     "pretty-ms": "^7.0.1",
-    "url": "^0.11.0"
+    "superagent": "^6.1.0",
+    "url": "^0.11.0",
+    "utf-8-validate": "^5.0.2"
   }
 }

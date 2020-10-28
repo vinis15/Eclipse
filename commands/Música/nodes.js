@@ -2,16 +2,18 @@ const { MessageEmbed } = require("discord.js")
 const config = require("../../Structures/jsons/config.json")
 const API = require("../../Structures/extensions/utils")
 module.exports.run = async(bot, message, args, idioma) => {
+    let node = bot.manager.nodes.get("LUA")
     let embed = new MessageEmbed()
+    embed.setTimestamp()
     embed.setColor(config.color)
-    embed.setAuthor(`${message.author.tag}`, `${message.author.avatarURL({dynamic: true, size: 2048})}`)
-    embed.addFields(
-        { name: "Players", value: `\`\`\`ini\n[ ${message.client.manager.nodes.get("LUA").stats.playingPlayers} ]\`\`\``, inline: true },
-        { name: `${idioma.nodes.memoria}`, value: `\`\`\`diff\n- ${(message.client.manager.nodes.get("LUA").stats.memory.used/1024/1024).toFixed(2)}MB\`\`\``, inline: true },
-        { name: "Node", value: `\`\`\`ini\n[ LUA ]\`\`\``, inline: true },
-        { name: "Uptime", value: `\`\`\`glsl\n# ${API.time2(message.client.manager.nodes.get("LUA").stats.uptime)}\`\`\``, inline: false }
-    )
-    message.channel.send({embed})
+    embed.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+    embed.setAuthor(bot.user.username, bot.user.displayAvatarURL({ size: 2048 }))
+    embed.setDescription(`\`\`\`diff\n\n- [ NODE ]
+
+--- Uptime ${node.stats.uptime === 0 ? 'Offline' : API.time2(node.stats.uptime)}
+--- Players ${node.stats.playingPlayers}
+--- ${idioma.nodes.memoria} ${API.bytes(node.stats.memory.used).value}${API.bytes(node.stats.memory.used).unit}\`\`\``)
+    await message.channel.send(embed)
 }
 
 exports.conf = {

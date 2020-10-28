@@ -5,15 +5,13 @@ module.exports = Structure.extend('Player', Player => {
     class boneeplayer extends Player {
         constructor(...args) {
             super(...args)
-
             this.speed = 1;
             this.pitch = 1;
             this.rate = 1;
-            this.gain = 0;
-            this.band = 0;
             this.nightcore = false;
             this.vaporwave = false;
             this.bassboost = false;
+            this.distortion = false;
         }
 
         setSpeed(speed) {
@@ -21,22 +19,6 @@ module.exports = Structure.extend('Player', Player => {
                 throw new RangeError("Player#setSpeed() Speed must be a number.");
             this.speed = Math.max(Math.min(speed, 5), 0.05);
             this.setTimescale(speed)
-            return this;
-        }
-
-        setGain(gain) {
-            if (isNaN(gain))
-                throw new RangeError("Player#setGain() Speed must be a number.");
-            this.gain = Math.max(Math.min(gain, 5), 0.05);
-            this.setEqualizer(gain)
-            return this;
-        }
-
-        setBand(band) {
-            if (isNaN(band))
-                throw new RangeError("Player#setBand() Speed must be a number.");
-            this.band = Math.max(Math.min(band, 5), 0.05);
-            this.setEqualizer(band)
             return this;
         }
 
@@ -57,6 +39,8 @@ module.exports = Structure.extend('Player', Player => {
                 this.vaporwave = false;
                 this.tremolo = false
                 this.setBassboost(false);
+                this.distortion = false;
+                this.setDistortion(false)
                 this.bassboost = false;
                 this.setTimescale(1.2999999523162842, 1.2999999523162842, 1);
             } else this.setTimescale(1, 1, 1);
@@ -71,9 +55,28 @@ module.exports = Structure.extend('Player', Player => {
             if(vaporwave) {
                 this.nightcore = false;
                 this.setBassboost(false)
+                this.distortion = false;
+                this.setDistortion(false)
                 this.bassboost = false;
                 this.setTimescale(0.8500000238418579, 0.800000011920929, 1);
             } else this.setTimescale(1, 1, 1);
+            return this;
+        }
+
+        setDistortion(distortion) {
+            if (typeof distortion !== "boolean")
+                throw new RangeError('Player#setDistortion() Distortion can only be "true" or "false"');
+            
+            this.distortion = distortion;
+            if(distortion) {
+                this.nightcore = false;
+                this.vaporwave = false;
+                this.bassboost= false;
+                this.setBassboost(false)
+                this.setNightcore(false)
+                this.setVaporwave(false)
+                this.setDistort(0.5)
+            } else this.clearEQ();
             return this;
         }
 
@@ -87,9 +90,22 @@ module.exports = Structure.extend('Player', Player => {
                 this.vaporwave = false;
                 this.setVaporwave(false)
                 this.setNightcore(false)
-                this.setEqualizer(1, 0.65);
+                this.setEqualizer(1, 0.85);
             } else this.clearEQ();
             return this;
+        }
+
+        setDistort(value) {
+            this.value = value || this.value;
+
+            this.node.send({
+                op: "filters",
+                guildId: this.guild,
+                distortion: {
+                    distortion: this.value
+                }
+            });
+            return this
         }
 
         setEqualizer(band, gain) {
@@ -142,6 +158,21 @@ module.exports = Structure.extend('Player', Player => {
                     pitch: this.pitch,
                     rate: this.rate
                 },
+            });
+            return this;
+        }
+        clearEffects() {
+            this.speed = 1;
+            this.pitch = 1;
+            this.rate = 1;
+            this.bassboost = false;
+            this.nightcore = false;
+            this.vaporwave = false;
+            this.clearEQ();
+
+            this.node.send({
+                op: "filters",
+                guildId: this.guild
             });
             return this;
         }

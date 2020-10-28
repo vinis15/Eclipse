@@ -5,7 +5,8 @@ module.exports = client => {
       meio: "my prefix is",
       use: "use",
       ou: "or",
-      final: "to know my commands"
+      final: "to know my commands",
+      desabilitado: "This command is disabled"
     },
     erela: {
       tocando: "Playing now",
@@ -17,10 +18,6 @@ module.exports = client => {
       solo: "I left because I was left alone.",
       falta: "Leaving the channel at",
       minutos: "minutes"
-    },
-    emojify: {
-      args: "enter text to convert",
-      grande: "the result was very great"
     },
     ping: {
       latencia: "**Latency:**"
@@ -34,53 +31,27 @@ module.exports = client => {
       filtros: "Filters",
       footer: "Do not include <> or [], it means <> is required and [] is optional"
     },
-    userinfo: {
-      criado: "Account created on the day",
-      entrou: "Entered here on the day",
-      emblemas: "Badges",
-      não: "Doesn't have",
-      erro: "User not found!",
-      locale: "en",
-      invalido: "enter a valid user ID or mention one."
-    },
     convite: {
       menssagem: "Hi",
       menssagem2: "Glad you liked my functions",
       link: "This is the [invitation link]"
     },
-    calc: {
-      erro: "could not calculate.",
-      infinito: "the result was **Infinite**.",
-      args: "enter an equation."
-    },
     botinfo: {
-      infos: "My information",
-      versão: "My version",
-      ram: "RAM Used",
-      sistema: "Operational system",
-      servidores: "Servers",
+      status: "Status",
+      servers: "**I'm in:**",
+      users: "**Users:**",
+      tocando: "**Playing in:**",
+      ping: "**Ping:**",
+      memoria: "**Use of ram:**",
+      shards: "**Shards:**",
+      guildas: "Servers",
       usuarios: "Users",
-      músic: "Music playing",
-      processador: "Processor"
-    },
-    avatar: {
-      seu: "Your avatar",
-      de: "Avatar of",
-      erro: "User not found!",
-      invalido: "enter a valid user ID or mention one."
     },
     setlang: {
       noperm: "You are not allowed to change the bot language"
     },
     nodes: {
       memoria: "Memory usage"
-    },
-    loop: {
-      nada: "There's nothing playing in this guild",
-      naota: "You have to connect to some voice channel",
-      mesmo: "Connect to the same voice channel as me",
-      loopon: "The loop has been activated",
-      loopoff: "The loop has been disabled"
     },
     np: {
       nada: "There's nothing playing this guild",
@@ -93,22 +64,6 @@ module.exports = client => {
       nada: "There's nothing touching this guild",
       already: "The music is already paused"
     },
-    pop: {
-      sucessOff: "Pop successfully disabled!",
-      sucessOn: "Pop sucessfully enabled!"
-       },
-       soft: {
-        sucessOff: "Soft successfully disabled!",
-        sucessOn: "Soft sucessfully enabled!"
-         },
-       join: {
-        joinErr: "I couldn't find this channel.",
-        joinSucess: "I joined the channel"
-      },
-      leave: {
-        err: "I'm not connected to a channel.",
-        sucess: "I left the channel."
-      },
     queue: {
       nothing: "There is no music playing, unfortunately",
       np: "Now playing",
@@ -191,19 +146,12 @@ module.exports = client => {
       naota: "Please connect to any voice channel",
       mesmo: "Please connect to the same voice channel as me"
     },
-    fxoff: {
-      naotem: "No filters to clean",
-      tem: "Filters off",
+    distortion: {
+      ativado: "Distortion filter on",
+      desativado: "Distortion filter off",
       nada: "There is nothing playing in this guild",
       naota: "Please connect to any voice channel",
       mesmo: "Please connect to the same voice channel as me"
     },
-    manutencao: {
-      ativado: "Maintenance mode is activated, come back later"
-    },
-    ascii: {
-      args: "Please provide some text",
-      grande: "Please provide text shorter than 13 characters"
-    }
   }
 }

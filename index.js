@@ -3,7 +3,7 @@ console.log("[LOGIN] - Iniciando conexão".brightCyan)
 const Discord = require("discord.js");
 const fs = require("fs");
 const Enmap = require('enmap')
-const bot = new Discord.Client({ disableMentions: 'everyone', ws: { properties: { $browser: 'Discord Android' } } })
+const bot = new Discord.Client({ disableMentions: "all" });
 const config = require("./Structures/jsons/config.json");
 const { Manager } = require("erela.js");
 const Spotify  = require("erela.js-spotify");
@@ -19,7 +19,6 @@ require('./languages/en')(bot)
 bot.idioma = new Enmap({ name:'idiomas' })
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
-bot.manutencao = new Enmap({ name: 'manutencao' })
 
 
 glob(__dirname+'/commands/*/*.js', function (er, files) {
@@ -49,8 +48,9 @@ fs.readdir("./events/", (err, files) => {
 
 
 require("./Structures/extensions/player")
+const nodes = require("./Structures/extensions/nodes")
 bot.manager = new Manager({
-    nodes: [{host: "localhost", password: "bonero", retryDelay: 5000, identifier: "LUA"}],
+    nodes,
     plugins: [ new Spotify({clientID, clientSecret}) ],
     autoPlay: true,
     send: (id, payload) => {
@@ -69,7 +69,7 @@ bot.manager = new Manager({
         embed.setDescription(`**${idioma.erela.tocando}** \`${track.title}\``)
         embed.setTimestamp()
         embed.setColor(config.color)
-        embed.setFooter(`${idioma.erela.pedido} ${track.requester.tag}`, `${track.requester.avatarURL({ dynamic: true, size: 2048 })}`)
+        embed.setFooter(`${idioma.erela.pedido} ${track.requester.tag}`, `${track.requester.displayAvatarURL({ dynamic: true, size: 2048 })}`)
         channel.send(embed).then(msg => player.set("message", msg));
     })
     .on("socketClosed", (player, payload) => {
