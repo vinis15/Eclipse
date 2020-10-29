@@ -24,7 +24,7 @@ bot.on("message", async message => {
         idioma = ptbr
         break;
     }
-    if(message.content.startsWith('<@') && message.content.endsWith(bot.user.id + '>')) return message.channel.send(`${idioma.message.inico} **${message.author.tag}**, ${idioma.message.meio} \`${config.prefix}\`, ${idioma.message.use} \`${config.prefix}ajuda\` ${idioma.message.ou} \`${config.prefix}help\` ${idioma.message.final} ❤️`)
+    if(message.content.match(new RegExp(`^<@!?${bot.user.id}>( |)$`))) return message.channel.send(`${idioma.message.inico} **${message.author.tag}**, ${idioma.message.meio} \`${config.prefix}\`, ${idioma.message.use} \`${config.prefix}ajuda\` ${idioma.message.ou} \`${config.prefix}help\` ${idioma.message.final} ❤️`)
     if(!message.content.startsWith(prefix)) return;
     if(!API.eval.includes(message.author.id)) {
         if(bot.manutencao.get('Estado')) {
