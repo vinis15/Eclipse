@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         return message.reply(idioma.avatar.invalido)
       }
 
-      const user = bot.users.fetch(id);
+      const user = await bot.users.fetch(id);
       moment.locale(idioma.userinfo.locale)
       let embed = new MessageEmbed()
       .setTitle(`${API.status(user.presence.status)} **|** ${user.tag} - (${user.id})`)
