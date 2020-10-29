@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args, idioma) => {
         return message.reply(idioma.avatar.invalido)
       }
 
-      const user = bot.users.fetch(id);
+      const user = await bot.users.fetch(id);
 
        message.channel.send(new MessageEmbed()
        .setTitle(id == message.author.id ? `${idioma.avatar.seu} 🖼️` : `${idioma.avatar.de} ${user.tag} 🖼️`)
