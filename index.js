@@ -3,7 +3,7 @@ console.log("[LOGIN] - Iniciando conexão".brightCyan)
 const Discord = require("discord.js");
 const fs = require("fs");
 const Enmap = require('enmap')
-const bot = new Discord.Client({ disableMentions: "all" });
+const bot = new Discord.Client({ disableMentions: "all", ws: { intents: 897 } })
 const config = require("./Structures/jsons/config.json");
 const { Manager } = require("erela.js");
 const Spotify  = require("erela.js-spotify");

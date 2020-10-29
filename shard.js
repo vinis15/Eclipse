@@ -5,7 +5,6 @@ const hook = new WebhookClient(config.hook.id, config.hook.token);
 const shard = new ShardingManager('./index.js', { 
     totalShards: 2, 
     respawn: true,
-    mode: "worker"
 });
 
 shard.on('shardCreate', shard => {
