@@ -76,7 +76,7 @@ module.exports = Structure.extend('Player', Player => {
                 this.setNightcore(false)
                 this.setVaporwave(false)
                 this.setDistort(0.5)
-            } else this.clearEQ();
+            } else this.clearEffects();
             return this;
         }
 
@@ -168,6 +168,7 @@ module.exports = Structure.extend('Player', Player => {
             this.bassboost = false;
             this.nightcore = false;
             this.vaporwave = false;
+			this.distortion = false;
             this.clearEQ();
 
             this.node.send({
