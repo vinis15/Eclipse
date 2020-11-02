@@ -1,5 +1,4 @@
 const API = require("../../Structures/extensions/utils")
-const config = require("../../Structures/jsons/config.json")
 const { MessageEmbed } = require("discord.js")
 module.exports.run = async(bot, message, args, idioma) => {
 
@@ -48,7 +47,7 @@ module.exports.run = async(bot, message, args, idioma) => {
       if (!player.playing && !player.paused && !player.queue.length) player.play();
       let embed = new MessageEmbed()
       embed.setTimestamp()
-      embed.setColor(config.color)
+      embed.setColor(bot.color)
       embed.setDescription(`${idioma.play.adicionado} \`${res.tracks[0].title}\`\n${idioma.play.duracao} ${API.time2(res.tracks[0].duration)}`)
       embed.setFooter(idioma.play.solicitado + res.tracks[0].requester.tag, `${res.tracks[0].requester.displayAvatarURL({ dynamic: true, size: 2048 })}`)
       return message.channel.send(embed)
@@ -59,7 +58,7 @@ module.exports.run = async(bot, message, args, idioma) => {
       if (!player.playing && !player.paused && player.queue.size === res.tracks.length) player.play();
       let embed2 = new MessageEmbed()
       embed2.setTimestamp()
-      embed2.setColor(config.color)
+      embed2.setColor(bot.color)
       embed2.setDescription(`${idioma.play.playlist} \`${res.playlist.name}\` ${idioma.play.com} \`${res.tracks.length}\` ${idioma.play.musicas}\n${idioma.play.duracao} ${API.time2(res.playlist.duration)}`)
       return message.channel.send(embed2);
 
@@ -73,7 +72,7 @@ module.exports.run = async(bot, message, args, idioma) => {
       .join('\n');
 
       let embed3 = new MessageEmbed()
-      embed3.setColor(config.color)
+      embed3.setColor(bot.color)
       embed3.setTimestamp()
       embed3.addFields({ name: idioma.play.cancelar1, value: idioma.play.cancelar2 })
       embed3.setDescription(results)
@@ -100,7 +99,7 @@ module.exports.run = async(bot, message, args, idioma) => {
       await player.queue.add(track);
 
       let embed4 = new MessageEmbed()
-      embed4.setColor(config.color)
+      embed4.setColor(bot.color)
       embed4.setFooter(`${idioma.play.solicitado} ${track.requester.tag}`, `${track.requester.displayAvatarURL({ dynamic: true, size: 2048 })}`)
       embed4.setDescription(`${idioma.play.adicionado} \`${track.title}\` \n${idioma.play.duracao} ${API.time2(track.duration)}`)
       if(!player.playing && !player.paused && !player.queue.length) player.play();

@@ -20,7 +20,8 @@ module.exports = client => {
       minutos: "minutos"
     },
     ping: {
-      latencia: "**Latência:**"
+      ping: "o ping do bot é",
+      api: "A latencia da API é"
     },
     help: {
       dev: "Criado por",

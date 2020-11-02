@@ -29,7 +29,6 @@ glob(__dirname+'/commands/*/*.js', function (er, files) {
         for (const aliase of props.conf.aliase){
             bot.aliases.set(aliase,props)
         };})
-    
     console.log("[COMANDOS] - Carregados com sucesso".brightCyan)
 })
 
@@ -68,7 +67,7 @@ bot.manager = new Manager({
         let embed = new Discord.MessageEmbed()
         embed.setDescription(`**${idioma.erela.tocando}** \`${track.title}\``)
         embed.setTimestamp()
-        embed.setColor(config.color)
+        embed.setColor(bot.color)
         embed.setFooter(`${idioma.erela.pedido} ${track.requester.tag}`, `${track.requester.displayAvatarURL({ dynamic: true, size: 2048 })}`)
         channel.send(embed).then(msg => player.set("message", msg));
     })

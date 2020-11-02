@@ -1,5 +1,4 @@
 const config = require("../../Structures/jsons/config.json")
-const API = require("../../Structures/extensions/utils")
 const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (bot, message, args, idioma) => {
@@ -24,7 +23,7 @@ module.exports.run = async (bot, message, args, idioma) => {
     else embed.setDescription(tracks.map((track, i) => `**${start + (++i)} -** [${track.title}](${track.uri})`).join("\n"));
 
     const maxPages = Math.ceil(queue.length / multiple);
-    embed.setColor(config.color)
+    embed.setColor(bot.color)
     embed.setFooter(`${idioma.queue.arg1.replace(/^./, idioma.queue.arg1[0].toUpperCase())} ${page > maxPages ? maxPages : page} ${idioma.queue.arg3} ${maxPages}`);
 
     return message.channel.send(embed);

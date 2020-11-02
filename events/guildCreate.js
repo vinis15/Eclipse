@@ -5,7 +5,7 @@ const config = require("../Structures/jsons/config.json");
 bot.on("guildCreate", guild => {
   const hook = new WebhookClient(config.hook.id, config.hook.token);
   const embed  = new MessageEmbed()
-  embed.setColor(config.color)
+  embed.setColor('3447003')
   embed.setTitle(`Novo servidor ${guild.name}`)
   embed.setThumbnail(guild.iconURL({ dynamic: true, size: 2048 }) || 'https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg}')
   embed.addFields(

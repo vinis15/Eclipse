@@ -1,13 +1,7 @@
-const config = require("../../Structures/jsons/config.json")
-const Discord = require("discord.js");
-const embed = new Discord.MessageEmbed()
-
-
+const API = require("../../Structures/extensions/utils")
 module.exports.run = async (bot, message, args, idioma) => {
-    embed.setTitle("🧐 **|** Eclipse ping")
-    embed.setColor(config.color)
-    embed.setDescription(`${idioma.ping.latencia} \`${bot.ws.ping}ms\`\n**API:** \`${Date.now()-message.createdTimestamp}ms\``)
-    return message.channel.send(embed)
+    let m = await message.channel.send("🏓")
+    await m.edit(`**Pong!** ${idioma.ping.ping} \`${bot.ws.ping}ms\`. ${idioma.ping.api} \`${Date.now() - message.createdTimestamp}ms\`\n**Uptime:** ${API.time(bot.uptime)}`)
 }
 
 exports.conf = {

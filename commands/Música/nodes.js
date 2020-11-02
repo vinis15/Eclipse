@@ -1,11 +1,10 @@
 const { MessageEmbed } = require("discord.js")
-const config = require("../../Structures/jsons/config.json")
 const API = require("../../Structures/extensions/utils")
 module.exports.run = async(bot, message, args, idioma) => {
     let node = bot.manager.nodes.get("LUA")
     let embed = new MessageEmbed()
     embed.setTimestamp()
-    embed.setColor(config.color)
+    embed.setColor(bot.color)
     embed.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
     embed.setAuthor(bot.user.username, bot.user.displayAvatarURL({ size: 2048 }))
     embed.setDescription(`\`\`\`diff\n\n- [ NODE ]

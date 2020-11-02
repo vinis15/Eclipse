@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const config = require("../../Structures/jsons/config.json");
 const API = require("../../Structures/extensions/utils")
 module.exports.run = async (bot, message, args, idioma) => {
 
@@ -14,7 +13,7 @@ module.exports.run = async (bot, message, args, idioma) => {
 
     let embed = new MessageEmbed()
     embed.setTitle(idioma.botinfo.status)
-    embed.setColor(config.color)
+    embed.setColor(bot.color)
     embed.setTimestamp()
     embed.addFields(
         { name: idioma.botinfo.servers, value: `**${total_servers.toLocaleString('pt-br')}** ${idioma.botinfo.guildas}`, inline: true },
