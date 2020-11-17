@@ -4,7 +4,7 @@ module.exports.run = async(bot, message, args, idioma) => {
     let node = bot.manager.nodes.get("LUA")
     let embed = new MessageEmbed()
     embed.setTimestamp()
-    embed.setColor(bot.color)
+    embed.setColor(message.guild.me.roles.highest.color)
     embed.setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
     embed.setAuthor(bot.user.username, bot.user.displayAvatarURL({ size: 2048 }))
     embed.setDescription(`\`\`\`diff\n\n- [ NODE ]

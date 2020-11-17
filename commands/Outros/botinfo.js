@@ -5,19 +5,16 @@ module.exports.run = async (bot, message, args, idioma) => {
     let servidores = await bot.shard.fetchClientValues('guilds.cache.size')
     let total_servers = servidores.reduce((prev, val) => prev + val)
 
-    let usuarios = await bot.shard.fetchClientValues('users.cache.size')
-    let total_users = usuarios.reduce((prev, val) => prev + val)
-
     let memoria = await bot.shard.broadcastEval(`process.memoryUsage().rss`)
     let total_memoria = memoria.reduce((prev, val) => prev + val)
 
     let embed = new MessageEmbed()
     embed.setTitle(idioma.botinfo.status)
-    embed.setColor(bot.color)
+    embed.setColor(message.guild.me.roles.highest.color)
     embed.setTimestamp()
     embed.addFields(
         { name: idioma.botinfo.servers, value: `**${total_servers.toLocaleString('pt-br')}** ${idioma.botinfo.guildas}`, inline: true },
-        { name: idioma.botinfo.users, value: `**${total_users.toLocaleString('pt-br')}** ${idioma.botinfo.usuarios}`, inline: true },
+        { name: "Uptime", value: `**${API.time2(bot.uptime)}`, inline: true },
         { name: idioma.botinfo.tocando, value: `**${bot.manager.nodes.get("LUA").stats.playingPlayers}** ${idioma.botinfo.guildas}`, inline: true },
         { name: idioma.botinfo.ping, value: `**${Math.round(bot.ws.ping)}**ms`, inline: true },
         { name: idioma.botinfo.memoria, value: `**${API.bytes(total_memoria).value}${API.bytes(total_memoria).unit}**`, inline: true },

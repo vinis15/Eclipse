@@ -36,12 +36,12 @@ module.exports = Structure.extend('Player', Player => {
     
             this.nightcore = nighcore;
             if(nighcore) {
-                this.vaporwave = false;
-                this.tremolo = false
-                this.setBassboost(false);
-                this.distortion = false;
-                this.setDistortion(false)
                 this.bassboost = false;
+				this.distortion = false;
+				this.vaporwave = false;
+				this.setVaporwave(false)
+                this.setBassboost(false)
+				this.setDistortion(false)
                 this.setTimescale(1.2999999523162842, 1.2999999523162842, 1);
             } else this.setTimescale(1, 1, 1);
             return this;
@@ -54,10 +54,11 @@ module.exports = Structure.extend('Player', Player => {
             this.vaporwave = vaporwave;
             if(vaporwave) {
                 this.nightcore = false;
-                this.setBassboost(false)
-                this.distortion = false;
-                this.setDistortion(false)
                 this.bassboost = false;
+				this.distortion = false;
+                this.setBassboost(false)
+                this.setNightcore(false)
+				this.setDistortion(false)
                 this.setTimescale(0.8500000238418579, 0.800000011920929, 1);
             } else this.setTimescale(1, 1, 1);
             return this;
@@ -91,7 +92,7 @@ module.exports = Structure.extend('Player', Player => {
                 this.setVaporwave(false)
                 this.setNightcore(false)
                 this.setEqualizer(1, 0.85);
-            } else this.clearEQ();
+            } else this.clearEffects();
             return this;
         }
 

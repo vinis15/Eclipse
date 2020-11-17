@@ -22,7 +22,7 @@ module.exports.run = async(bot, message, args, idioma) => {
 
 
 exports.conf = {
-    enabled: true,
+    enabled: false,
     guildOnly: true,
     aliase: []
 }

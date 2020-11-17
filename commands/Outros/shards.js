@@ -4,7 +4,7 @@ table = new AsciiTable('Eclipse Shards')
 
 module.exports.run = async(bot, message, args, idioma) => {
 
-    table.setHeading('SID', 'UpTime', 'Ping', 'Usage', 'Guilds', 'Players', 'Users')
+    table.setHeading('SID', 'UpTime', 'Ping', 'Usage', 'Guilds', 'Players')
 
     table.setAlign(0, AsciiTable.CENTER)
 	table.setAlign(1, AsciiTable.CENTER)
@@ -16,18 +16,16 @@ module.exports.run = async(bot, message, args, idioma) => {
 
 
     let servidores = await bot.shard.fetchClientValues('guilds.cache.size')
-    let usuarios = await bot.shard.fetchClientValues('users.cache.size')
     let memoria = await bot.shard.broadcastEval(`process.memoryUsage().rss`)
     let ping = await bot.shard.fetchClientValues('ws.ping')
     let uptime = await bot.shard.fetchClientValues('uptime')
 	let players = await bot.shard.fetchClientValues('manager.players.size')
 
     for(let i = 0; i < bot.options.shardCount; i++) {
-        table.addRow(i === message.guild.shard.id ? i + '*' : i, API.time2(uptime[i]), '~' + ping[i] + 'ms', API.bytes(memoria[i]).value + API.bytes(memoria[i]).unit, servidores[i].toLocaleString('pt-br'), players[i].toLocaleString('pt-BR'), usuarios[i].toLocaleString('pt-BR'))
+        table.addRow(i === message.guild.shard.id ? i + '*' : i, API.time2(uptime[i]), '~' + ping[i] + 'ms', API.bytes(memoria[i]).value + API.bytes(memoria[i]).unit, servidores[i].toLocaleString('pt-br'), players[i].toLocaleString('pt-BR'))
     }
 
     let total_servers = servidores.reduce((prev, val) => prev + val)
-    let total_users = usuarios.reduce((prev, val) => prev + val)
     let total_mem = memoria.reduce((prev, val) => prev + val)
     let ping_media = ping.reduce((prev, val) => prev + val)
     let media = ping_media / bot.options.shardCount
@@ -35,7 +33,7 @@ module.exports.run = async(bot, message, args, idioma) => {
 
     table.addRow('______', '______', '______', '______', '______', '______', '______')
 
-    table.addRow('TOTAL', '-', '~' + Math.round(media) + 'ms', API.bytes(total_mem, 2).value + API.bytes(total_mem, 2).unit, total_servers.toLocaleString('pt-BR'), total_players, total_users.toLocaleString('pt-BR'))
+    table.addRow('TOTAL', '-', '~' + Math.round(media) + 'ms', API.bytes(total_mem, 2).value + API.bytes(total_mem, 2).unit, total_servers.toLocaleString('pt-BR'), total_players)
 
     message.channel.send(table.toString(), { code: 'apache' })
 

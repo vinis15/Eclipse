@@ -17,7 +17,7 @@ module.exports.run = async(bot, message, args, idioma) => {
     let embed = new MessageEmbed()
     embed.setTimestamp()
     embed.setAuthor("NowPlaying", message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
-    embed.setColor(config.color)
+    embed.setColor(message.guild.me.roles.highest.color)
     embed.setDescription(`${player.playing ? API.emojis.play.id : API.emojis.pause.id} ${title}\n${progressBar} \`${player.position <= 60000 ? `${API.time2(player.position)}s` : API.time2(player.position)} / ${API.time2(duration)}\``);
     message.channel.send(embed)
 }

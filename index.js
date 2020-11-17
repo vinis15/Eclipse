@@ -3,20 +3,20 @@ console.log("[LOGIN] - Iniciando conexão".brightCyan)
 const fs = require("fs");
 const Enmap = require('enmap')
 const Discord = require("discord.js")
-const bot = new Discord.Client({ disableMentions: "all", ws: { intents: 897 }})
+const bot = new Discord.Client({ disableMentions: "all" })
 const config = require("./Structures/jsons/config.json");
 const { Manager } = require("erela.js");
 const Spotify  = require("erela.js-spotify");
 const glob = require('glob');
 const clientID = config.clientID
 const clientSecret = config.clientSecret
-//require("./StatsPosts")
 
 bot.idiomas = {}
 require('./languages/pt')(bot)
 require('./languages/en')(bot)
 
-bot.idioma = new Enmap({ name:'idiomas' })
+bot.idioma = new Enmap({ name: 'idiomas' })
+bot.cooldown = new Enmap({ name: 'cooldown' })
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
@@ -67,7 +67,7 @@ bot.manager = new Manager({
         let embed = new Discord.MessageEmbed()
         embed.setDescription(`**${idioma.erela.tocando}** \`${track.title}\``)
         embed.setTimestamp()
-        embed.setColor(bot.color)
+        embed.setColor(bot.channels.cache.get(player.textChannel).guild.me.roles.highest.color)
         embed.setFooter(`${idioma.erela.pedido} ${track.requester.tag}`, `${track.requester.displayAvatarURL({ dynamic: true, size: 2048 })}`)
         channel.send(embed).then(msg => player.set("message", msg));
     })
@@ -85,7 +85,7 @@ bot.manager = new Manager({
         if(idioma === 'en') idioma = bot.idiomas.en
         if(idioma === 'pt') idioma = bot.idiomas.pt
         if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
-        channel.send(`${idioma.erela.erro}`)
+        channel.send(idioma.erela.erro)
     })
     .on("trackError", (player, track, payload) => {
         const channel = bot.channels.cache.get(player.textChannel)
@@ -94,7 +94,7 @@ bot.manager = new Manager({
         if(idioma === 'pt') idioma = bot.idiomas.pt
         if(!player.get("message")) { return }
         if(player.get("message") && !player.get("message").deleted) player.get("message").delete();
-        channel.send(`${idioma.erela.erro}`)
+        channel.send(idioma.erela.erro)
     })
     .on("playerMove", (player, currentChannel, newChannel) => {
         player.voiceChannel = bot.channels.cache.get(newChannel);
@@ -113,6 +113,7 @@ bot.manager = new Manager({
     });
 
     bot.on("raw", d => bot.manager.updateVoiceState(d));
+
 
 bot.login(config.token)
 
